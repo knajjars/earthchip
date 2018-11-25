@@ -35,29 +35,6 @@ router.post("/signup", (req, res, next) => {
     .catch(err => next(err));
 });
 
-// router.post("/login", (req, res, next) => {
-//   const { email, password } = req.body;
-
-//   User.findOne({ email })
-//     .then(userDoc => {
-//       if (!userDoc) {
-//         next(new Error("Incorrect email. "));
-//         return;
-//       }
-
-//       if (!bcrypt.compareSync(password, userDoc.password)) {
-//         next(new Error("Password is wrong"));
-//         return;
-//       }
-
-//       req.logIn(userDoc, () => {
-//         userDoc.encryptedPassword = undefined;
-//         res.json(userDoc);
-//       });
-//     })
-//     .catch(err => next(err));
-// });
-
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
