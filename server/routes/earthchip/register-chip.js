@@ -15,7 +15,7 @@ router.post("/", isLoggedIn, (req, res, next) => {
   EarthChip.findOne({ macAddress }).then(chip => {
     if (chip !== null) {
       res
-        .status(409)
+        .status(404)
         .json({ message: "The Earth Chip has already been registered." });
       return;
     }
