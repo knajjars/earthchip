@@ -26,7 +26,7 @@ app.use(nocache());
 app.use(
   cors({
     origin: (origin, cb) => {
-      cb(null, origin && origin.startsWith("http://localhost:"));
+      cb(null, true);
     },
     optionsSuccessStatus: 200,
     credentials: true
@@ -54,7 +54,8 @@ require("./passport")(app);
 
 app.use("/api", require("./routes/index"));
 app.use("/api/auth", require("./routes/auth"));
-app.use("/api/register-chip", require("./routes/register-chip"));
+app.use("/api/register-chip", require("./routes/earthchip/register-chip"));
+app.use("/api/data-earthchip", require("./routes/earthchip/data-earthchip"));
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use("/api/*", (req, res, next) => {

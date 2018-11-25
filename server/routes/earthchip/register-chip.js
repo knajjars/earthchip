@@ -1,6 +1,6 @@
 const express = require("express");
-const EarthChip = require("../models/EarthChip");
-const { isLoggedIn } = require("./middlewares");
+const EarthChip = require("../../models/EarthChip");
+const { isLoggedIn } = require("../middlewares");
 
 const router = express.Router();
 
