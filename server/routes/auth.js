@@ -10,29 +10,46 @@ const bcryptSalt = 10;
 // ALL ROUTES PREFIXED WITH /api/auth
 
 router.post("/signup", (req, res, next) => {
-  const { username, password, email } = req.body;
-  if (!username || !password || !email) {
-    res.status(400).json({ message: "Indicate username, password and email." });
+  const { name, password, email } = req.body;
+  if (name === "" || password === "" || email === "") {
+    res.json({ message: "Indicate all the fields" });
     return;
   }
-  User.findOne({ email })
-    .then(userDoc => {
-      if (userDoc !== null) {
-        res.status(409).json({ message: "The email already exists" });
-        return;
-      }
-      const salt = bcrypt.genSaltSync(bcryptSalt);
-      const hashPass = bcrypt.hashSync(password, salt);
-      const newUser = new User({ username, password: hashPass, email });
-      return newUser.save();
+
+  User.findOne({ email }, "email", (err, user) => {
+    if (user !== null) {
+      res.json({ message: "The username already exists" });
+      return;
+    }
+    // let transporter = nodemailer.createTransport({
+    //   service: "Gmail",
+    //   auth: {
+    //     user: process.env.NODEMAIL_EMAIL,
+    //     pass: process.env.NODEMAIL_PASS
+    //   }
+    // });
+    // String.prototype.replaceAll = function(search, replacement) {
+    //   var target = this;
+    //   return target.replace(new RegExp(search, "g"), replacement);
+    // };
+
+    const salt = bcrypt.genSaltSync(bcryptSalt);
+    const hashPass = bcrypt.hashSync(password, salt);
+    User.create({
+      name,
+      password: hashPass,
+      email
     })
-    .then(userSaved => {
-      req.logIn(userSaved, () => {
-        userSaved.password = undefined;
-        res.json({ userSaved });
+      .then(user => {
+        req.login(user, function(err) {
+          res.json({ message: "success" });
+          return;
+        });
+      })
+      .catch(err => {
+        next(err);
       });
-    })
-    .catch(err => next(err));
+  });
 });
 
 router.post("/login", (req, res, next) => {
