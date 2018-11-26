@@ -18,7 +18,7 @@ router.post("/signup", (req, res, next) => {
 
   User.findOne({ email }, "email", (err, user) => {
     if (user !== null) {
-      res.status(400).json({ message: "The username already exists!" });
+      res.status(400).json({ message: "The email is already registered!" });
       return;
     }
 

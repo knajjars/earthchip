@@ -1,26 +1,22 @@
 import React, { Component } from "react";
-import { Form, Icon, Input, Button } from "antd";
+import { Button, Icon } from "antd";
 import api from "../../api/auth";
 import NotificationMessage from "../utils/NotificationMessage";
 
-const FormItem = Form.Item;
-
-class Signup extends Component {
+export default class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
       name: "",
-      password: "",
-      message: null
+      password: ""
     };
   }
-
-  handleInputChange(stateFieldName, event) {
+  handleChange = e => {
     this.setState({
-      [stateFieldName]: event.target.value
+      [e.target.name]: e.target.value
     });
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
@@ -46,36 +42,42 @@ class Signup extends Component {
   };
 
   render() {
-    const { getFieldDecorator } = this.props.form;
-    console.log(this.props);
     return (
-      <Form onSubmit={this.handleSubmit} className="login-form">
-        <FormItem>
-          <Input
-            prefix={<Icon type="mail" style={{ color: "rgba(0,0,0,.25)" }} />}
-            placeholder="Email"
+      <form className="form-container" onSubmit={this.handleSubmit}>
+        <div className="form-field">
+          <Icon type="mail" />
+          <input
+            name="email"
+            type="email"
+            value={this.state.email}
+            onChange={this.handleChange}
+            required
           />
-        </FormItem>
-        <FormItem>
-          <Input
-            prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+        </div>
+        <div className="form-field">
+          <Icon type="user" />
+          <input
+            name="name"
+            type="text"
+            value={this.state.name}
+            onChange={this.handleChange}
+            required
+          />
+        </div>
+        <div className="form-field">
+          <Icon type="lock" />
+          <input
+            name="password"
             type="password"
-            placeholder="Password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            required
           />
-        </FormItem>
-        <FormItem>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-          >
-            Signup
-          </Button>
-          Or <a href="">Login now!</a>
-        </FormItem>
-      </Form>
+        </div>
+        <div className="form-field">
+          <input type="submit" value="Signup!" />
+        </div>
+      </form>
     );
   }
 }
-
-export default Form.create()(Signup);
