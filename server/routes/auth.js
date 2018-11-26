@@ -18,7 +18,7 @@ router.post("/signup", (req, res, next) => {
 
   User.findOne({ email }, "email", (err, user) => {
     if (user !== null) {
-      res.json({ message: "The username already exists" });
+      res.status(400).json({ message: "The username already exists!" });
       return;
     }
 
@@ -44,7 +44,7 @@ router.post("/signup", (req, res, next) => {
     })
       .then(user => {
         req.login(user, function(err) {
-          res.json({ message: "success" });
+          res.status(200).json(user);
           return;
         });
       })
