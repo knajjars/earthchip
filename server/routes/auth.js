@@ -12,7 +12,7 @@ const bcryptSalt = 10;
 router.post("/signup", (req, res, next) => {
   const { name, password, email } = req.body;
   if (name === "" || password === "" || email === "") {
-    res.json({ message: "Indicate all the fields" });
+    res.status(400).json({ message: "Indicate all the fields" });
     return;
   }
 
