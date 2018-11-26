@@ -2,18 +2,16 @@
 // Definition of variables
 $primary: #32c3ff;
 
-
-// ----------------------------------------
-// To install Boostrap:
-// 1) Run in the client folder: $ npm i bootstrap
-// 2) Import bootstrap with the following line
-// @import 'bootstrap/scss/bootstrap';
-// ----------------------------------------
-
-
-// --------------------
-// Style reusable for all components
-body {
+//  Colors to decide on
+$first: #4d946e// ----------------------------------------
+  // To install Boostrap:
+  // 1) Run in the client folder: $ npm i bootstrap
+  // 2) Import bootstrap with the following line
+  // @import 'bootstrap/scss/bootstrap';
+  // ----------------------------------------
+  // --------------------
+  // Style reusable for all components
+  body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;

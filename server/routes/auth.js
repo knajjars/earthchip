@@ -21,6 +21,8 @@ router.post("/signup", (req, res, next) => {
       res.json({ message: "The username already exists" });
       return;
     }
+
+    //! To add later on
     // let transporter = nodemailer.createTransport({
     //   service: "Gmail",
     //   auth: {
