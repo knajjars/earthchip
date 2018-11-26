@@ -20335,12 +20335,15 @@ body {
   align-items: stretch;
   width: 100vw; }
   .form-container .form-field {
-    margin: 10px;
+    margin: 0 90px;
     display: flex;
     align-items: center; }
     .form-container .form-field input {
       border-radius: 6px;
-      width: 100%; }
+      width: 100%;
+      border: none;
+      box-shadow: 5px 10px 15px lightgray;
+      padding: 5px; }
     .form-container .form-field * {
       margin: 5px; }
 

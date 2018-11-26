@@ -16,8 +16,6 @@ $fourth: #68762a;
 // @import 'bootstrap/scss/bootstrap';
 // ----------------------------------------
 @import "antd/dist/antd";
-
-// --------------------
 // Style reusable for all components
 body {
   margin: 0;
@@ -32,12 +30,15 @@ body {
   align-items: stretch;
   width: 100vw;
   .form-field {
-    margin: 10px;
+    margin: 0 90px;
     display: flex;
     align-items: center;
     input {
       border-radius: 6px;
       width: 100%;
+      border: none;
+      box-shadow: 5px 10px 15px lightgray;
+      padding: 5px;
     }
     * {
       margin: 5px;
