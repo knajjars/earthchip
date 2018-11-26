@@ -45,7 +45,7 @@ export default class Signup extends Component {
     return (
       <form className="form-container" onSubmit={this.handleSubmit}>
         <div className="form-field">
-          <Icon type="mail" />
+          <Icon type="mail" style={{ color: "#32c3ff", fontSize: "22px" }} />
           <input
             name="email"
             type="email"
@@ -55,7 +55,7 @@ export default class Signup extends Component {
           />
         </div>
         <div className="form-field">
-          <Icon type="user" />
+          <Icon type="user" style={{ color: "#32c3ff", fontSize: "22px" }} />
           <input
             name="name"
             type="text"
@@ -65,7 +65,7 @@ export default class Signup extends Component {
           />
         </div>
         <div className="form-field">
-          <Icon type="lock" />
+          <Icon type="lock" style={{ color: "#32c3ff", fontSize: "22px" }} />
           <input
             name="password"
             type="password"
@@ -75,7 +75,9 @@ export default class Signup extends Component {
           />
         </div>
         <div className="form-field">
-          <input type="submit" value="Signup!" />
+          <Button htmlType="submit" type="primary">
+            Sign up
+          </Button>
         </div>
       </form>
     );

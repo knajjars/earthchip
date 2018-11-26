@@ -20331,17 +20331,14 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  width: 500px; }
+  align-items: stretch;
+  width: 100vw; }
   .form-container .form-field {
     margin: 10px;
     display: flex;
-    justify-content: stretch;
     align-items: center; }
     .form-container .form-field input {
       border-radius: 6px;
-      border: none;
-      box-shadow: 10px 10px 10px lightgrey;
       width: 100%; }
     .form-container .form-field * {
       margin: 5px; }
