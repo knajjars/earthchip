@@ -1,57 +1,104 @@
 import React, { Component } from "react";
+import { Button, Icon } from "antd";
 import api from "../../api/auth";
+import NotificationMessage from "../utils/NotificationMessage";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      email: "",
       password: "",
-      message: null
+      themes: {
+        email: "outlined",
+        password: "outlined"
+      }
     };
   }
 
-  handleInputChange(stateFieldName, event) {
+  handleChange = e => {
     this.setState({
-      [stateFieldName]: event.target.value
+      [e.target.name]: e.target.value
     });
-  }
+  };
 
-  handleClick(e) {
+  handleSubmit = e => {
     e.preventDefault();
     api
-      .login(this.state.username, this.state.password)
-      .then(result => {
-        console.log("SUCCESS!");
-        this.props.history.push("/"); // Redirect to the home page
+      .login(this.state.email, this.state.password)
+      .then(res => {
+        if (res.status === 200) {
+          NotificationMessage({
+            type: "success",
+            message: `Welcome Back, ${JSON.parse(localStorage.user).name}`,
+            description: "Logged succesfully."
+          });
+          this.props.history.push("/"); // Redirect to the home page
+        }
       })
-      .catch(err => this.setState({ message: err.toString() }));
-  }
+      .catch(err => {
+        NotificationMessage({
+          type: "error",
+          message: "Something went wrong.",
+          description: err
+        });
+      });
+  };
+
+  handleFocus = e => {
+    this.setState({
+      themes: {
+        name: "outlined",
+        email: "outlined",
+        password: "outlined",
+        [e.target.name]: "filled"
+      }
+    });
+  };
 
   render() {
+    let style = { color: "#32c3ff", fontSize: "22px" };
     return (
-      <div className="Login">
-        <h2>Login</h2>
-        <form>
-          Username:{" "}
-          <input
-            type="text"
-            value={this.state.username}
-            onChange={e => this.handleInputChange("username", e)}
-          />{" "}
-          <br />
-          Password:{" "}
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={e => this.handleInputChange("password", e)}
-          />{" "}
-          <br />
-          <button onClick={e => this.handleClick(e)}>Login</button>
+      <div className="form-container">
+        <h2>
+          Welcome back to <span className="bold">Earth Chip</span>, please enter
+          credentials.
+        </h2>
+        <form className="form-component" onSubmit={this.handleSubmit}>
+          <div className="form-field">
+            <Icon type="mail" theme={this.state.themes.email} style={style} />
+            <input
+              value={this.state.email}
+              onChange={this.handleChange}
+              onFocus={this.handleFocus}
+              name="email"
+              type="email"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div className="form-field">
+            <Icon
+              type="lock"
+              theme={this.state.themes.password}
+              style={style}
+            />
+            <input
+              value={this.state.password}
+              onChange={this.handleChange}
+              onFocus={this.handleFocus}
+              name="password"
+              type="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div className="form-field">
+            <Button htmlType="submit" type="primary">
+              Log in
+            </Button>
+          </div>
         </form>
-        {this.state.message && (
-          <div className="info info-danger">{this.state.message}</div>
-        )}
       </div>
     );
   }

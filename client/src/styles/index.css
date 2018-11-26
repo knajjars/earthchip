@@ -20328,24 +20328,42 @@ body {
   padding: 0;
   background-color: #e4e8f0; }
 
+.bold {
+  font-weight: bolder; }
+
 .form-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: stretch;
-  width: 100vw; }
-  .form-container .form-field {
-    margin: 0 90px;
+  height: 100vh;
+  text-align: center; }
+  .form-container .form-component {
     display: flex;
-    align-items: center; }
-    .form-container .form-field input {
-      border-radius: 6px;
-      width: 100%;
-      border: none;
-      box-shadow: 5px 10px 15px lightgray;
-      padding: 5px; }
-    .form-container .form-field * {
-      margin: 5px; }
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw; }
+    .form-container .form-component .form-field {
+      min-width: 660px;
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      @media screen and (max-width: 690px) {
+        .form-container .form-component .form-field {
+          min-width: 95vw; } }
+      .form-container .form-component .form-field input {
+        border-radius: 6px;
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0);
+        box-shadow: 10px 10px 7px lightgrey;
+        padding: 7px;
+        box-sizing: border-box; }
+        .form-container .form-component .form-field input:focus {
+          border: 1px #32c3ff solid; }
+      .form-container .form-component .form-field * {
+        margin: 5px; }
 
 #components-layout-demo-custom-trigger .trigger {
   font-size: 18px;

@@ -57,7 +57,7 @@ router.post("/signup", (req, res, next) => {
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
-      res.status(500).json({ message: "Something went wrong" });
+      res.status(500).json({ message: "An error ocurred." });
       return;
     }
 
@@ -68,10 +68,10 @@ router.post("/login", (req, res, next) => {
 
     req.login(theUser, err => {
       if (err) {
-        res.status(500).json({ message: "Something went wrong" });
+        res.status(500).json({ message: "An error ocurred." });
         return;
       }
-      res.json({ message: "success" });
+      res.status(200).json(theUser);
     });
   })(req, res, next);
 });

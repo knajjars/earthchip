@@ -36,16 +36,16 @@ export default {
   },
 
   login(email, password) {
-    console.log(email, password);
     return service
       .post("/auth/login", {
         email,
         password
       })
       .then(res => {
-        // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
-        localStorage.setItem("user", JSON.stringify(res.data));
-        return res.data;
+        if (res.status === 200) {
+          localStorage.setItem("user", JSON.stringify(res.data));
+        }
+        return res;
       })
       .catch(errHandler);
   },
