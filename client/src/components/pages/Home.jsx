@@ -1,19 +1,5 @@
-import React, { Component } from 'react';
+import React from "react";
 
-class Home extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //   }
-  // }
-  render() {                
-    return (
-      <div className="Home">
-        <h2>Home</h2>
-        <p>This is a sample project with the MERN stack</p>
-      </div>
-    );
-  }
+export default function Home() {
+  return <div>HELLO</div>;
 }
-
-export default Home;

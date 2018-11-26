@@ -36,6 +36,7 @@ export default {
   },
 
   login(email, password) {
+    console.log(email, password);
     return service
       .post("/auth/login", {
         email,
