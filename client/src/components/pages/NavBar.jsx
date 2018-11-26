@@ -26,6 +26,9 @@ import apiAuth from "../../api/auth";
 const { Header, Content, Footer } = Layout;
 
 export default class NavBar extends Component {
+  handleLogoutClick(e) {
+    apiAuth.logout();
+  }
   render() {
     return (
       <div>
@@ -35,7 +38,7 @@ export default class NavBar extends Component {
             <Menu
               theme="dark"
               mode="horizontal"
-              defaultSelectedKeys={["2"]}
+              defaultSelectedKeys={["1"]}
               style={{ lineHeight: "64px" }}
             >
               <Menu.Item key="1">
@@ -55,8 +58,10 @@ export default class NavBar extends Component {
                 </Menu.Item>
               )}
               {apiAuth.isLoggedIn() && (
-                <Menu.Item key="1">
-                  <NavLink to="/">Log Out</NavLink>
+                <Menu.Item key="4">
+                  <NavLink onClick={this.handleLogoutClick} to="/">
+                    Log Out
+                  </NavLink>
                 </Menu.Item>
               )}
             </Menu>

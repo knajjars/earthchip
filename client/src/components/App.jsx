@@ -14,10 +14,6 @@ class App extends Component {
     // apiAuth.loadUser();
   }
 
-  handleLogoutClick(e) {
-    apiAuth.logout();
-  }
-
   render() {
     return (
       <div className="App">
