@@ -18,20 +18,9 @@ router.post("/signup", (req, res, next) => {
 
   User.findOne({ email }, "email", (err, user) => {
     if (user !== null) {
-      res.json({ message: "The username already exists" });
+      res.status(400).json({ message: "The username already exists!" });
       return;
     }
-    // let transporter = nodemailer.createTransport({
-    //   service: "Gmail",
-    //   auth: {
-    //     user: process.env.NODEMAIL_EMAIL,
-    //     pass: process.env.NODEMAIL_PASS
-    //   }
-    // });
-    // String.prototype.replaceAll = function(search, replacement) {
-    //   var target = this;
-    //   return target.replace(new RegExp(search, "g"), replacement);
-    // };
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
@@ -42,7 +31,7 @@ router.post("/signup", (req, res, next) => {
     })
       .then(user => {
         req.login(user, function(err) {
-          res.json({ message: "success" });
+          res.status(200).json(user);
           return;
         });
       })
