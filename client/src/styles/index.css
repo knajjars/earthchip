@@ -20379,3 +20379,7 @@ body {
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px; }
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+  background-color: #4d946e; }
