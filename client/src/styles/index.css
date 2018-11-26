@@ -20325,7 +20325,8 @@ li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper:hover {
 /*# sourceMappingURL=antd.css.map*/
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background-color: #e4e8f0; }
 
 .form-container {
   display: flex;
