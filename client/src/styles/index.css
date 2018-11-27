@@ -20368,22 +20368,6 @@ body {
           border: 1px #32c3ff solid; }
       .form-container .form-component .form-field * {
         margin: 5px; }
-<<<<<<< HEAD
-
-#components-layout-demo-custom-trigger .trigger {
-  font-size: 18px;
-  line-height: 64px;
-  padding: 0 24px;
-  cursor: pointer;
-  transition: color 0.3s; }
-
-#components-layout-demo-custom-trigger .trigger:hover {
-  color: #1890ff; }
-
-#components-layout-demo-custom-trigger .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px; }
 
 .ant-menu.ant-menu-dark .ant-menu-item-selected,
 .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
@@ -20460,5 +20444,3 @@ body {
   100% {
     -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
     box-shadow: 0 0 0 0 rgba(204, 169, 44, 0); } }
-=======
->>>>>>> c785936be69cd8adccd8e700c1285b1646f8c73d
