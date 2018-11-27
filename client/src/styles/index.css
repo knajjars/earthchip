@@ -20347,15 +20347,19 @@ body {
 * {
   font-family: MoonRegular; }
 
-h1 {
-  font-family: "Anurati";
-  font-size: 5rem; }
+.title {
+  font-size: 3rem;
+  text-align: center; }
   @media only screen and (max-width: 730px) {
-    h1 {
+    .title {
       font-size: 4rem; } }
   @media only screen and (max-width: 410px) {
-    h1 {
+    .title {
       font-size: 3.1rem; } }
+
+.brand-title {
+  font-family: "Anurati";
+  letter-spacing: 5px; }
 
 .bold {
   font-weight: bolder; }
@@ -20365,7 +20369,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2em 0;
+  height: calc(100vh - 64px);
   text-align: center; }
   .form-container .form-component {
     display: flex;
@@ -20413,12 +20417,6 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column; }
-    .home-page .commands .title {
-      font-family: "Anurati";
-      font-size: 3rem;
-      text-align: center; }
-      .home-page .commands .title h1 {
-        margin-top: 0.5em; }
     .home-page .commands button {
       margin: 30px;
       font-size: 40px;
