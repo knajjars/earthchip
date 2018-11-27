@@ -39,7 +39,7 @@ export default class Signup extends Component {
             message: `Welcome, ${JSON.parse(localStorage.user).name}!`,
             description: "Account created succesfully."
           });
-          this.props.history.push("/dashboard"); // Redirect to the home page
+          this.props.history.push("/"); // Redirect to the home page
         }
       })
       .catch(err => {
@@ -67,7 +67,7 @@ export default class Signup extends Component {
     return (
       <div className="form-container">
         <div className="title">
-          <h1>EARTHCHI P</h1>
+          <h1 className="brand-title">EARTHCHIP</h1>
         </div>
         <h2>
           Welcome to <span className="bold">Earth Chip</span>, please create an
