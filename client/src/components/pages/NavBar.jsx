@@ -15,21 +15,27 @@ export default class NavBar extends Component {
       <div>
         <div className="nav-bar-container">
           <div className="logo-el">
-            <img src="/images/micro_temp.png" height="40px" />{" "}
-            <span>EarthChip</span>
+            <NavLink to="/">
+              <img src="/images/micro_temp.png" height="40px" />{" "}
+              <span>EarthChip</span>
+            </NavLink>
           </div>
 
           <div className="user-el">
-            <a href="/signup">Sign Up</a>
-            <a href="/login">Log In</a>
+            <NavLink className="login" to="/login">
+              Log In
+            </NavLink>
+            <NavLink className="signup" to="/signup">
+              Sign Up
+            </NavLink>
           </div>
 
           <Icon type="bars" className="menu-icon" />
 
           <div className="sidenav">
             <div className="user-el">
-              <a href="/signup">Sign Up</a>
-              <a href="/login">Log In</a>
+              <NavLink to="/login">Log In</NavLink>
+              <NavLink to="/signup">Sign Up</NavLink>
             </div>
           </div>
         </div>
