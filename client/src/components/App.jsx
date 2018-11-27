@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link, NavLink, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import apiAuth from "../api/auth";
 
 import Login from "./pages/auth/Login";

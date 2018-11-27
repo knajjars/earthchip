@@ -20358,8 +20358,16 @@ body {
       font-size: 3.1rem; } }
 
 .brand-title {
+  font-size: 5rem;
+  text-align: center;
   font-family: "Anurati";
   letter-spacing: 5px; }
+  @media only screen and (max-width: 730px) {
+    .brand-title {
+      font-size: 4rem; } }
+  @media only screen and (max-width: 410px) {
+    .brand-title {
+      font-size: 2.5rem; } }
 
 .bold {
   font-weight: bolder; }
@@ -20410,37 +20418,13 @@ body {
 .home-page {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   height: calc(100vh - 64px); }
-  .home-page .commands {
-    width: 60%;
+  .home-page .box {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column; }
-    .home-page .commands button {
-      margin: 30px;
-      font-size: 40px;
-      height: 60px; }
-  .home-page .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40%; }
-    .home-page .logo img {
-      height: 17rem; }
-  @media only screen and (max-width: 730px) {
-    .home-page {
-      flex-direction: column;
-      justify-content: space-evenly; }
-      .home-page .commands {
-        width: 100%; }
-        .home-page .commands .title {
-          font-size: 2rem; }
-      .home-page .logo {
-        width: 100%;
-        position: relative; }
-        .home-page .logo div {
-          position: absolute; } }
 
 .pulse {
   position: absolute;

@@ -60,8 +60,16 @@ body {
 }
 
 .brand-title {
+  font-size: 5rem;
+  text-align: center;
   font-family: "Anurati";
   letter-spacing: 5px;
+  @media only screen and (max-width: 730px) {
+    font-size: 4rem;
+  }
+  @media only screen and (max-width: 410px) {
+    font-size: 2.5rem;
+  }
 }
 
 .bold {
@@ -123,54 +131,14 @@ body {
 .home-page {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   height: calc(100vh - 64px);
 
-  .commands {
-    width: 60%;
+  .box {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    button {
-      margin: 30px;
-
-      // padding: 30px;
-      font-size: 40px;
-      height: 60px;
-    }
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40%;
-
-    img {
-      height: 17rem;
-    }
-  }
-
-  @media only screen and (max-width: 730px) {
-    flex-direction: column;
-    justify-content: space-evenly;
-
-    .commands {
-      width: 100%;
-
-      .title {
-        font-size: 2rem;
-      }
-    }
-
-    .logo {
-      width: 100%;
-      position: relative;
-
-      div {
-        position: absolute;
-      }
-    }
   }
 }
 

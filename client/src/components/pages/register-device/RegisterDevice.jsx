@@ -91,6 +91,7 @@ export default class RegisterDevice extends Component {
       <div>
         <NavBar />
         <div className="form-container">
+          <h1 className="title">Register your device.</h1>
           <h3>
             Please tell us more about your new{" "}
             <span className="bold">EarthChip</span> device.

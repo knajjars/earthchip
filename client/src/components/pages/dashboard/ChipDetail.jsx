@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./style/chips.css";
-import Chip from "./Chip";
 
 export default class ChipDetail extends Component {
   constructor(props) {

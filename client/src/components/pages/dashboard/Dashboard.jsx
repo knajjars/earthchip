@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Layout, Menu, Breadcrumb, Icon, Row, Col } from "antd";
-import { Route, Link, NavLink, Switch } from "react-router-dom";
+import { Layout, Menu, Icon } from "antd";
+import { Route, NavLink } from "react-router-dom";
 import apiAuth from "../../../api/auth";
 import Chip from "./Chip";
 import ChipDetail from "./ChipDetail";
 
-const { Header, Content, Footer, Sider } = Layout;
-const SubMenu = Menu.SubMenu;
+const { Content, Sider } = Layout;
 export default class Dashboard extends Component {
   state = {
     collapsed: false,
@@ -14,7 +13,6 @@ export default class Dashboard extends Component {
   };
 
   onCollapse = collapsed => {
-    console.log(collapsed);
     this.setState({ collapsed });
   };
   handleLogoutClick(e) {
