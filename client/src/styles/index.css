@@ -20347,6 +20347,37 @@ body {
 * {
   font-family: MoonRegular; }
 
+.nav-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 40px; }
+  .nav-bar-container .menu-icon {
+    display: none; }
+  .nav-bar-container .sidenav {
+    display: none; }
+  .nav-bar-container .logo-el {
+    display: flex;
+    align-items: center; }
+    .nav-bar-container .logo-el span {
+      padding: 0 10px;
+      color: black;
+      font-family: MoonBold;
+      font-size: 1.4rem; }
+  .nav-bar-container .user-el a {
+    padding: 0 20px;
+    color: black; }
+  @media only screen and (max-width: 730px) {
+    .nav-bar-container {
+      margin: 10px 10px; }
+      .nav-bar-container .menu-icon {
+        display: inline-block;
+        font-size: 25px;
+        color: black; }
+      .nav-bar-container .user-el a {
+        display: none; } }
+
 .title {
   font-size: 3rem;
   text-align: center; }

@@ -47,6 +47,54 @@ body {
   font-family: MoonRegular;
 }
 
+.nav-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 40px;
+
+  .menu-icon {
+    display: none;
+  }
+
+  .sidenav {
+    display: none;
+  }
+  .logo-el {
+    display: flex;
+    align-items: center;
+
+    span {
+      padding: 0 10px;
+      color: black;
+      font-family: MoonBold;
+      font-size: 1.4rem;
+    }
+  }
+
+  .user-el {
+    a {
+      padding: 0 20px;
+      color: black;
+    }
+  }
+  @media only screen and (max-width: 730px) {
+    margin: 10px 10px;
+
+    .menu-icon {
+      display: inline-block;
+      font-size: 25px;
+      color: black;
+    }
+    .user-el {
+      a {
+        display: none;
+      }
+    }
+  }
+}
+
 .title {
   font-size: 3rem;
   text-align: center;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Icon } from "antd";
 import apiAuth from "../../api/auth";
 
 import { NavLink } from "react-router-dom";
@@ -13,7 +13,27 @@ export default class NavBar extends Component {
   render() {
     return (
       <div>
-        <Layout className="navbar-container">
+        <div className="nav-bar-container">
+          <div className="logo-el">
+            <img src="/images/micro_temp.png" height="40px" />{" "}
+            <span>EarthChip</span>
+          </div>
+
+          <div className="user-el">
+            <a href="/signup">Sign Up</a>
+            <a href="/login">Log In</a>
+          </div>
+
+          <Icon type="bars" className="menu-icon" />
+
+          <div className="sidenav">
+            <div className="user-el">
+              <a href="/signup">Sign Up</a>
+              <a href="/login">Log In</a>
+            </div>
+          </div>
+        </div>
+        {/* <Layout className="navbar-container">
           <Header style={{ zIndex: 1, width: "100%" }}>
             <Menu
               theme="dark"
@@ -37,7 +57,7 @@ export default class NavBar extends Component {
               </Menu.Item>
             </Menu>
           </Header>
-        </Layout>
+        </Layout> */}
       </div>
     );
   }
