@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Route, Link, NavLink, Switch } from "react-router-dom";
 
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
 import apiAuth from "../api/auth";
 import NavBar from "./pages/NavBar";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 
 class App extends Component {
   constructor(props) {

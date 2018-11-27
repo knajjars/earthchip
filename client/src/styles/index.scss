@@ -15,7 +15,9 @@ $fourth: #68762a;
 // 2) Import bootstrap with the following line
 // @import 'bootstrap/scss/bootstrap';
 // ----------------------------------------
+
 @import "antd/dist/antd";
+
 // Style reusable for all components
 body {
   margin: 0;
@@ -67,25 +69,25 @@ body {
   }
 }
 
-#components-layout-demo-custom-trigger .trigger {
-  font-size: 18px;
-  line-height: 64px;
-  padding: 0 24px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
+// #components-layout-demo-custom-trigger .trigger {
+//   font-size: 18px;
+//   line-height: 64px;
+//   padding: 0 24px;
+//   cursor: pointer;
+//   transition: color 0.3s;
+// }
 
-#components-layout-demo-custom-trigger .trigger:hover {
-  color: #1890ff;
-}
+// #components-layout-demo-custom-trigger .trigger:hover {
+//   color: #1890ff;
+// }
 
-#components-layout-demo-custom-trigger .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-}
+// #components-layout-demo-custom-trigger .logo {
+//   height: 32px;
+//   background: rgba(255, 255, 255, 0.2);
+//   margin: 16px;
+// }
 
-.ant-menu.ant-menu-dark .ant-menu-item-selected,
-.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
-  background-color: $first;
-}
+// .ant-menu.ant-menu-dark .ant-menu-item-selected,
+// .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+//   background-color: $first;
+// }
