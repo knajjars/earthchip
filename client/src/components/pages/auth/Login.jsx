@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Icon } from "antd";
+import { Icon } from "antd";
 import api from "../../../api/auth";
 import NotificationMessage from "../../utils/NotificationMessage";
 
@@ -61,11 +61,10 @@ class Login extends Component {
     return (
       <div className="form-container">
         <div>
-          <h1 className="brand-title">EARTHCHIP</h1>
+          <h1 className="brand-title">EarthChip</h1>
         </div>
         <h2>
-          Welcome back to <span className="bold">Earth Chip</span>, please enter
-          credentials.
+          Welcome back to <span className="bold">Earth Chip</span>.
         </h2>
         <form className="form-component" onSubmit={this.handleSubmit}>
           <div className="form-field">
@@ -97,9 +96,9 @@ class Login extends Component {
             />
           </div>
           <div className="form-field">
-            <Button htmlType="submit" type="primary">
+            <button type="submit" className="button-form">
               Log in
-            </Button>
+            </button>
           </div>
         </form>
       </div>

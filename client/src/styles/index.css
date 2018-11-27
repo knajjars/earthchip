@@ -20352,9 +20352,16 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 40px; }
+  padding: 30px 50px;
+  height: 90px;
+  margin: 0;
+  box-sizing: border-box; }
   .nav-bar-container .menu-icon {
     display: none; }
+  .nav-bar-container .active {
+    text-decoration: none;
+    color: white;
+    font-family: MoonBold; }
   .nav-bar-container .sidenav {
     display: none; }
   .nav-bar-container .logo-el a {
@@ -20362,14 +20369,17 @@ body {
     align-items: center; }
     .nav-bar-container .logo-el a span {
       padding: 0 10px;
-      color: black;
+      color: #f0f2f5;
       font-family: MoonBold;
       font-size: 1.4rem; }
   .nav-bar-container .user-el a {
     padding: 0 20px;
-    color: black; }
+    color: #f0f2f5; }
     .nav-bar-container .user-el a.login {
       font-size: 1rem; }
+      .nav-bar-container .user-el a.login:hover {
+        font-family: MoonBold;
+        color: white; }
     .nav-bar-container .user-el a.signup {
       font-size: 1rem;
       padding: 10px 20px;
@@ -20377,7 +20387,9 @@ body {
       border-radius: 10px;
       color: #f0f2f5; }
       .nav-bar-container .user-el a.signup:hover {
-        background-color: rgba(255, 255, 255, 0.1); }
+        background-color: rgba(255, 255, 255, 0.1);
+        font-family: MoonBold;
+        color: white; }
   @media only screen and (max-width: 730px) {
     .nav-bar-container {
       margin: 10px 10px; }
@@ -20399,6 +20411,7 @@ body {
       font-size: 3.1rem; } }
 
 .brand-title {
+  color: #f0f2f5;
   font-size: 5rem;
   text-align: center;
   font-family: "MoonBold";
@@ -20418,8 +20431,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 90px);
   text-align: center; }
+  .form-container h2 {
+    color: #f0f2f5; }
   .form-container .form-component {
     display: flex;
     flex-direction: column;
@@ -20432,9 +20447,17 @@ body {
       display: flex;
       justify-content: center;
       align-items: center; }
-      @media screen and (max-width: 690px) {
-        .form-container .form-component .form-field {
-          min-width: 95vw; } }
+      .form-container .form-component .form-field .button-form {
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 1.5rem;
+        font-family: MoonBold;
+        background-color: #7b4b36;
+        color: #f0f2f5;
+        border: none; }
+        .form-container .form-component .form-field .button-form:hover {
+          cursor: pointer;
+          background-color: #7a5c4e; }
       .form-container .form-component .form-field input {
         border-radius: 4px;
         width: 100%;
@@ -20446,6 +20469,9 @@ body {
           border: 1px #32c3ff solid; }
       .form-container .form-component .form-field * {
         margin: 5px; }
+      @media screen and (max-width: 690px) {
+        .form-container .form-component .form-field {
+          min-width: 95vw; } }
 
 @media only screen and (max-width: 730px) {
   .ant-layout-header {
@@ -20459,7 +20485,7 @@ body {
 .home-page {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 90px);
   background-image: url("/images/homepage-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
@@ -20477,16 +20503,20 @@ body {
       font-size: 3rem;
       font-weight: bolder;
       color: #f0f2f5; }
-    .home-page .box .actions .signup {
-      font-size: 1.5rem;
-      padding: 10px 40px;
-      border: 2px solid #f0f2f5;
+    .home-page .box .actions .button-form {
+      padding: 10px 20px;
       border-radius: 10px;
-      color: #f0f2f5; }
-      .home-page .box .actions .signup:hover {
-        background-color: rgba(255, 255, 255, 0.1); }
+      font-size: 1.5rem;
+      font-family: MoonBold;
+      background-color: #7b4b36;
+      color: #f0f2f5;
+      border: none; }
+      .home-page .box .actions .button-form:hover {
+        cursor: pointer;
+        background-color: #7a5c4e; }
     .home-page .box .description p {
-      font-size: 1.3rem; }
+      font-size: 1.3rem;
+      color: #f0f2f5; }
 
 .pulse {
   position: absolute;

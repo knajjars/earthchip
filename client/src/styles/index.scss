@@ -7,6 +7,7 @@ $bg: #f0f2f5;
 $first: #4d946e;
 $first2: #afeecb;
 $second: #7b4b36;
+$second2: #7a5c4e;
 $third: #3c883c;
 $fourth: #68762a;
 
@@ -52,12 +53,18 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 40px;
-
+  padding: 30px 50px;
+  height: 90px;
+  margin: 0;
+  box-sizing: border-box;
   .menu-icon {
     display: none;
   }
-
+  .active {
+    text-decoration: none;
+    color: white;
+    font-family: MoonBold;
+  }
   .sidenav {
     display: none;
   }
@@ -67,7 +74,7 @@ body {
       align-items: center;
       span {
         padding: 0 10px;
-        color: black;
+        color: $bg;
         font-family: MoonBold;
         font-size: 1.4rem;
       }
@@ -77,10 +84,14 @@ body {
   .user-el {
     a {
       padding: 0 20px;
-      color: black;
+      color: $bg;
 
       &.login {
         font-size: 1rem;
+        &:hover {
+          font-family: MoonBold;
+          color: white;
+        }
       }
       &.signup {
         font-size: 1rem;
@@ -91,6 +102,8 @@ body {
 
         &:hover {
           background-color: rgba(255, 255, 255, 0.1);
+          font-family: MoonBold;
+          color: white;
         }
       }
     }
@@ -124,6 +137,7 @@ body {
 }
 
 .brand-title {
+  color: $bg;
   font-size: 5rem;
   text-align: center;
   font-family: "MoonBold";
@@ -145,22 +159,36 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 90px);
   text-align: center;
+  h2 {
+    color: $bg;
+  }
   .form-component {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
+
     .form-field {
       min-width: 660px;
       margin: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
-      @media screen and (max-width: 690px) {
-        min-width: 95vw;
+      .button-form {
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 1.5rem;
+        font-family: MoonBold;
+        background-color: $second;
+        color: $bg;
+        border: none;
+        &:hover {
+          cursor: pointer;
+          background-color: $second2;
+        }
       }
       input {
         border-radius: 4px;
@@ -175,6 +203,9 @@ body {
       }
       * {
         margin: 5px;
+      }
+      @media screen and (max-width: 690px) {
+        min-width: 95vw;
       }
     }
   }
@@ -192,10 +223,11 @@ body {
   background-color: $first;
 }
 // landing page
+
 .home-page {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 90px);
   background-image: url("/images/homepage-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -219,21 +251,24 @@ body {
     }
 
     .actions {
-      .signup {
-        font-size: 1.5rem;
-        padding: 10px 40px;
-        border: 2px solid $bg;
+      .button-form {
+        padding: 10px 20px;
         border-radius: 10px;
+        font-size: 1.5rem;
+        font-family: MoonBold;
+        background-color: $second;
         color: $bg;
-
+        border: none;
         &:hover {
-          background-color: rgba(255, 255, 255, 0.1);
+          cursor: pointer;
+          background-color: $second2;
         }
       }
     }
     .description {
       p {
         font-size: 1.3rem;
+        color: $bg;
       }
     }
   }

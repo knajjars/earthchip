@@ -24,8 +24,8 @@ export default function Home() {
           </p>
         </div>
         <div className="actions">
-          <NavLink to="/signup" className="signup">
-            Sign Up
+          <NavLink to="/signup">
+            <button className="button-form">Sign up</button>
           </NavLink>
         </div>
       </div>
