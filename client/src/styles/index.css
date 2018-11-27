@@ -20419,7 +20419,9 @@ body {
   display: flex;
   flex-direction: row;
   height: calc(100vh - 64px);
-  color: #f0f2f5; }
+  background-image: url("/images/homepage-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
   .home-page .box {
     display: flex;
     justify-content: center;
