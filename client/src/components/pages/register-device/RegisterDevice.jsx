@@ -9,7 +9,7 @@ export default class RegisterDevice extends Component {
     plantName: "",
     macAddress: this.props.location.search.replace("?macAddress=", ""),
     themes: {
-      name: "outlined",
+      plantName: "outlined",
       macAddress: "filled"
     },
     uploading: false
@@ -18,8 +18,8 @@ export default class RegisterDevice extends Component {
   handleFocus = e => {
     this.setState({
       themes: {
-        name: "outlined",
-        [e.target.name]: "filled"
+        [e.target.name]: "filled",
+        macAddress: "filled"
       }
     });
   };
@@ -94,7 +94,11 @@ export default class RegisterDevice extends Component {
         </h3>
         <div className="form-component">
           <div className="form-field">
-            <Icon type="code" theme={this.state.themes.name} style={style} />
+            <Icon
+              type="code"
+              theme={this.state.themes.plantName}
+              style={style}
+            />
             <input
               value={this.state.plantName}
               onChange={this.handleChange}
