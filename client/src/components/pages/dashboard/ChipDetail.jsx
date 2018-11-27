@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style/chips.css";
+import Chip from "./Chip";
 
 export default class ChipDetail extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class ChipDetail extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.secret);
     return (
       <div>
         <h1>GOODBYE</h1>

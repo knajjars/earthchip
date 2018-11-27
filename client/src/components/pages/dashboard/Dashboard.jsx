@@ -77,7 +77,6 @@ export default class Dashboard extends Component {
 
               <div className="chip-detail">
                 <Route path="/dashboard/:chipId" component={ChipDetail} />
-                {/* <ChipDetail /> */}
               </div>
             </Content>
           </Layout>

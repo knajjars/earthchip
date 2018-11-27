@@ -39,7 +39,7 @@ export default class Signup extends Component {
             message: `Welcome, ${JSON.parse(localStorage.user).name}!`,
             description: "Account created succesfully."
           });
-          this.props.history.push("/"); // Redirect to the home page
+          this.props.history.push("/dashboard"); // Redirect to the home page
         }
       })
       .catch(err => {
