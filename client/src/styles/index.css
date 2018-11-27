@@ -20431,6 +20431,31 @@ body {
     .brand-title {
       font-size: 2.5rem; } }
 
+.chips-container .earthies-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; }
+  .chips-container .earthies-list .earthie-item {
+    margin: 30px; }
+
+.chips-container .no-device-message {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .chips-container .no-device-message h3 {
+    text-align: center;
+    width: 600px; }
+  @media screen and (max-width: 900px) {
+    .chips-container .no-device-message h3 {
+      width: 400px; } }
+  @media screen and (max-width: 500px) {
+    .chips-container .no-device-message h3 {
+      width: 250px; } }
+
 .bold {
   font-weight: bolder; }
 

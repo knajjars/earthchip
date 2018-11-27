@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import { Layout, Menu, Icon } from "antd";
+import { Icon } from "antd";
 import apiAuth from "../../api/auth";
-import { CSSTransitionGroup } from "react-transition-group";
 import { NavLink, Link, Route } from "react-router-dom";
 import SideNav from "./SideNav";
-
-const { Header } = Layout;
 
 export default class NavBar extends Component {
   constructor(props) {

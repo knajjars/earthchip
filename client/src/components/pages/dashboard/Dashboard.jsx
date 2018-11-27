@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Layout, Menu, Icon } from "antd";
-import { Route, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import apiAuth from "../../../api/auth";
-import Chip from "./Chip";
-import ChipDetail from "./ChipDetail";
+import EarthieList from "./earthies/EarthieList";
 
 const { Content, Sider } = Layout;
 export default class Dashboard extends Component {
@@ -31,7 +30,6 @@ export default class Dashboard extends Component {
         <Layout style={{ minHeight: "100vh" }}>
           <Sider
             width={300}
-            // style={{ position: "fixed" }}
             collapsible
             collapsed={this.state.collapsed}
             onCollapse={this.onCollapse}
@@ -69,12 +67,7 @@ export default class Dashboard extends Component {
               className="dash-detail-container"
             >
               <div className="chips-container">
-                <Chip id="fish" secret="WOWEEE" />
-                <Chip id={2} secret="WOWEEE" />
-              </div>
-
-              <div className="chip-detail">
-                <Route path="/dashboard/:chipId" component={ChipDetail} />
+                <EarthieList />
               </div>
             </Content>
           </Layout>
