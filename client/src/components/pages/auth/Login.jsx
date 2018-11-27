@@ -1,22 +1,21 @@
 import React, { Component } from "react";
 import { Button, Icon } from "antd";
-import api from "../../api/auth";
-import NotificationMessage from "../utils/NotificationMessage";
+import api from "../../../api/auth";
+import NotificationMessage from "../../utils/NotificationMessage";
 
-export default class Signup extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
-      name: "",
       password: "",
       themes: {
         email: "outlined",
-        password: "outlined",
-        name: "outlined"
+        password: "outlined"
       }
     };
   }
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -25,19 +24,14 @@ export default class Signup extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    let data = {
-      email: this.state.email,
-      name: this.state.name,
-      password: this.state.password
-    };
     api
-      .signup(data)
+      .login(this.state.email, this.state.password)
       .then(res => {
         if (res.status === 200) {
           NotificationMessage({
             type: "success",
-            message: `Welcome, ${JSON.parse(localStorage.user).name}!`,
-            description: "Account created succesfully."
+            message: `Welcome Back, ${JSON.parse(localStorage.user).name}`,
+            description: "Logged succesfully."
           });
           this.props.history.push("/"); // Redirect to the home page
         }
@@ -67,8 +61,8 @@ export default class Signup extends Component {
     return (
       <div className="form-container">
         <h2>
-          Welcome to <span className="bold">Earth Chip</span>, please create an
-          account.
+          Welcome back to <span className="bold">Earth Chip</span>, please enter
+          credentials.
         </h2>
         <form className="form-component" onSubmit={this.handleSubmit}>
           <div className="form-field">
@@ -80,18 +74,6 @@ export default class Signup extends Component {
               name="email"
               type="email"
               placeholder="Email"
-              required
-            />
-          </div>
-          <div className="form-field">
-            <Icon type="smile" theme={this.state.themes.name} style={style} />
-            <input
-              value={this.state.name}
-              onChange={this.handleChange}
-              onFocus={this.handleFocus}
-              name="name"
-              type="text"
-              placeholder="Name"
               required
             />
           </div>
@@ -113,7 +95,7 @@ export default class Signup extends Component {
           </div>
           <div className="form-field">
             <Button htmlType="submit" type="primary">
-              Sign up
+              Log in
             </Button>
           </div>
         </form>
@@ -121,3 +103,5 @@ export default class Signup extends Component {
     );
   }
 }
+
+export default Login;

@@ -20,7 +20,9 @@ $fourth: #68762a;
 // 2) Import bootstrap with the following line
 // @import 'bootstrap/scss/bootstrap';
 // ----------------------------------------
+
 @import "antd/dist/antd";
+
 // Style reusable for all components
 body {
   margin: 0;
@@ -72,24 +74,25 @@ body {
   }
 }
 
-#components-layout-demo-custom-trigger .trigger {
-  font-size: 18px;
-  line-height: 64px;
-  padding: 0 24px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
+// #components-layout-demo-custom-trigger .trigger {
+//   font-size: 18px;
+//   line-height: 64px;
+//   padding: 0 24px;
+//   cursor: pointer;
+//   transition: color 0.3s;
+// }
 
-#components-layout-demo-custom-trigger .trigger:hover {
-  color: #1890ff;
-}
+// #components-layout-demo-custom-trigger .trigger:hover {
+//   color: #1890ff;
+// }
 
-#components-layout-demo-custom-trigger .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-}
+// #components-layout-demo-custom-trigger .logo {
+//   height: 32px;
+//   background: rgba(255, 255, 255, 0.2);
+//   margin: 16px;
+// }
 
+<<<<<<< HEAD
 .ant-menu.ant-menu-dark .ant-menu-item-selected,
 .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
   background-color: $first;
@@ -197,3 +200,9 @@ body {
     box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
   }
 }
+=======
+// .ant-menu.ant-menu-dark .ant-menu-item-selected,
+// .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+//   background-color: $first;
+// }
+>>>>>>> c785936be69cd8adccd8e700c1285b1646f8c73d
