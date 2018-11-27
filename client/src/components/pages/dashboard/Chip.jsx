@@ -13,12 +13,12 @@ export default class Chip extends Component {
 
   render() {
     return (
-      <div class="main">
-        <div class="tabs">
-          <div class="tab1">
+      <div className="main">
+        <div className="tabs">
+          <div className="tab1">
             <Icon type="border" />
           </div>
-          <div class="tab2">
+          <div className="tab2">
             <Icon type="pie-chart" />
           </div>
         </div>
