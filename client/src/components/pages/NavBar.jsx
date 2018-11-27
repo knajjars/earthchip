@@ -22,14 +22,19 @@ export default class NavBar extends Component {
               defaultSelectedKeys={["1"]}
               style={{ lineHeight: "64px" }}
             >
-              {!apiAuth.isLoggedIn() && (
-                <Menu.Item key="1">
-                  <NavLink to="/" exact>
-                    Home
-                  </NavLink>
-                </Menu.Item>
-              )}
-
+              <Menu.Item key="1">
+                <NavLink to="/" exact>
+                  Home
+                </NavLink>
+              </Menu.Item>
+              <Menu.Item key="5">
+                <NavLink
+                  to="/api/register-chip?macAddress=06-00-00-00-00-01"
+                  exact
+                >
+                  Register Device
+                </NavLink>
+              </Menu.Item>
               {!apiAuth.isLoggedIn() && (
                 <Menu.Item key="3">
                   <NavLink to="/signup">Sign Up</NavLink>

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Route, Link, NavLink, Switch } from "react-router-dom";
+import apiAuth from "../api/auth";
 
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
-import apiAuth from "../api/auth";
+import RegisterDevice from "./pages/register-device/RegisterDevice";
 import NavBar from "./pages/NavBar";
 import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -29,6 +30,7 @@ class App extends Component {
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/api/register-chip" component={RegisterDevice} />
             <Route render={() => <h2>404</h2>} />
           </Switch>
         </div>
