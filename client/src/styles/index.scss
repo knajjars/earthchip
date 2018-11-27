@@ -47,6 +47,70 @@ body {
   font-family: MoonRegular;
 }
 
+.nav-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 40px;
+
+  .menu-icon {
+    display: none;
+  }
+
+  .sidenav {
+    display: none;
+  }
+  .logo-el {
+    a {
+      display: flex;
+      align-items: center;
+      span {
+        padding: 0 10px;
+        color: black;
+        font-family: MoonBold;
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .user-el {
+    a {
+      padding: 0 20px;
+      color: black;
+
+      &.login {
+        font-size: 1rem;
+      }
+      &.signup {
+        font-size: 1rem;
+        padding: 10px 20px;
+        border: 2px solid $bg;
+        border-radius: 10px;
+        color: $bg;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 730px) {
+    margin: 10px 10px;
+
+    .menu-icon {
+      display: inline-block;
+      font-size: 25px;
+      color: black;
+    }
+    .user-el {
+      a {
+        display: none;
+      }
+    }
+  }
+}
+
 .title {
   font-size: 3rem;
   text-align: center;
@@ -62,7 +126,7 @@ body {
 .brand-title {
   font-size: 5rem;
   text-align: center;
-  font-family: "Anurati";
+  font-family: "MoonBold";
   letter-spacing: 5px;
   @media only screen and (max-width: 730px) {
     font-size: 4rem;

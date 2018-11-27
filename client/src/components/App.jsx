@@ -24,6 +24,7 @@ class App extends Component {
             <NavBar />
           </div>
         )}
+
         <div className="body">
           <Switch>
             {!apiAuth.isLoggedIn() && <Route path="/" exact component={Home} />}

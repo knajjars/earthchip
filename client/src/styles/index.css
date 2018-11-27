@@ -20347,6 +20347,47 @@ body {
 * {
   font-family: MoonRegular; }
 
+.nav-bar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 40px; }
+  .nav-bar-container .menu-icon {
+    display: none; }
+  .nav-bar-container .sidenav {
+    display: none; }
+  .nav-bar-container .logo-el a {
+    display: flex;
+    align-items: center; }
+    .nav-bar-container .logo-el a span {
+      padding: 0 10px;
+      color: black;
+      font-family: MoonBold;
+      font-size: 1.4rem; }
+  .nav-bar-container .user-el a {
+    padding: 0 20px;
+    color: black; }
+    .nav-bar-container .user-el a.login {
+      font-size: 1rem; }
+    .nav-bar-container .user-el a.signup {
+      font-size: 1rem;
+      padding: 10px 20px;
+      border: 2px solid #f0f2f5;
+      border-radius: 10px;
+      color: #f0f2f5; }
+      .nav-bar-container .user-el a.signup:hover {
+        background-color: rgba(255, 255, 255, 0.1); }
+  @media only screen and (max-width: 730px) {
+    .nav-bar-container {
+      margin: 10px 10px; }
+      .nav-bar-container .menu-icon {
+        display: inline-block;
+        font-size: 25px;
+        color: black; }
+      .nav-bar-container .user-el a {
+        display: none; } }
+
 .title {
   font-size: 3rem;
   text-align: center; }
@@ -20360,7 +20401,7 @@ body {
 .brand-title {
   font-size: 5rem;
   text-align: center;
-  font-family: "Anurati";
+  font-family: "MoonBold";
   letter-spacing: 5px; }
   @media only screen and (max-width: 730px) {
     .brand-title {
