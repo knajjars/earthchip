@@ -31,8 +31,8 @@ class App extends Component {
             <Route path="/" exact component={Dashboard} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
-
             <Route path="/api/register-chip" component={RegisterDevice} />
+
             <Route render={() => <h2>404</h2>} />
           </Switch>
         </div>

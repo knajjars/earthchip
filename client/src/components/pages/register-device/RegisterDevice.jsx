@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Upload, Button, Icon } from "antd";
 import NotificationMessage from "../../utils/NotificationMessage";
 import api from "../../../api/registerDevice";
+import NavBar from "../NavBar";
 
 export default class RegisterDevice extends Component {
   state = {
@@ -87,57 +88,58 @@ export default class RegisterDevice extends Component {
 
     let style = { color: "#32c3ff", fontSize: "26px" };
     return (
-      <div className="form-container">
-        <h1 className="title">Register your new device.</h1>
-        <h3>
-          Please tell us more about your new{" "}
-          <span className="bold">EarthChip</span> device.
-        </h3>
-        <div className="form-component">
-          <div className="form-field">
-            <Icon
-              type="safety-certificate"
-              theme={this.state.themes.macAddress}
-              style={style}
-            />
-            <input
-              defaultValue={this.state.macAddress}
-              name="macAddress"
-              type="text"
-              disabled
-              required
-            />
-          </div>
-          <div className="form-field">
-            <Icon
-              type="code"
-              theme={this.state.themes.plantName}
-              style={style}
-            />
-            <input
-              value={this.state.plantName}
-              onChange={this.handleChange}
-              onFocus={this.handleFocus}
-              name="plantName"
-              type="text"
-              placeholder="Plant name"
-              required
-            />
-          </div>
-
-          <Upload {...props}>
-            <Button>
-              <Icon type="upload" /> Upload Image
+      <div>
+        <NavBar />
+        <div className="form-container">
+          <h3>
+            Please tell us more about your new{" "}
+            <span className="bold">EarthChip</span> device.
+          </h3>
+          <div className="form-component">
+            <div className="form-field">
+              <Icon
+                type="code"
+                theme={this.state.themes.plantName}
+                style={style}
+              />
+              <input
+                value={this.state.plantName}
+                onChange={this.handleChange}
+                onFocus={this.handleFocus}
+                name="plantName"
+                type="text"
+                placeholder="Plant name"
+                required
+              />
+            </div>
+            <div className="form-field">
+              <Icon
+                type="safety-certificate"
+                theme={this.state.themes.macAddress}
+                style={style}
+              />
+              <input
+                defaultValue={this.state.macAddress}
+                name="macAddress"
+                type="text"
+                disabled
+                required
+              />
+            </div>
+            <Upload {...props}>
+              <Button>
+                <Icon type="upload" /> Upload Image
+              </Button>
+            </Upload>
+            <Button
+              type="primary"
+              onClick={this.handleRegister}
+              loading={uploading}
+              style={{ marginTop: 20 }}
+            >
+              {uploading ? "Registering" : "Register"}
             </Button>
-          </Upload>
-          <Button
-            type="primary"
-            onClick={this.handleRegister}
-            loading={uploading}
-            style={{ marginTop: 20 }}
-          >
-            {uploading ? "Registering" : "Register"}
-          </Button>
+          </div>
         </div>
       </div>
     );
