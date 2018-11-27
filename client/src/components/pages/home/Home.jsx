@@ -14,12 +14,12 @@ export default function Home() {
           />{" "}
           Earthies
         </h3>
-        <h1>Plant cloud monitoring</h1>
+        <h1>Cloud plant analytics</h1>
         <div className="description">
           <p>
             More than just keeping track of your plants, we offer a secure
             platform with features for systematic monitoring and real-time
-            alerts on plant health.{" "}
+            alerts on plant health. <br />
             <span className="bold">This is EarthChip.</span>
           </p>
         </div>

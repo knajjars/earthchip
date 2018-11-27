@@ -8,6 +8,7 @@ import RegisterDevice from "./pages/register-device/RegisterDevice";
 import NavBar from "./pages/NavBar";
 import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
+import SideNav from "./pages/SideNav";
 
 class App extends Component {
   constructor(props) {

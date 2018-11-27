@@ -20347,6 +20347,12 @@ body {
 * {
   font-family: MoonRegular; }
 
+.sidenav {
+  background-color: #f0f2f5;
+  height: 100%;
+  width: 75%;
+  position: fixed; }
+
 .nav-bar-container {
   display: flex;
   flex-direction: row;
@@ -20356,14 +20362,14 @@ body {
   height: 90px;
   margin: 0;
   box-sizing: border-box; }
+  .nav-bar-container .side-nav-link {
+    display: none; }
   .nav-bar-container .menu-icon {
     display: none; }
   .nav-bar-container .active {
     text-decoration: none;
     color: white;
     font-family: MoonBold; }
-  .nav-bar-container .sidenav {
-    display: none; }
   .nav-bar-container .logo-el a {
     display: flex;
     align-items: center; }
@@ -20392,11 +20398,13 @@ body {
         color: white; }
   @media only screen and (max-width: 730px) {
     .nav-bar-container {
-      margin: 10px 10px; }
+      padding: 30px 25px; }
+      .nav-bar-container .side-nav-link {
+        display: inherit; }
       .nav-bar-container .menu-icon {
         display: inline-block;
         font-size: 25px;
-        color: black; }
+        color: white; }
       .nav-bar-container .user-el a {
         display: none; } }
 
@@ -20517,6 +20525,9 @@ body {
     .home-page .box .description p {
       font-size: 1.3rem;
       color: #f0f2f5; }
+    @media only screen and (max-width: 730px) {
+      .home-page .box {
+        padding: 0 20px; } }
 
 .pulse {
   position: absolute;

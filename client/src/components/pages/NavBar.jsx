@@ -1,18 +1,42 @@
 import React, { Component } from "react";
 import { Layout, Menu, Icon } from "antd";
 import apiAuth from "../../api/auth";
-
-import { NavLink } from "react-router-dom";
+import { CSSTransitionGroup } from "react-transition-group";
+import { NavLink, Link, Route } from "react-router-dom";
+import SideNav from "./SideNav";
 
 const { Header } = Layout;
 
 export default class NavBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isOpen: false
+    };
+  }
+
   handleLogoutClick(e) {
     apiAuth.logout();
   }
+
+  handleSideClick = () => {
+    console.log(this.props.match);
+    if (this.state.isOpen) {
+      this.setState({
+        isOpen: false
+      });
+    } else {
+      this.setState({
+        isOpen: true
+      });
+    }
+  };
+
   render() {
     return (
       <div>
+        <Route path="/side" component={SideNav} />;
         <div className="nav-bar-container">
           <div className="logo-el">
             <NavLink to="/">
@@ -29,41 +53,14 @@ export default class NavBar extends Component {
               Sign Up
             </NavLink>
           </div>
-
-          <Icon type="bars" className="menu-icon" />
-
-          <div className="sidenav">
-            <div className="user-el">
-              <NavLink to="/login">Log In</NavLink>
-              <NavLink to="/signup">Sign Up</NavLink>
-            </div>
-          </div>
+          <Link className="side-nav-link" to={this.state.isOpen ? "" : "side"}>
+            <Icon
+              type="bars"
+              className="menu-icon"
+              onClick={this.handleSideClick}
+            />
+          </Link>
         </div>
-        {/* <Layout className="navbar-container">
-          <Header style={{ zIndex: 1, width: "100%" }}>
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              style={{
-                lineHeight: "64px"
-              }}
-              defaultSelectedKeys={["1"]}
-            >
-              <Menu.Item key="1">
-                <NavLink to="/">
-                  <img src="/images/micro_temp_inverted.png" height="30px" />{" "}
-                  EarthChip
-                </NavLink>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <NavLink to="/signup">Sign Up</NavLink>
-              </Menu.Item>
-              <Menu.Item key="3">
-                <NavLink to="/login">Log In</NavLink>
-              </Menu.Item>
-            </Menu>
-          </Header>
-        </Layout> */}
       </div>
     );
   }
