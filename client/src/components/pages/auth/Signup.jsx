@@ -66,7 +66,7 @@ export default class Signup extends Component {
     let style = { fontSize: "22px" };
     return (
       <div className="form-container">
-        <div className="title">
+        <div>
           <h1 className="brand-title">EARTHCHIP</h1>
         </div>
         <h2>

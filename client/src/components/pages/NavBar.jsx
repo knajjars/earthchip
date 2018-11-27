@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu } from "antd";
 import apiAuth from "../../api/auth";
 
-import { Route, Link, NavLink, Switch } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const { Header } = Layout;
 
@@ -13,45 +13,28 @@ export default class NavBar extends Component {
   render() {
     return (
       <div>
-        <Layout>
+        <Layout className="navbar-container">
           <Header style={{ zIndex: 1, width: "100%" }}>
-            <div className="logo" />
-            <Menu theme="dark" mode="horizontal" style={{ lineHeight: "64px" }}>
+            <Menu
+              theme="dark"
+              mode="horizontal"
+              style={{
+                lineHeight: "64px"
+              }}
+              defaultSelectedKeys={["1"]}
+            >
               <Menu.Item key="1">
-                <NavLink to="/" exact>
-                  Home
+                <NavLink to="/">
+                  <img src="/images/micro_temp_inverted.png" height="30px" />{" "}
+                  EarthChip
                 </NavLink>
               </Menu.Item>
-              <Menu.Item key="5">
-                <NavLink
-                  to="/api/register-chip?macAddress=06-00-00-00-00-01"
-                  exact
-                >
-                  Register Device
-                </NavLink>
+              <Menu.Item key="2">
+                <NavLink to="/signup">Sign Up</NavLink>
               </Menu.Item>
-              {!apiAuth.isLoggedIn() && (
-                <Menu.Item key="3">
-                  <NavLink to="/signup">Sign Up</NavLink>
-                </Menu.Item>
-              )}
-              {!apiAuth.isLoggedIn() && (
-                <Menu.Item key="2">
-                  <NavLink to="/login">Log In</NavLink>
-                </Menu.Item>
-              )}
-              {apiAuth.isLoggedIn() && (
-                <Menu.Item key="4">
-                  <NavLink to="/dashboard">Dashboard</NavLink>
-                </Menu.Item>
-              )}
-              {apiAuth.isLoggedIn() && (
-                <Menu.Item key="5">
-                  <NavLink onClick={this.handleLogoutClick} to="/">
-                    Log Out
-                  </NavLink>
-                </Menu.Item>
-              )}
+              <Menu.Item key="3">
+                <NavLink to="/login">Log In</NavLink>
+              </Menu.Item>
             </Menu>
           </Header>
         </Layout>
