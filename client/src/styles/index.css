@@ -20342,7 +20342,7 @@ li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper:hover {
 body {
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(#f0f2f5 80%, #afeecb); }
+  background-color: #4d946e; }
 
 * {
   font-family: MoonRegular; }
@@ -20418,13 +20418,32 @@ body {
 .home-page {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  height: calc(100vh - 64px); }
+  height: calc(100vh - 64px);
+  color: #f0f2f5; }
   .home-page .box {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column; }
+    flex-direction: column;
+    width: 700px;
+    padding-left: 100px;
+    box-sizing: border-box; }
+    .home-page .box h3 {
+      color: #f0f2f5;
+      font-size: 1.2rem; }
+    .home-page .box h1 {
+      font-size: 3rem;
+      font-weight: bolder;
+      color: #f0f2f5; }
+    .home-page .box .actions .signup {
+      font-size: 1.5rem;
+      padding: 10px 40px;
+      border: 2px solid #f0f2f5;
+      border-radius: 10px;
+      color: #f0f2f5; }
+      .home-page .box .actions .signup:hover {
+        background-color: rgba(255, 255, 255, 0.1); }
+    .home-page .box .description p {
+      font-size: 1.3rem; }
 
 .pulse {
   position: absolute;
