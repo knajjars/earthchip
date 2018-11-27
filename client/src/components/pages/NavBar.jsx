@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Layout, Menu, Breadcrumb } from "antd";
 import apiAuth from "../../api/auth";
-import NavBarOptions from "./NavBarOptions";
+
 import { Route, Link, NavLink, Switch } from "react-router-dom";
 
 const { Header } = Layout;
@@ -16,12 +16,7 @@ export default class NavBar extends Component {
         <Layout>
           <Header style={{ zIndex: 1, width: "100%" }}>
             <div className="logo" />
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              defaultSelectedKeys={["1"]}
-              style={{ lineHeight: "64px" }}
-            >
+            <Menu theme="dark" mode="horizontal" style={{ lineHeight: "64px" }}>
               <Menu.Item key="1">
                 <NavLink to="/" exact>
                   Home

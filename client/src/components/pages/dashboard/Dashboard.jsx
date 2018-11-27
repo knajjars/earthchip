@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Layout, Menu, Breadcrumb, Icon, Row, Col } from "antd";
 import { Route, Link, NavLink, Switch } from "react-router-dom";
 import apiAuth from "../../../api/auth";
-import NavBarOptions from "../NavBarOptions";
 import Chip from "./Chip";
 import ChipDetail from "./ChipDetail";
 
@@ -10,7 +9,8 @@ const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 export default class Dashboard extends Component {
   state = {
-    collapsed: false
+    collapsed: false,
+    active: this.props.match.path
   };
 
   onCollapse = collapsed => {
@@ -20,6 +20,12 @@ export default class Dashboard extends Component {
   handleLogoutClick(e) {
     apiAuth.logout();
   }
+
+  handleChange = e => {
+    this.setState({
+      active: this.props.match.path
+    });
+  };
 
   render() {
     return (
@@ -33,21 +39,26 @@ export default class Dashboard extends Component {
             onCollapse={this.onCollapse}
           >
             <div className="logo" />
-            <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-              <Menu.Item key="1">
+            <Menu
+              theme="dark"
+              mode="inline"
+              selectedKeys={[this.state.active]}
+              onClick={this.handleChange}
+            >
+              <Menu.Item key="/dashboard">
                 <Icon type="appstore" />
-                <span>Chips</span>
+                <span>Dashboard</span>
               </Menu.Item>
-              <Menu.Item key="3">
+              <Menu.Item key="/notification">
                 <Icon type="notification" />
                 <span>Alerts</span>
               </Menu.Item>
-              <Menu.Item key="2">
+              <Menu.Item key="/settings">
                 <Icon type="setting" />
                 <span>Settings</span>
               </Menu.Item>
-              <Menu.Item key="5">
-                <NavLink onClick={this.handleLogoutClick} to="/login">
+              <Menu.Item key="/logout">
+                <NavLink onClick={this.handleLogoutClick} to="/">
                   <Icon type="file" />
                   <span>Log Out</span>
                 </NavLink>

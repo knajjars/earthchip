@@ -13,23 +13,19 @@ export default class Chip extends Component {
 
   render() {
     return (
-      <div class="main">
-        <div class="tabs">
-          <div class="tab1">
+      <div className="main">
+        <div className="tabs">
+          <div className="tab1">
             <Icon type="border" />
           </div>
-          <div class="tab2">
+          <div className="tab2">
             <Icon type="pie-chart" />
           </div>
         </div>
 
-        <div class="body">
-          <div class="image">
-            <Link
-              to={"/dashboard/" + this.props.id}
-              secret="HELLO"
-              component={ChipDetail}
-            >
+        <div className="body">
+          <div className="image">
+            <Link to={"/dashboard/" + this.props.id} secret="HELLO">
               <img
                 src="https://images.unsplash.com/photo-1532636881604-d9d1a983fc73?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3488f2032537813b91e3d9db1b157907&auto=format&fit=crop&w=2248&q=80"
                 alt=""
