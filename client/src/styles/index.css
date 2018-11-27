@@ -1,3 +1,19 @@
+@font-face {
+  font-family: Anurati;
+  src: url("/fonts/Anurati-Regular.otf"); }
+
+@font-face {
+  font-family: MoonBold;
+  src: url("/fonts/Moon2.0-Bold.otf"); }
+
+@font-face {
+  font-family: MoonLight;
+  src: url("/fonts/Moon2.0-Light.otf"); }
+
+@font-face {
+  font-family: MoonRegular;
+  src: url("/fonts/Moon2.0-Regular.otf"); }
+
 /*!
  * 
  * antd v3.10.9
@@ -20326,7 +20342,20 @@ li.ant-tree-treenode-disabled > .ant-tree-node-content-wrapper:hover {
 body {
   margin: 0;
   padding: 0;
-  background-color: #e4e8f0; }
+  background-image: linear-gradient(#f0f2f5 80%, #afeecb); }
+
+* {
+  font-family: MoonRegular; }
+
+h1 {
+  font-family: "Anurati";
+  font-size: 5rem; }
+  @media only screen and (max-width: 730px) {
+    h1 {
+      font-size: 4rem; } }
+  @media only screen and (max-width: 410px) {
+    h1 {
+      font-size: 3.1rem; } }
 
 .bold {
   font-weight: bolder; }
@@ -20336,7 +20365,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  margin: 2em 0;
   text-align: center; }
   .form-container .form-component {
     display: flex;
@@ -20354,13 +20383,100 @@ body {
         .form-container .form-component .form-field {
           min-width: 95vw; } }
       .form-container .form-component .form-field input {
-        border-radius: 6px;
+        border-radius: 4px;
         width: 100%;
         border: 1px solid rgba(0, 0, 0, 0);
-        box-shadow: 10px 10px 7px lightgrey;
+        box-shadow: 0px 8px 13px #3c883c;
         padding: 7px;
         box-sizing: border-box; }
         .form-container .form-component .form-field input:focus {
           border: 1px #32c3ff solid; }
       .form-container .form-component .form-field * {
         margin: 5px; }
+
+@media only screen and (max-width: 730px) {
+  .ant-layout-header {
+    display: flex;
+    justify-content: center; } }
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+  background-color: #4d946e; }
+
+.home-page {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 64px); }
+  .home-page .commands {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+    .home-page .commands .title {
+      font-family: "Anurati";
+      font-size: 3rem;
+      text-align: center; }
+      .home-page .commands .title h1 {
+        margin-top: 0.5em; }
+    .home-page .commands button {
+      margin: 30px;
+      font-size: 40px;
+      height: 60px; }
+  .home-page .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%; }
+    .home-page .logo img {
+      height: 17rem; }
+  @media only screen and (max-width: 730px) {
+    .home-page {
+      flex-direction: column;
+      justify-content: space-evenly; }
+      .home-page .commands {
+        width: 100%; }
+        .home-page .commands .title {
+          font-size: 2rem; }
+      .home-page .logo {
+        width: 100%;
+        position: relative; }
+        .home-page .logo div {
+          position: absolute; } }
+
+.pulse {
+  position: absolute;
+  z-index: 10;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #cca92c;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
+  animation: pulse 2s infinite; }
+
+.pulse:hover {
+  animation: none; }
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4); }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0); }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0); } }
+
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4); }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 10px rgba(204, 169, 44, 0); }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0); } }
+
+i {
+  color: #afeecb; }

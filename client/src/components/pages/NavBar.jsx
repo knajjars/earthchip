@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Layout, Menu } from "antd";
-import { NavLink } from "react-router-dom";
+import { Layout, Menu, Breadcrumb } from "antd";
 import apiAuth from "../../api/auth";
+import NavBarOptions from "./NavBarOptions";
+import { Route, Link, NavLink, Switch } from "react-router-dom";
 
-const { Header, Content, Footer } = Layout;
+const { Header } = Layout;
 
 export default class NavBar extends Component {
   handleLogoutClick(e) {
@@ -46,6 +47,11 @@ export default class NavBar extends Component {
               )}
               {apiAuth.isLoggedIn() && (
                 <Menu.Item key="4">
+                  <NavLink to="/dashboard">Dashboard</NavLink>
+                </Menu.Item>
+              )}
+              {apiAuth.isLoggedIn() && (
+                <Menu.Item key="5">
                   <NavLink onClick={this.handleLogoutClick} to="/">
                     Log Out
                   </NavLink>

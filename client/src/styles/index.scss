@@ -1,14 +1,32 @@
 // --------------------
 // Definition of variables
 $primary: #32c3ff;
-$bg: #e4e8f0;
+$bg: #f0f2f5;
 
 //  Colors to decide on
 $first: #4d946e;
+$first2: #afeecb;
 $second: #7b4b36;
 $third: #3c883c;
 $fourth: #68762a;
 
+@font-face {
+  font-family: Anurati;
+  src: url("/fonts/Anurati-Regular.otf");
+}
+
+@font-face {
+  font-family: MoonBold;
+  src: url("/fonts/Moon2.0-Bold.otf");
+}
+@font-face {
+  font-family: MoonLight;
+  src: url("/fonts/Moon2.0-Light.otf");
+}
+@font-face {
+  font-family: MoonRegular;
+  src: url("/fonts/Moon2.0-Regular.otf");
+}
 // ----------------------------------------
 // To install Boostrap:
 // 1) Run in the client folder: $ npm i bootstrap
@@ -22,7 +40,22 @@ $fourth: #68762a;
 body {
   margin: 0;
   padding: 0;
-  background-color: $bg;
+  background-image: linear-gradient($bg 80%, $first2);
+}
+
+* {
+  font-family: MoonRegular;
+}
+h1 {
+  font-family: "Anurati";
+  font-size: 5rem;
+
+  @media only screen and (max-width: 730px) {
+    font-size: 4rem;
+  }
+  @media only screen and (max-width: 410px) {
+    font-size: 3.1rem;
+  }
 }
 
 .bold {
@@ -34,7 +67,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  margin: 2em 0;
   text-align: center;
   .form-component {
     display: flex;
@@ -52,10 +85,10 @@ body {
         min-width: 95vw;
       }
       input {
-        border-radius: 6px;
+        border-radius: 4px;
         width: 100%;
         border: 1px solid rgba(0, 0, 0, 0);
-        box-shadow: 10px 10px 7px lightgrey;
+        box-shadow: 0px 8px 13px $third;
         padding: 7px;
         box-sizing: border-box;
         &:focus {
@@ -69,25 +102,124 @@ body {
   }
 }
 
-// #components-layout-demo-custom-trigger .trigger {
-//   font-size: 18px;
-//   line-height: 64px;
-//   padding: 0 24px;
-//   cursor: pointer;
-//   transition: color 0.3s;
-// }
+.ant-layout-header {
+  @media only screen and (max-width: 730px) {
+    display: flex;
+    justify-content: center;
+  }
+}
 
-// #components-layout-demo-custom-trigger .trigger:hover {
-//   color: #1890ff;
-// }
+.ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+  background-color: $first;
+}
 
-// #components-layout-demo-custom-trigger .logo {
-//   height: 32px;
-//   background: rgba(255, 255, 255, 0.2);
-//   margin: 16px;
-// }
+.home-page {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 64px);
 
-// .ant-menu.ant-menu-dark .ant-menu-item-selected,
-// .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
-//   background-color: $first;
-// }
+  .commands {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .title {
+      font-family: "Anurati";
+      font-size: 3rem;
+      text-align: center;
+      h1 {
+        margin-top: 0.5em;
+      }
+    }
+
+    button {
+      margin: 30px;
+
+      // padding: 30px;
+      font-size: 40px;
+      height: 60px;
+    }
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+
+    img {
+      height: 17rem;
+    }
+  }
+
+  @media only screen and (max-width: 730px) {
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .commands {
+      width: 100%;
+
+      .title {
+        font-size: 2rem;
+      }
+    }
+
+    .logo {
+      width: 100%;
+      position: relative;
+
+      div {
+        position: absolute;
+      }
+    }
+  }
+}
+
+//! PULSE ANIMATION
+
+.pulse {
+  position: absolute;
+  z-index: 10;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #cca92c;
+  cursor: pointer;
+  box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
+  animation: pulse 2s infinite;
+}
+.pulse:hover {
+  animation: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+  }
+}
+i {
+  color: $first2;
+}

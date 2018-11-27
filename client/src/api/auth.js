@@ -51,7 +51,9 @@ export default {
   },
 
   logout() {
-    localStorage.removeItem("user");
+    window.localStorage.clear();
+    console.log(window.localStorage);
+
     return service.get("/auth/logout");
   }
 };
