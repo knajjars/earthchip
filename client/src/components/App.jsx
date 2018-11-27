@@ -26,10 +26,12 @@ class App extends Component {
         )}
         <div className="body">
           <Switch>
-            <Route path="/" exact component={Home} />
+            {!apiAuth.isLoggedIn() && <Route path="/" exact component={Home} />}
+
+            <Route path="/" exact component={Dashboard} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
-            <Route path="/dashboard" component={Dashboard} />
+
             <Route path="/api/register-chip" component={RegisterDevice} />
             <Route render={() => <h2>404</h2>} />
           </Switch>

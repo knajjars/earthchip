@@ -33,7 +33,7 @@ class Login extends Component {
             message: `Welcome Back, ${JSON.parse(localStorage.user).name}`,
             description: "Logged succesfully."
           });
-          this.props.history.push("/dashboard"); // Redirect to the home page
+          this.props.history.push("/"); // Redirect to the home page
         }
       })
       .catch(err => {
