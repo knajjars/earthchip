@@ -7,7 +7,7 @@ import EarthieList from "./earthies/EarthieList";
 const { Content, Sider } = Layout;
 export default class Dashboard extends Component {
   state = {
-    collapsed: false,
+    collapsed: true,
     active: this.props.match.path
   };
 
@@ -29,6 +29,7 @@ export default class Dashboard extends Component {
       <div>
         <Layout style={{ minHeight: "100vh" }}>
           <Sider
+            style={{ zIndex: "-1" }}
             width={300}
             collapsible
             collapsed={this.state.collapsed}

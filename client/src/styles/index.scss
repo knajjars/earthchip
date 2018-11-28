@@ -168,6 +168,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     min-height: 100vh;
     .earthie-item {
       margin: 30px;
