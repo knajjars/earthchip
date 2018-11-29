@@ -6,13 +6,16 @@ import api from "../../../api/registerDevice";
 import NavBar from "./NavBar";
 
 const Option = Select.Option;
+const antIcon = (
+  <Icon type="loading" style={{ fontSize: 18, paddingLeft: "3px" }} spin />
+);
 
 export default class RegisterDevice extends Component {
   state = {
     file: "",
     plantName: "",
     macAddress: this.props.location.search.replace("?macAddress=", ""),
-    watering: "",
+    wateringType: "",
     themes: {
       plantName: "outlined",
       calendar: "filled",
@@ -33,12 +36,12 @@ export default class RegisterDevice extends Component {
   };
 
   handleRegister = () => {
-    const { file, macAddress, plantName, watering } = this.state;
+    const { file, macAddress, plantName, wateringType } = this.state;
     const formData = new FormData();
     formData.append("upload", file);
     formData.append("macAddress", macAddress);
     formData.append("plantName", plantName);
-    formData.append("watering", watering);
+    formData.append("wateringType", wateringType);
     this.setState({
       uploading: true
     });
@@ -79,7 +82,7 @@ export default class RegisterDevice extends Component {
 
   handleSelect = val => {
     this.setState({
-      watering: val
+      wateringType: val
     });
   };
 
@@ -174,7 +177,7 @@ export default class RegisterDevice extends Component {
               <button onClick={this.handleRegister} className="button-form">
                 {uploading ? (
                   <div>
-                    <Spin />
+                    <Spin indicator={antIcon} />
                     Register
                   </div>
                 ) : (

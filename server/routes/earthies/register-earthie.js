@@ -12,7 +12,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
 });
 
 router.post("/", isLoggedIn, upload, (req, res, next) => {
-  const { macAddress, plantName, watering } = req.body;
+  const { macAddress, plantName, wateringType } = req.body;
   const imageURL = req.file
     ? req.file.location
     : "https://earthchip.sfo2.digitaloceanspaces.com/defaultimage.png";
@@ -21,7 +21,7 @@ router.post("/", isLoggedIn, upload, (req, res, next) => {
     return;
   }
 
-  if (watering === "") {
+  if (wateringType === "") {
     res.status(500).json({
       message: "Please define a watering level for your Earthie device."
     });
@@ -40,7 +40,7 @@ router.post("/", isLoggedIn, upload, (req, res, next) => {
         macAddress,
         plantName,
         imageURL,
-        watering
+        wateringType
       }).then(chip => {
         res.json({
           message: `Succesfully registered ${chip.plantName}'s earthie!`

@@ -6,12 +6,17 @@ const earthChip = new Schema(
     _user: { type: Schema.Types.ObjectId, ref: "User" },
     macAddress: { type: String, unique: true, required: true },
     plantName: String,
-    watering: {
+    wateringType: {
       type: String,
       enum: ["high", "medium", "low"],
       default: "medium"
     },
-    imageURL: String
+    imageURL: String,
+    lastWatered: { type: Date },
+    currentMoisture: Number,
+    currentEnvironmentTemp: Number,
+    currentEnvironmentHumidity: Number,
+    plantHealth: Number
   },
   {
     timestamps: {
