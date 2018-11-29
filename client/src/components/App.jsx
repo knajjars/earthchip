@@ -4,11 +4,10 @@ import apiAuth from "../api/auth";
 
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
-import RegisterDevice from "./pages/register-device/RegisterDevice";
-import NavBar from "./pages/NavBar";
+import RegisterDevice from "./pages/navbar/RegisterDevice";
+import NavBar from "./pages/navbar/NavBar";
 import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
-import SideNav from "./pages/SideNav";
 
 class App extends Component {
   constructor(props) {

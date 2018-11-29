@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { Icon } from "antd";
-import apiAuth from "../../api/auth";
-import { NavLink, Link, Route } from "react-router-dom";
-import SideNav from "./SideNav";
+import { NavLink } from "react-router-dom";
+import apiAuth from "../../../api/auth";
+import SideNav from "../register-device/SideNav";
 
 export default class NavBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isOpen: false
+      isOpen: false,
+      isMobile: false
     };
   }
 
@@ -17,18 +17,18 @@ export default class NavBar extends Component {
     apiAuth.logout();
   }
 
-  handleSideClick = () => {
-    // console.log(this.props.match);
-    // if (this.state.isOpen) {
-    //   this.setState({
-    //     isOpen: false
-    //   });
-    // } else {
-    //   this.setState({
-    //     isOpen: true
-    //   });
-    // }
-  };
+  updateDimensions() {
+    if (window.innerWidth <= 730) {
+      this.setState({ isMobile: true });
+    } else {
+      this.setState({ isMobile: false });
+    }
+  }
+
+  componentDidMount() {
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions.bind(this));
+  }
 
   render() {
     return (
@@ -50,7 +50,7 @@ export default class NavBar extends Component {
             </NavLink>
           </div>
 
-          <SideNav />
+          {this.state.isMobile && <SideNav />}
         </div>
       </div>
     );

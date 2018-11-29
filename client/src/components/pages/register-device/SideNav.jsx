@@ -1,10 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
-// <NavLink to="/login">Log In</NavLink>
-// <NavLink to="/signup">Sign Up</NavLink>
-
-import { Drawer, Button, Radio, Icon } from "antd";
+import { Drawer, Radio, Icon } from "antd";
 
 const RadioGroup = Radio.Group;
 

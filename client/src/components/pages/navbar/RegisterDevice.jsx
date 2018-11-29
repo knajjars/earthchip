@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Upload, Button, Icon } from "antd";
 import NotificationMessage from "../../utils/NotificationMessage";
 import api from "../../../api/registerDevice";
-import NavBar from "../NavBar";
+import NavBar from "./NavBar";
 
 export default class RegisterDevice extends Component {
   state = {
