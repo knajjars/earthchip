@@ -127,7 +127,7 @@ export default class RegisterDevice extends Component {
             </div>
             <div className="form-field">
               <div className="two-input-holder">
-                <div className="field">
+                <div className="field-main">
                   <div className="form-field-col6">
                     <Icon
                       type="code"
@@ -155,7 +155,6 @@ export default class RegisterDevice extends Component {
                     <Select
                       placeholder="Select watering level."
                       onChange={this.handleSelect}
-                      style={{ width: 200 }}
                     >
                       <Option value="low">Low</Option>
                       <Option value="medium">Medium</Option>
