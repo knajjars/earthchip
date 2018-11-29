@@ -54,9 +54,9 @@ require("./passport")(app);
 
 app.use("/api", require("./routes/index"));
 app.use("/api/auth", require("./routes/auth"));
-app.use("/api/register-chip", require("./routes/earthchip/register-chip"));
-app.use("/api/data-earthchip", require("./routes/earthchip/data-earthchip"));
-app.use("/api/list-earthies", require("./routes/earthchip/list-earthies"));
+app.use("/api/register-chip", require("./routes/earthies/register-earthie"));
+app.use("/api/data-earthchip", require("./routes/earthies/data-earthie"));
+app.use("/api/list-earthies", require("./routes/earthies/list-earthies"));
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use("/api/*", (req, res, next) => {

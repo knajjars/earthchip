@@ -20485,10 +20485,19 @@ body {
         margin: 5px; }
       .form-container .form-component .form-field .two-input-holder {
         display: flex;
+        width: 100%;
         justify-content: center; }
+        .form-container .form-component .form-field .two-input-holder .field-main {
+          width: 100%;
+          margin-bottom: 5px; }
+        .form-container .form-component .form-field .two-input-holder .ant-select {
+          width: 200px; }
         @media screen and (max-width: 690px) {
           .form-container .form-component .form-field .two-input-holder {
-            flex-direction: column; } }
+            flex-direction: column;
+            margin-top: 5px; }
+            .form-container .form-component .form-field .two-input-holder .ant-select {
+              width: 100%; } }
       .form-container .form-component .form-field .button-form {
         padding: 10px 20px;
         border-radius: 10px;
