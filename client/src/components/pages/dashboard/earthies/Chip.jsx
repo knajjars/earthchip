@@ -2,11 +2,15 @@ import React, { Component } from "react";
 import "./style/chips.css";
 import { Icon } from "antd";
 import { Link } from "react-router-dom";
+import api from "../../../../api/data";
 export default class Chip extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      earthieData: []
+    };
   }
+
   render() {
     return (
       <div className="main">

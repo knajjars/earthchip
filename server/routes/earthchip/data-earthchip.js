@@ -30,12 +30,4 @@ router.get("/", (req, res, next) => {
     .catch(err => next(err));
 });
 
-router.get("/getSoilMoisture", (req, res, next) => {
-  EarthChipData.find()
-    .then(data => {
-      res.json(data);
-    })
-    .catch(err => next(err));
-});
-
 module.exports = router;

@@ -7,7 +7,6 @@ import RegisterDevice from "./pages/navbar/RegisterDevice";
 import NavBar from "./pages/navbar/NavBar";
 import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
-import TomsTestPage from "./TomsTestPage";
 
 class App extends Component {
   constructor(props) {
@@ -33,7 +32,6 @@ class App extends Component {
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/api/register-chip" component={RegisterDevice} />
-            <Route path="/secret" component={TomsTestPage} />
 
             <Route render={() => <h2>404</h2>} />
           </Switch>

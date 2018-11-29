@@ -16,18 +16,5 @@ const errHandler = err => {
 };
 
 export default {
-  service: service,
-
-  getSoilMoisture() {
-    return service
-      .get("/data-earthchip/getSoilMoisture")
-      .then(res => {
-        // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
-        if (res.status === 200) {
-          JSON.stringify(res.data);
-        }
-        return res;
-      })
-      .catch(errHandler);
-  }
+  service: service
 };

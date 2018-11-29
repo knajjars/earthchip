@@ -7,23 +7,42 @@ export default class EarthieList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      earthies: []
+      earthies: [],
+      earthieData: []
     };
   }
+
   componentDidMount() {
-    api.getEarthies().then(res => {
-      this.setState({
-        earthies: res.data
+    api
+      .getData()
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          earthieData: res.data
+        });
+      })
+      .then(() => {
+        console.log("HELLO", this.state.earthieData);
+      })
+      .catch(err => {
+        console.log(err);
       });
-    });
   }
 
   renderEarthies() {
-    if (this.state.earthies.length > 0) {
+    if (this.state.earthieData.length > 0) {
       return (
         <div className="earthies-list">
-          {this.state.earthies.map(earthie => (
-            <Earthie key={earthie._id} earthie={earthie} />
+          {this.state.earthieData.map(earthie => (
+            <div>
+              {/* <h1>{earthie.data[0].soilMoisture}</h1> */}
+
+              <Earthie
+                key={earthie._id}
+                earthie={earthie}
+                // data={earthie.data[0]}
+              />
+            </div>
           ))}
         </div>
       );

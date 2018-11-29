@@ -25,5 +25,18 @@ export default {
         return res;
       })
       .catch(errHandler);
+  },
+
+  getData() {
+    return service
+      .get("/list-earthies/getData")
+      .then(res => {
+        // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
+        if (res.status === 200) {
+          JSON.stringify(res.data);
+        }
+        return res;
+      })
+      .catch(errHandler);
   }
 };
