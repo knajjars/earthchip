@@ -206,7 +206,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 111px);
   text-align: center;
   h2 {
     color: $bg;
@@ -271,6 +271,9 @@ body {
 }
 // landing page
 
+.ant-drawer-title {
+  font-size: 28px;
+}
 .home-page {
   display: flex;
   flex-direction: row;

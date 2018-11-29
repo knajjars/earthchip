@@ -29,7 +29,7 @@ export default class Dashboard extends Component {
       <div>
         <Layout style={{ minHeight: "100vh" }}>
           <Sider
-            style={{ zIndex: "-1" }}
+            // style={{ zIndex: "-1" }}
             width={300}
             collapsible
             collapsed={this.state.collapsed}

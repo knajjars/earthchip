@@ -18,22 +18,21 @@ export default class NavBar extends Component {
   }
 
   handleSideClick = () => {
-    console.log(this.props.match);
-    if (this.state.isOpen) {
-      this.setState({
-        isOpen: false
-      });
-    } else {
-      this.setState({
-        isOpen: true
-      });
-    }
+    // console.log(this.props.match);
+    // if (this.state.isOpen) {
+    //   this.setState({
+    //     isOpen: false
+    //   });
+    // } else {
+    //   this.setState({
+    //     isOpen: true
+    //   });
+    // }
   };
 
   render() {
     return (
       <div>
-        <Route path="/side" component={SideNav} />;
         <div className="nav-bar-container">
           <div className="logo-el">
             <NavLink to="/">
@@ -50,13 +49,8 @@ export default class NavBar extends Component {
               Sign Up
             </NavLink>
           </div>
-          <Link className="side-nav-link" to={this.state.isOpen ? "" : "side"}>
-            <Icon
-              type="bars"
-              className="menu-icon"
-              onClick={this.handleSideClick}
-            />
-          </Link>
+
+          <SideNav />
         </div>
       </div>
     );
