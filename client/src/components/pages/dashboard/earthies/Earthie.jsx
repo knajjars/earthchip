@@ -32,7 +32,7 @@ export default class Earthie extends React.Component {
       >
         <Meta
           title={this.props.earthie.plantName}
-          // description={this.props.data.soilMoisture}
+          description={this.props.earthie.currentEnvironmentTemp}
         />
       </Card>
     );
