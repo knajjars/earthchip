@@ -20524,7 +20524,6 @@ body {
 .ant-drawer-title {
   font-size: 28px; }
 
-b
 .home-page {
   display: flex;
   flex-direction: row;
@@ -20532,25 +20531,21 @@ b
   background-image: url("/images/homepage-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
-  b
-.home-page .box {
+  .home-page .box {
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 700px;
     padding-left: 100px;
     box-sizing: border-box; }
-    b
-.home-page .box h3 {
+    .home-page .box h3 {
       color: #f0f2f5;
       font-size: 1.2rem; }
-    b
-.home-page .box h1 {
+    .home-page .box h1 {
       font-size: 3rem;
       font-weight: bolder;
       color: #f0f2f5; }
-    b
-.home-page .box .actions .button-form {
+    .home-page .box .actions .button-form {
       padding: 10px 20px;
       border-radius: 10px;
       font-size: 1.5rem;
@@ -20558,17 +20553,14 @@ b
       background-color: #7b4b36;
       color: #f0f2f5;
       border: none; }
-      b
-.home-page .box .actions .button-form:hover {
+      .home-page .box .actions .button-form:hover {
         cursor: pointer;
         background-color: #7a5c4e; }
-    b
-.home-page .box .description p {
+    .home-page .box .description p {
       font-size: 1.3rem;
       color: #f0f2f5; }
     @media only screen and (max-width: 730px) {
-      b
-.home-page .box {
+      .home-page .box {
         padding: 0 20px; } }
 
 .pulse {
