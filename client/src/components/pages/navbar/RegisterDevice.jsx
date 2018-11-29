@@ -1,16 +1,21 @@
 import React, { Component } from "react";
-import { Upload, Button, Icon } from "antd";
+import { Upload, Button, Icon, Spin } from "antd";
+import { Select } from "antd";
 import NotificationMessage from "../../utils/NotificationMessage";
 import api from "../../../api/registerDevice";
 import NavBar from "./NavBar";
+
+const Option = Select.Option;
 
 export default class RegisterDevice extends Component {
   state = {
     file: "",
     plantName: "",
     macAddress: this.props.location.search.replace("?macAddress=", ""),
+    watering: "",
     themes: {
       plantName: "outlined",
+      calendar: "filled",
       macAddress: "filled"
     },
     uploading: false
@@ -19,6 +24,8 @@ export default class RegisterDevice extends Component {
   handleFocus = e => {
     this.setState({
       themes: {
+        plantName: "outlined",
+        calendar: "filled",
         [e.target.name]: "filled",
         macAddress: "filled"
       }
@@ -26,11 +33,12 @@ export default class RegisterDevice extends Component {
   };
 
   handleRegister = () => {
-    const { file, macAddress, plantName } = this.state;
+    const { file, macAddress, plantName, watering } = this.state;
     const formData = new FormData();
     formData.append("upload", file);
     formData.append("macAddress", macAddress);
     formData.append("plantName", plantName);
+    formData.append("watering", watering);
     this.setState({
       uploading: true
     });
@@ -69,6 +77,12 @@ export default class RegisterDevice extends Component {
     });
   };
 
+  handleSelect = val => {
+    this.setState({
+      watering: val
+    });
+  };
+
   render() {
     const { uploading, file } = this.state;
     const props = {
@@ -99,22 +113,6 @@ export default class RegisterDevice extends Component {
           <div className="form-component">
             <div className="form-field">
               <Icon
-                type="code"
-                theme={this.state.themes.plantName}
-                style={style}
-              />
-              <input
-                value={this.state.plantName}
-                onChange={this.handleChange}
-                onFocus={this.handleFocus}
-                name="plantName"
-                type="text"
-                placeholder="Plant name"
-                required
-              />
-            </div>
-            <div className="form-field">
-              <Icon
                 type="safety-certificate"
                 theme={this.state.themes.macAddress}
                 style={style}
@@ -127,19 +125,64 @@ export default class RegisterDevice extends Component {
                 required
               />
             </div>
+            <div className="form-field">
+              <div className="two-input-holder">
+                <div className="field">
+                  <div className="form-field-col6">
+                    <Icon
+                      type="code"
+                      theme={this.state.themes.plantName}
+                      style={style}
+                    />
+                    <input
+                      value={this.state.plantName}
+                      onChange={this.handleChange}
+                      onFocus={this.handleFocus}
+                      name="plantName"
+                      type="text"
+                      placeholder="Plant name"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="form-field-col6">
+                    <Icon
+                      type="calendar"
+                      theme={this.state.themes.calendar}
+                      style={style}
+                    />
+                    <Select
+                      placeholder="Select watering level."
+                      onChange={this.handleSelect}
+                      style={{ width: 200 }}
+                    >
+                      <Option value="low">Low</Option>
+                      <Option value="medium">Medium</Option>
+                      <Option value="high">High</Option>
+                    </Select>
+                  </div>
+                </div>
+              </div>
+            </div>
             <Upload {...props}>
               <Button>
                 <Icon type="upload" /> Upload Image
               </Button>
             </Upload>
-            <Button
-              type="primary"
-              onClick={this.handleRegister}
-              loading={uploading}
-              style={{ marginTop: 20 }}
-            >
-              {uploading ? "Registering" : "Register"}
-            </Button>
+
+            <div className="form-field">
+              <button onClick={this.handleRegister} className="button-form">
+                {uploading ? (
+                  <div>
+                    <Spin />
+                    Register
+                  </div>
+                ) : (
+                  "Register"
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>

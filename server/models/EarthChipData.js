@@ -6,7 +6,8 @@ const earthChipData = new Schema(
     macAddress: { type: String, required: true, index: true },
     environmentTemp: Number,
     environmentHumidity: Number,
-    soilMoisture: Number
+    soilMoisture: Number,
+    time: Date
   },
   {
     timestamps: {

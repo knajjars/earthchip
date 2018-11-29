@@ -4,37 +4,184 @@
 // $ node bin/seeds.js
 
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const User = require("../models/User");
+const EarthChipData = require("../models/EarthChipData");
+require("../configs/database");
 
-const bcryptSalt = 10;
+function randomDate(start, end) {
+  return new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime())
+  );
+}
 
-require('../configs/database')
-
-let users = [
+let earthies = [
   {
-    username: "alice",
-    password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
+    macAddress: "06-00-00-00-00-01",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    username: "bob",
-    password: bcrypt.hashSync("bob", bcrypt.genSaltSync(bcryptSalt)),
+    macAddress: "06-00-00-00-00-01",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-01",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-01",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-01",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-01",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-05",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-05",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-05",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-05",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-05",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-12",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-12",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-12",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-12",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-12",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-12",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-15",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-15",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-15",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-15",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-15",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
   }
-]
+];
 
-User.deleteMany()
+EarthChipData.deleteMany()
   .then(() => {
-    return User.create(users)
+    return EarthChipData.create(earthies);
   })
-  .then(usersCreated => {
-    console.log(`${usersCreated.length} users created with the following id:`);
-    console.log(usersCreated.map(u => u._id));
+  .then(earthiesCreated => {
+    console.log(`${earthiesCreated.length} earthies created.`);
   })
   .then(() => {
     // Close properly the connection to Mongoose
-    mongoose.disconnect()
+    mongoose.disconnect();
   })
   .catch(err => {
-    mongoose.disconnect()
-    throw err
-  })
+    mongoose.disconnect();
+    throw err;
+  });

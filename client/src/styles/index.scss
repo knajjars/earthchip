@@ -5,11 +5,9 @@ $bg: #f0f2f5;
 
 //  Colors to decide on
 $first: #4d946e;
-$first2: #afeecb;
 $second: #7b4b36;
-$second2: #7a5c4e;
-$third: #3c883c;
-$fourth: #68762a;
+$alternative: #7a5c4e;
+$icon: #a6c5b4;
 
 @font-face {
   font-family: Anurati;
@@ -224,6 +222,17 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      i {
+        margin: 5px;
+      }
+      .two-input-holder {
+        display: flex;
+
+        justify-content: center;
+        @media screen and (max-width: 690px) {
+          flex-direction: column;
+        }
+      }
       .button-form {
         padding: 10px 20px;
         border-radius: 10px;
@@ -234,26 +243,27 @@ body {
         border: none;
         &:hover {
           cursor: pointer;
-          background-color: $second2;
+          background-color: $alternative;
         }
       }
       input {
         border-radius: 4px;
         width: 100%;
         border: 1px solid rgba(0, 0, 0, 0);
-        box-shadow: 0px 8px 13px $third;
         padding: 7px;
         box-sizing: border-box;
-        &:focus {
-          border: 1px $primary solid;
-        }
       }
-      * {
+      .content {
         margin: 5px;
       }
       @media screen and (max-width: 690px) {
         min-width: 95vw;
       }
+    }
+    .form-field-col6 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
@@ -263,11 +273,6 @@ body {
     display: flex;
     justify-content: center;
   }
-}
-
-.ant-menu.ant-menu-dark .ant-menu-item-selected,
-.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
-  background-color: $first;
 }
 // landing page
 
@@ -311,7 +316,7 @@ body {
         border: none;
         &:hover {
           cursor: pointer;
-          background-color: $second2;
+          background-color: $alternative;
         }
       }
     }
@@ -371,5 +376,5 @@ body {
   }
 }
 i {
-  color: $first2;
+  color: $icon;
 }

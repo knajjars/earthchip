@@ -12,14 +12,19 @@ router.get("/", isLoggedIn, (req, res, next) => {
 });
 
 router.post("/", isLoggedIn, upload, (req, res, next) => {
-  const { macAddress, plantName } = req.body;
+  const { macAddress, plantName, watering } = req.body;
   const imageURL = req.file
     ? req.file.location
     : "https://earthchip.sfo2.digitaloceanspaces.com/defaultimage.png";
   if (plantName === "") {
-    res
-      .status(500)
-      .json({ message: "Please define a name for your EarthChip device." });
+    res.status(500).json({ message: "Please define a name Earthie device." });
+    return;
+  }
+
+  if (watering === "") {
+    res.status(500).json({
+      message: "Please define a watering level for your Earthie device."
+    });
     return;
   }
 
@@ -34,9 +39,12 @@ router.post("/", isLoggedIn, upload, (req, res, next) => {
         _user: req.user._id,
         macAddress,
         plantName,
-        imageURL
+        imageURL,
+        watering
       }).then(chip => {
-        res.json({ message: `Succesfully registered ${chip.plantName} chip!` });
+        res.json({
+          message: `Succesfully registered ${chip.plantName}'s earthie!`
+        });
       });
     }
   });
