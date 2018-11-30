@@ -52,7 +52,6 @@ export default {
 
   logout() {
     window.localStorage.clear();
-    console.log(window.localStorage);
 
     return service.get("/auth/logout");
   }

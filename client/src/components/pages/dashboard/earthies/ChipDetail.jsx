@@ -6,7 +6,6 @@ export default class ChipDetail extends Component {
     this.state = {};
   }
   render() {
-    console.log(this.props.secret);
     return (
       <div>
         <h1>GOODBYE</h1>
