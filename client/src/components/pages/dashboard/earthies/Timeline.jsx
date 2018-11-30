@@ -27,7 +27,7 @@ export default function TimeLine(props) {
             />
           }
         >
-          Plant health <span className="bold"> {plantHealth} </span>
+          Plant health <span className="bold pulse"> {plantHealth} </span>
         </Timeline.Item>
         <Timeline.Item color="green">
           Next watering date
