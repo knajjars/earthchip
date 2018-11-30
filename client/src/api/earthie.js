@@ -27,6 +27,15 @@ export default {
       .catch(errHandler);
   },
 
+  getOneEarthie(macAddress) {
+    return service
+      .get(`/get-earthie/${macAddress}`)
+      .then(res => {
+        return res;
+      })
+      .catch(errHandler);
+  },
+
   getHistoricData() {
     return service
       .get("/list-earthies/get-historic-data")

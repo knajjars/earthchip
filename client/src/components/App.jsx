@@ -29,11 +29,14 @@ class App extends Component {
             {!apiAuth.isLoggedIn() && <Route path="/" exact component={Home} />}
 
             <Route path="/" exact component={Dashboard} />
-            {/* <Route path="/:id" component={EarthieDetail} /> */}
+            <Route
+              path="/earthie/:macAddress"
+              exact
+              component={EarthieDetail}
+            />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/api/register-chip" component={RegisterDevice} />
-
             <Route render={() => <h2>404</h2>} />
           </Switch>
         </div>

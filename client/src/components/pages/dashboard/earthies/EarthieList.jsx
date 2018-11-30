@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Earthie from "./Earthie";
 import { Icon } from "antd";
 import api from "../../../../api/earthie";
-import TimeLine from "./Timeline";
 export default class EarthieList extends Component {
   constructor(props) {
     super(props);
@@ -20,9 +20,6 @@ export default class EarthieList extends Component {
           earthieData: res.data
         });
       })
-      .then(() => {
-        console.log("HELLO", this.state.earthieData);
-      })
       .catch(err => {
         console.log(err);
       });
@@ -33,16 +30,9 @@ export default class EarthieList extends Component {
       return (
         <div className="earthies-list">
           {this.state.earthieData.map(earthie => (
-            <div>
-              {/* <h1>{earthie.data[0].soilMoisture}</h1> */}
-
-              <Earthie
-                key={earthie._id}
-                earthie={earthie}
-                // data={earthie.data[0]}
-              />
-              <TimeLine earthie={earthie} />
-            </div>
+            <Link key={earthie._id} to={`/earthie/${earthie.macAddress}`}>
+              <Earthie earthie={earthie} />
+            </Link>
           ))}
         </div>
       );

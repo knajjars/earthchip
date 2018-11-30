@@ -20572,24 +20572,46 @@ body {
       .home-page .box {
         padding: 0 20px; } }
 
-.pulse {
-  position: absolute;
-  z-index: 10;
-  display: block;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #cca92c;
-  cursor: pointer;
-  box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
-  animation: pulse 2s infinite; }
+.earthie-card-content {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; }
+  .earthie-card-content .room-environment {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%; }
+    .earthie-card-content .room-environment .room-environment-metrics {
+      padding-left: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center; }
 
-.pulse:hover {
-  animation: none; }
+.plant-health-pulse {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%; }
+  .plant-health-pulse .plant-health-info {
+    padding-left: 15px; }
+  .plant-health-pulse .pulse {
+    padding: 4px;
+    z-index: 10;
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    animation: pulse 2s infinite; }
+  .plant-health-pulse .pulse:hover {
+    animation: none; }
 
 @-webkit-keyframes pulse {
   0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4); }
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2); }
   70% {
     -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0); }
   100% {
@@ -20597,8 +20619,8 @@ body {
 
 @keyframes pulse {
   0% {
-    -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
-    box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4); }
+    -moz-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2); }
   70% {
     -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
     box-shadow: 0 0 0 10px rgba(204, 169, 44, 0); }

@@ -57,6 +57,7 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/register-chip", require("./routes/earthies/register-earthie"));
 app.use("/api/data-earthchip", require("./routes/earthies/data-earthie"));
 app.use("/api/list-earthies", require("./routes/earthies/list-earthies"));
+app.use("/api/get-earthie", require("./routes/earthies/get-earthie"));
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use("/api/*", (req, res, next) => {
