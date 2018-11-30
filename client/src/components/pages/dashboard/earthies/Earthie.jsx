@@ -11,7 +11,7 @@ export default class Earthie extends React.Component {
     };
   }
 
-  render() {
+  plantHealth() {
     let pulseColor;
     if (this.props.earthie.plantHealth >= 80) {
       pulseColor = "#4d946e";
@@ -20,20 +20,24 @@ export default class Earthie extends React.Component {
     } else {
       pulseColor = "#c70039";
     }
-    const plantHealth = (
+    return (
       <div className="plant-health-pulse">
         <span className="pulse" style={{ background: pulseColor }} />
         <div className="plant-health-info">
-          Plant health
-          <span className="bold">
-            {" "}
-            {Math.floor(this.props.earthie.plantHealth)}
+          Plant health{" "}
+          <span
+            className="bold"
+            style={{ fontFamily: "MoonBold", fontSize: "1.2rem" }}
+          >
+            {Math.floor(this.props.earthie.plantHealth)} pts.
           </span>
         </div>
       </div>
     );
+  }
 
-    const roomEnvironment = (
+  roomEnvironment() {
+    return (
       <div>
         <div className="room-environment">
           <Icon type="dashboard" />
@@ -41,27 +45,44 @@ export default class Earthie extends React.Component {
             <span>
               Room temperature:{" "}
               <span className="bold">
-                {this.props.earthie.currentEnvironmentTemp}
+                {Math.round(this.props.earthie.currentEnvironmentTemp)}°C
               </span>
             </span>
             <span>
               Room humidity:{" "}
               <span className="bold">
-                {this.props.earthie.currentEnvironmentHumidity}
+                {Math.round(this.props.earthie.currentEnvironmentHumidity)}%
               </span>
             </span>
           </div>
         </div>
       </div>
     );
+  }
 
-    const renderCard = (
+  renderInfo() {
+    return (
       <div className="earthie-card-content">
-        {plantHealth}
-        {roomEnvironment}
+        {this.plantHealth()}
+        {this.roomEnvironment()}
       </div>
     );
+  }
 
+  renderCard() {
+    if (!this.props.earthie.currentMoisture) {
+      return (
+        <div>
+          No information reported. <br />
+          <small>Device might be offline.</small>
+        </div>
+      );
+    } else {
+      return this.renderInfo();
+    }
+  }
+
+  render() {
     return (
       <Card
         hoverable
@@ -75,7 +96,10 @@ export default class Earthie extends React.Component {
           />
         }
       >
-        <Meta title={this.props.earthie.plantName} description={renderCard} />
+        <Meta
+          title={this.props.earthie.plantName}
+          description={this.renderCard()}
+        />
       </Card>
     );
   }
