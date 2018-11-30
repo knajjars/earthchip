@@ -1,8 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Drawer, Radio, Icon } from "antd";
-
-const RadioGroup = Radio.Group;
+import { Drawer, Icon } from "antd";
 
 export default class SideNav extends React.Component {
   state = { visible: false, placement: "right" };

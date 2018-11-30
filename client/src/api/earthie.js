@@ -27,9 +27,9 @@ export default {
       .catch(errHandler);
   },
 
-  getData() {
+  getHistoricData() {
     return service
-      .get("/list-earthies/getData")
+      .get("/list-earthies/get-historic-data")
       .then(res => {
         // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
         if (res.status === 200) {

@@ -36,7 +36,11 @@ export default class NavBar extends Component {
         <div className="nav-bar-container">
           <div className="logo-el">
             <NavLink to="/">
-              <img src="/images/micro_temp_inverted.png" height="40px" />{" "}
+              <img
+                alt="Logo"
+                src="/images/micro_temp_inverted.png"
+                height="40px"
+              />{" "}
               <span>EarthChip</span>
             </NavLink>
           </div>

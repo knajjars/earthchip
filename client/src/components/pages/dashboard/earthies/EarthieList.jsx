@@ -14,7 +14,7 @@ export default class EarthieList extends Component {
 
   componentDidMount() {
     api
-      .getData()
+      .getEarthies()
       .then(res => {
         this.setState({
           earthieData: res.data
@@ -23,7 +23,9 @@ export default class EarthieList extends Component {
       .then(() => {
         console.log("HELLO", this.state.earthieData);
       })
-      .catch(err => {});
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   renderEarthies() {
