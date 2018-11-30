@@ -13,6 +13,8 @@ const earthChip = new Schema(
     },
     imageURL: String,
     lastWatered: { type: Date },
+    suggestedWateringDate: Date,
+    criticalWateringDate: Date,
     currentMoisture: Number,
     currentEnvironmentTemp: Number,
     currentEnvironmentHumidity: Number,

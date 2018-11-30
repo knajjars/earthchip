@@ -386,6 +386,13 @@ body {
     box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
   }
 }
+
+// ! ANT DESIGN OVER STYLING
 i {
   color: $icon;
+}
+
+.ant-timeline.ant-timeline-alternate .ant-timeline-item-head-custom,
+.ant-timeline.ant-timeline-right .ant-timeline-item-head-custom {
+  background-color: transparent;
 }

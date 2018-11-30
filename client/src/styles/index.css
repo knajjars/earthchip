@@ -20608,3 +20608,7 @@ body {
 
 i {
   color: #a6c5b4; }
+
+.ant-timeline.ant-timeline-alternate .ant-timeline-item-head-custom,
+.ant-timeline.ant-timeline-right .ant-timeline-item-head-custom {
+  background-color: transparent; }

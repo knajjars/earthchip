@@ -4,6 +4,7 @@ const EarthChip = require("../../models/EarthChip");
 
 const router = express.Router();
 
+//* calculate the number of health points based on the last watering date
 function getLastWateredPoints(lastWatered, interval) {
   const now = new Date();
   const timeDiff = Math.abs(lastWatered.getTime() - now.getTime());
@@ -13,6 +14,7 @@ function getLastWateredPoints(lastWatered, interval) {
   return points;
 }
 
+//* calculate the number of health points based on the curent soil moisture
 function getSoilMoisturePoints(moisture) {
   let points = 60 - Math.abs(40 - moisture) * 1.5;
   if (points < 0) {
@@ -21,14 +23,20 @@ function getSoilMoisturePoints(moisture) {
   return points;
 }
 
+//* collate the data and generate points based on watering type
 function getEarthieHealth(data) {
   const { type, lastWatered, soilMoisture } = data;
-  let plantHealth, lastWateredPoints, soilMoisturePoints;
+  let plantHealth,
+    lastWateredPoints,
+    soilMoisturePoints,
+    nextWateringDate,
+    criticalWateringDate;
 
   //? get last watered points
   switch (type) {
     case "low":
       lastWateredPoints = getLastWateredPoints(lastWatered, 2);
+
       break;
     case "medium":
       lastWateredPoints = getLastWateredPoints(lastWatered, 4);
@@ -42,8 +50,10 @@ function getEarthieHealth(data) {
 
   return lastWateredPoints + soilMoisturePoints;
 }
+
 // ALL ROUTES PREFIXED WITH /api/data-earthchip
 
+//* Primary earthie data update route
 router.get("/", (req, res, next) => {
   if (
     !req.query.macAddress ||
@@ -78,6 +88,19 @@ router.get("/", (req, res, next) => {
             : earthie.lastWatered;
       }
 
+      //! adding number of ms in a day
+      const interval = {
+        low: 2,
+        medium: 4,
+        high: 2
+      };
+      //! creating functions to calculate the next watering date
+      let ms = new Date().getTime() + 86400000 * interval[earthie.wateringType];
+      let msc =
+        new Date().getTime() + 2 * 86400000 * interval[earthie.wateringType];
+      let suggestedWateringDate = new Date(ms);
+      let criticalWateringDate = new Date(msc);
+
       const plantHealthInput = {
         type: earthie.wateringType,
         lastWatered: lastWatered,
@@ -89,7 +112,9 @@ router.get("/", (req, res, next) => {
         currentEnvironmentTemp: data.environmentTemp,
         currentEnvironmentHumidity: data.environmentHumidity,
         lastWatered: lastWatered,
-        plantHealth: getEarthieHealth(plantHealthInput)
+        plantHealth: getEarthieHealth(plantHealthInput),
+        suggestedWateringDate,
+        criticalWateringDate
       };
       const updateEarthie = EarthChip.findByIdAndUpdate(
         earthie._id,

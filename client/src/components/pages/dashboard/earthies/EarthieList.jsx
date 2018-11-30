@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Earthie from "./Earthie";
 import { Icon } from "antd";
 import api from "../../../../api/earthie";
-
+import TimeLine from "./Timeline";
 export default class EarthieList extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +41,7 @@ export default class EarthieList extends Component {
                 earthie={earthie}
                 // data={earthie.data[0]}
               />
+              <TimeLine earthie={earthie} />
             </div>
           ))}
         </div>
