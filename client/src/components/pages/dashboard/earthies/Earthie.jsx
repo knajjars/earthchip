@@ -85,6 +85,8 @@ export default class Earthie extends React.Component {
   render() {
     return (
       <Card
+        loading={this.props.isLoading}
+        onClick={e => this.props.onEarthieClick(e, this.props.earthie)}
         hoverable
         className="earthie-item"
         style={{ width: 300 }}

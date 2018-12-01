@@ -7,12 +7,10 @@ import RegisterDevice from "./pages/navbar/RegisterDevice";
 import NavBar from "./pages/navbar/NavBar";
 import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
-import EarthieDetail from "./pages/dashboard/earthies/EarthieDetail";
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    // apiAuth.loadUser();
   }
 
   render() {
@@ -29,11 +27,6 @@ class App extends Component {
             {!apiAuth.isLoggedIn() && <Route path="/" exact component={Home} />}
 
             <Route path="/" exact component={Dashboard} />
-            <Route
-              path="/earthie/:macAddress"
-              exact
-              component={EarthieDetail}
-            />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/api/register-chip" component={RegisterDevice} />

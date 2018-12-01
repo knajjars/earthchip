@@ -6,33 +6,20 @@ import { Spin, Icon } from "antd";
 export default class EarthieDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      earthie: null
-    };
-  }
-
-  componentDidMount() {
-    const macAddress = this.props.match.params.macAddress;
-    api
-      .getOneEarthie(macAddress)
-      .then(res => {
-        this.setState({
-          earthie: res.data
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
   }
 
   renderEarthie() {
-    if (!this.state.earthie) {
+    if (!this.props.earthie) {
       return <Spin />;
     } else {
       return (
-        <div>
-          <Icon type="arrow-left" />
-          <TimeLine earthie={this.state.earthie} />
+        <div className="earthie-details">
+          <Icon
+            onClick={this.props.onBackClick}
+            type="arrow-left"
+            className="back-button-earthie-details"
+          />
+          <TimeLine earthie={this.props.earthie} />
         </div>
       );
     }

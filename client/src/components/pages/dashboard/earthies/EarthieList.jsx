@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Earthie from "./Earthie";
 import { Icon } from "antd";
 import api from "../../../../api/earthie";
@@ -17,7 +16,8 @@ export default class EarthieList extends Component {
       .getEarthies()
       .then(res => {
         this.setState({
-          earthieData: res.data
+          earthieData: res.data,
+          isLoading: false
         });
       })
       .catch(err => {
@@ -30,9 +30,12 @@ export default class EarthieList extends Component {
       return (
         <div className="earthies-list">
           {this.state.earthieData.map(earthie => (
-            <Link key={earthie._id} to={`/earthie/${earthie.macAddress}`}>
-              <Earthie earthie={earthie} />
-            </Link>
+            <Earthie
+              key={earthie._id}
+              earthie={earthie}
+              onEarthieClick={this.props.onEarthieClick}
+              isLoading={this.state.isLoading}
+            />
           ))}
         </div>
       );

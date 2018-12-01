@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { Layout, Menu, Icon } from "antd";
-import { NavLink } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import apiAuth from "../../../api/auth";
 import EarthieList from "./earthies/EarthieList";
+import EarthieDetail from "./earthies/EarthieDetail";
 
 const { Content, Sider } = Layout;
 export default class Dashboard extends Component {
   state = {
     collapsed: true,
-    active: this.props.match.path
+    active: this.props.match.path,
+    selectedEarthie: null
   };
 
   onCollapse = collapsed => {
@@ -24,12 +26,42 @@ export default class Dashboard extends Component {
     });
   };
 
+  handleEarthieClick = (e, earthie) => {
+    this.setState({
+      selectedEarthie: earthie
+    });
+  };
+
+  handleBackClick = () => {
+    this.setState({
+      selectedEarthie: null
+    });
+  };
+
+  renderContent() {
+    if (!this.state.selectedEarthie) {
+      return (
+        <div className="chips-container">
+          <EarthieList onEarthieClick={this.handleEarthieClick} />
+        </div>
+      );
+    } else {
+      return (
+        <div className="chips-container">
+          <EarthieDetail
+            onBackClick={this.handleBackClick}
+            earthie={this.state.selectedEarthie}
+          />
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <div>
         <Layout style={{ minHeight: "100vh" }}>
           <Sider
-            // style={{ zIndex: "-1" }}
             width={300}
             collapsible
             collapsed={this.state.collapsed}
@@ -67,9 +99,7 @@ export default class Dashboard extends Component {
               style={{ margin: "0 16px" }}
               className="dash-detail-container"
             >
-              <div className="chips-container">
-                <EarthieList />
-              </div>
+              {this.renderContent()}
             </Content>
           </Layout>
         </Layout>

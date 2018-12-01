@@ -94,25 +94,39 @@ router.get("/", (req, res, next) => {
         medium: 4,
         high: 2
       };
-      //! creating functions to calculate the next watering date
-      let ms = new Date().getTime() + 86400000 * interval[earthie.wateringType];
-      let msc =
-        new Date().getTime() + 2 * 86400000 * interval[earthie.wateringType];
-      let suggestedWateringDate = new Date(ms);
-      let criticalWateringDate = new Date(msc);
 
+      //! getting plant health
       const plantHealthInput = {
         type: earthie.wateringType,
         lastWatered: lastWatered,
         soilMoisture: soilMoisture
       };
+      let plantHealth = getEarthieHealth(plantHealthInput);
+
+      //! creating functions to calculate the next watering date
+      let ms, msc, suggestedWateringDate, criticalWateringDate;
+      ms = new Date().getTime() + 86400000 * interval[earthie.wateringType];
+      msc =
+        new Date().getTime() + 2 * 86400000 * interval[earthie.wateringType];
+
+      if (plantHealth > 80) {
+        suggestedWateringDate = new Date(ms);
+        criticalWateringDate = new Date(msc);
+      } else if (plantHealth > 70) {
+        suggestedWateringDate = new Date();
+        criticalWateringDate = new Date(new Date().getTime() + 86400000 * 2);
+      } else {
+        suggestedWateringDate = new Date();
+        criticalWateringDate = new Date(new Date().getTime() + 86400000);
+      }
+
       //* data to update
       const updatedData = {
         currentMoisture: data.soilMoisture,
         currentEnvironmentTemp: data.environmentTemp,
         currentEnvironmentHumidity: data.environmentHumidity,
         lastWatered: lastWatered,
-        plantHealth: getEarthieHealth(plantHealthInput),
+        plantHealth,
         suggestedWateringDate,
         criticalWateringDate
       };

@@ -20457,6 +20457,10 @@ body {
     .chips-container .no-device-message h3 {
       width: 250px; } }
 
+.chips-container .earthie-details .back-button-earthie-details {
+  font-size: 22px;
+  cursor: pointer; }
+
 .bold {
   font-weight: bolder; }
 
