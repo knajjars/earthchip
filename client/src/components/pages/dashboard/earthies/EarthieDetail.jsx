@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import api from "../../../../api/earthie";
 import TimeLine from "./EarthieTimeline";
 import { Spin, Icon } from "antd";
 

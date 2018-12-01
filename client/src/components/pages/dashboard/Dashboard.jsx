@@ -62,10 +62,15 @@ export default class Dashboard extends Component {
       <div>
         <Layout style={{ minHeight: "100vh" }}>
           <Sider
-            width={300}
             collapsible
             collapsed={this.state.collapsed}
             onCollapse={this.onCollapse}
+            style={{
+              overflow: "auto",
+              height: "100vh",
+              position: "fixed",
+              left: 0
+            }}
           >
             <div className="logo" />
             <Menu

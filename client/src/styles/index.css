@@ -20436,7 +20436,6 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   min-height: 100vh; }
   .chips-container .earthies-list .earthie-item {
     margin: 30px; }
@@ -20457,9 +20456,18 @@ body {
     .chips-container .no-device-message h3 {
       width: 250px; } }
 
-.chips-container .earthie-details .back-button-earthie-details {
-  font-size: 22px;
-  cursor: pointer; }
+.chips-container .earthie-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; }
+
+.chips-container .back-button-earthie-details {
+  font-size: 34px;
+  cursor: pointer;
+  color: #7b4b36;
+  padding: 5px; }
 
 .bold {
   font-weight: bolder; }

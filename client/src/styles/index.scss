@@ -166,7 +166,6 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     min-height: 100vh;
     .earthie-item {
       margin: 30px;
@@ -194,10 +193,17 @@ body {
     }
   }
   .earthie-details {
-    .back-button-earthie-details {
-      font-size: 22px;
-      cursor: pointer;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .back-button-earthie-details {
+    font-size: 34px;
+    cursor: pointer;
+    color: $second;
+    padding: 5px;
   }
 }
 
