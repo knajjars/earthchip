@@ -116,17 +116,13 @@ export default class Dashboard extends Component {
               className="dash-detail-container"
             >
               <Route exact path="/" render={() => this.renderContent()} />
-              <Route exact path="/account" component={AccountPage} />
+              <Route path="/account" component={AccountPage} />
               <Route
                 exact
                 path="/notification"
                 render={() => this.renderAlerts()}
               />
-              <Route
-                exact
-                path="/api/register-chip"
-                component={RegisterDevice}
-              />
+              <Route path="/api/register-chip" component={RegisterDevice} />
               <Route
                 path="/earthie/:plantName"
                 render={() => this.renderDetail()}
