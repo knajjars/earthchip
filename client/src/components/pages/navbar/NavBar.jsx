@@ -31,6 +31,8 @@ export default class NavBar extends Component {
   }
 
   render() {
+    // let { pathname, search } = this.props.history.location;
+    // const registerRoute = pathname !== "/login" ? pathname + search : "/login";
     return (
       <div>
         <div className="nav-bar-container">
@@ -40,7 +42,7 @@ export default class NavBar extends Component {
                 alt="Logo"
                 src="/images/micro_temp_inverted.png"
                 height="40px"
-              />{" "}
+              />
               <span>EarthChip</span>
             </NavLink>
           </div>

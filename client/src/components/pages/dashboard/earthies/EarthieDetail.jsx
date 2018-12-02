@@ -4,10 +4,6 @@ import { Spin, Icon, Divider } from "antd";
 import { Link } from "react-router-dom";
 import EarthieHistory from "./EarthieHistory";
 export default class EarthieDetail extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   renderEarthie() {
     if (!this.props.earthie) {
       return <Spin />;

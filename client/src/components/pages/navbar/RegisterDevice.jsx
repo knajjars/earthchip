@@ -3,7 +3,6 @@ import { Upload, Button, Icon, Spin } from "antd";
 import { Select } from "antd";
 import NotificationMessage from "../../utils/NotificationMessage";
 import api from "../../../api/registerDevice";
-import NavBar from "./NavBar";
 
 const Option = Select.Option;
 const antIcon = (

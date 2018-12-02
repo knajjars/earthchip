@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Icon } from "antd";
+import { Card } from "antd";
 const { Meta } = Card;
 
 export default class Earthie extends React.Component {

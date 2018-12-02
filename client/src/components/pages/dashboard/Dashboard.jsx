@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Layout, Menu, Icon } from "antd";
-import { NavLink, Route, Switch, Link } from "react-router-dom";
+import { NavLink, Route, Link } from "react-router-dom";
 import apiAuth from "../../../api/auth";
 import EarthieList from "./earthies/EarthieList";
 import EarthieDetail from "./earthies/EarthieDetail";
@@ -94,7 +94,7 @@ export default class Dashboard extends Component {
               </Menu.Item>
               <Menu.Item key="/api/register-chip">
                 <Link to="/api/register-chip">
-                  <Icon type="register" />
+                  <Icon type="form" />
                   <span>Register</span>
                 </Link>
               </Menu.Item>

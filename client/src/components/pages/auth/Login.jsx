@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Icon } from "antd";
 import api from "../../../api/auth";
 import NotificationMessage from "../../utils/NotificationMessage";
-
+import { Link, Route } from "react-router-dom";
+import SignUp from "./Signup";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -23,6 +24,9 @@ class Login extends Component {
   };
 
   handleSubmit = e => {
+    let { pathname, search } = this.props.history.location;
+    console.log(pathname + search, this.props);
+
     e.preventDefault();
     api
       .login(this.state.email, this.state.password)
@@ -33,7 +37,10 @@ class Login extends Component {
             message: `Welcome Back, ${JSON.parse(localStorage.user).name}`,
             description: "Logged succesfully."
           });
-          this.props.history.push("/"); // Redirect to the home page
+          console.log(pathname === "/login");
+          pathname === "/login"
+            ? this.props.history.push("/")
+            : this.props.history.push(`api/register-chip/${search}`); // Redirect to the home page
         }
       })
       .catch(err => {
@@ -58,6 +65,7 @@ class Login extends Component {
 
   render() {
     let style = { fontSize: "22px" };
+    let { pathname, search } = this.props.history.location;
     return (
       <div className="form-container">
         <div>
@@ -100,7 +108,11 @@ class Login extends Component {
               Log in
             </button>
           </div>
+          <p>
+            Don't have an account yet? Sign up <Link to="/signup">here</Link>
+          </p>
         </form>
+        <Route exact path={pathname + search} component={Login} />
       </div>
     );
   }

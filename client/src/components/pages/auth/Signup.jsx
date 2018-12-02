@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Icon } from "antd";
 import api from "../../../api/auth";
 import NotificationMessage from "../../utils/NotificationMessage";
-
+import { Link } from "react-router-dom";
 export default class Signup extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +24,7 @@ export default class Signup extends Component {
   };
 
   handleSubmit = e => {
+    let { pathname, search } = this.props.history.location;
     e.preventDefault();
     let data = {
       email: this.state.email,
@@ -40,6 +41,10 @@ export default class Signup extends Component {
             description: "Account created succesfully."
           });
           this.props.history.push("/"); // Redirect to the home page
+
+          pathname === "/signup"
+            ? this.props.history.push("/")
+            : this.props.history.push(`api/register-chip/${search}`); // Redirect to the home page
         }
       })
       .catch(err => {
@@ -64,6 +69,7 @@ export default class Signup extends Component {
 
   render() {
     let style = { fontSize: "22px" };
+    let { pathname, search } = this.props.history.location;
     return (
       <div className="form-container">
         <div>
@@ -117,6 +123,11 @@ export default class Signup extends Component {
             <button type="submit" className="button-form">
               Sign up
             </button>
+          </div>
+          <div>
+            <p>
+              Already have an account? Log in <Link to="/login">here</Link>
+            </p>
           </div>
         </form>
       </div>

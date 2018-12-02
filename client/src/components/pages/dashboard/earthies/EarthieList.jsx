@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Earthie from "./Earthie";
 import { Icon } from "antd";
-import { NavLink, Route, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import api from "../../../../api/earthie";
 export default class EarthieList extends Component {
