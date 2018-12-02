@@ -12,14 +12,10 @@ import ChangeEmail from "./account/ChangeEmail";
 const { Content, Sider } = Layout;
 export default class Dashboard extends Component {
   state = {
-    collapsed: true,
     active: this.props.match.path,
     selectedEarthie: null
   };
 
-  onCollapse = collapsed => {
-    this.setState({ collapsed });
-  };
   handleLogoutClick(e) {
     apiAuth.logout();
   }
@@ -63,9 +59,7 @@ export default class Dashboard extends Component {
       <div>
         <Layout style={{ minHeight: "100vh" }}>
           <Sider
-            collapsible
-            collapsed={this.state.collapsed}
-            onCollapse={this.onCollapse}
+            collapsed
             style={{
               overflow: "auto",
               height: "100vh",
@@ -114,7 +108,7 @@ export default class Dashboard extends Component {
           </Sider>
           <Layout>
             <Content
-              style={{ margin: "0 16px" }}
+              style={{ margin: "0 0 0 80px" }}
               className="dash-detail-container"
             >
               <Route exact path="/" render={() => this.renderContent()} />
@@ -131,7 +125,7 @@ export default class Dashboard extends Component {
               />
               <Route path="/api/register-chip" component={RegisterDevice} />
               <Route
-                path="/earthie/:plantName"
+                path="/earthie/:macAddress"
                 render={() => this.renderDetail()}
               />
             </Content>

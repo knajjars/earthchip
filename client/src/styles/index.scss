@@ -5,6 +5,7 @@ $bg: #f0f2f5;
 
 //  Colors to decide on
 $first: #4d946e;
+$first-hover: #43be7c;
 $second: #7b4b36;
 $alternative: #7a5c4e;
 $icon: #a6c5b4;
@@ -61,7 +62,7 @@ body {
   height: 90px;
   margin: 0;
   box-sizing: border-box;
-
+  background-color: $first;
   .side-nav-link {
     display: none;
   }
@@ -195,20 +196,58 @@ body {
   .earthie-details {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     min-height: 100vh;
-  }
-  .back-button-earthie-details {
-    font-size: 34px;
-    cursor: pointer;
-    color: $second;
-    padding: 5px;
+    .earthie-details-buttons {
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+      .settings-button {
+        color: $first !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .button-earthie-details {
+        font-size: 34px;
+        cursor: pointer;
+        color: $first;
+        padding: 5px;
+        &:hover {
+          color: $first-hover;
+        }
+      }
+    }
+    .earthie-details-flex-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .earthie-details-photo-timeline {
+      padding: 10px;
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      align-items: center;
+    }
+    .earthie-details-metrics-history {
+      padding: 10px;
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      align-items: center;
+    }
   }
 }
 
 .bold {
   font-weight: bolder;
+}
+.moon-bold {
+  font-family: MoonBold;
 }
 
 .form-container {
@@ -218,6 +257,7 @@ body {
   justify-content: center;
   height: calc(100vh - 111px);
   text-align: center;
+  background-color: $first;
   h2 {
     color: $bg;
   }
@@ -375,7 +415,6 @@ body {
     align-items: center;
     width: 100%;
     .room-environment-metrics {
-      padding-left: 15px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -443,4 +482,13 @@ i {
 .ant-timeline.ant-timeline-alternate .ant-timeline-item-head-custom,
 .ant-timeline.ant-timeline-right .ant-timeline-item-head-custom {
   background-color: transparent;
+}
+
+.ant-card-meta-title {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  background-color: $bg;
+  padding: 3px 7px;
+  border-radius: 5px;
 }

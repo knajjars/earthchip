@@ -32,9 +32,8 @@ export default class EarthieList extends Component {
       return (
         <div className="earthies-list">
           {this.state.earthieData.map(earthie => (
-            <Link to={"/earthie/" + earthie.plantName}>
+            <Link key={earthie._id} to={"/earthie/" + earthie.macAddress}>
               <Earthie
-                key={earthie._id}
                 earthie={earthie}
                 onEarthieClick={this.props.onEarthieClick}
                 isLoading={this.state.isLoading}
