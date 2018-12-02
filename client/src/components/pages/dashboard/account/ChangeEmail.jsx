@@ -3,12 +3,12 @@ import { Icon } from "antd";
 import api from "../../../../api/auth";
 import NotificationMessage from "../../../utils/NotificationMessage";
 
-export default class Settings extends Component {
+export default class ChangeEmail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
+      oldEmail: "",
+      newEmail: "",
       themes: {
         email: "outlined",
         password: "outlined"
@@ -25,13 +25,13 @@ export default class Settings extends Component {
   handleSubmit = e => {
     e.preventDefault();
     api
-      .login(this.state.email, this.state.password)
+      .changeEmail(this.state.oldEmail, this.state.newEmail)
       .then(res => {
         if (res.status === 200) {
           NotificationMessage({
             type: "success",
-            message: `Welcome Back, ${JSON.parse(localStorage.user).name}`,
-            description: "Logged succesfully."
+            message: "Your email was updated successfully",
+            description: "Email changed."
           });
           this.props.history.push("/"); // Redirect to the home page
         }
@@ -39,10 +39,14 @@ export default class Settings extends Component {
       .catch(err => {
         NotificationMessage({
           type: "error",
-          message: "Something went wrong.",
-          description: err
+          message: err.message,
+          description: "Something went wrong"
         });
       });
+  };
+
+  componentDidMount = () => {
+    console.log(this.props);
   };
 
   handleFocus = e => {
@@ -62,36 +66,36 @@ export default class Settings extends Component {
       <div className="form-container">
         <form className="form-component" onSubmit={this.handleSubmit}>
           <div className="form-field">
-            <Icon type="mail" theme={this.state.themes.email} style={style} />
-            <input
-              value={this.state.email}
-              onChange={this.handleChange}
-              onFocus={this.handleFocus}
-              name="email"
-              type="email"
-              placeholder="Email"
-              required
-            />
-          </div>
-          <div className="form-field">
             <Icon
               type="lock"
               theme={this.state.themes.password}
               style={style}
             />
             <input
-              value={this.state.password}
+              value={api.isLoggedIn.email}
               onChange={this.handleChange}
               onFocus={this.handleFocus}
-              name="password"
-              type="password"
-              placeholder="Password"
+              name="oldEmail"
+              type="email"
+              placeholder="Old Email"
+              required
+            />
+          </div>
+          <div className="form-field">
+            <Icon type="lock" theme={this.state.themes.email} style={style} />
+            <input
+              value={this.state.newEmail}
+              onChange={this.handleChange}
+              onFocus={this.handleFocus}
+              name="newEmail"
+              type="email"
+              placeholder="New Email"
               required
             />
           </div>
           <div className="form-field">
             <button type="submit" className="button-form">
-              Log in
+              Change Email
             </button>
           </div>
         </form>

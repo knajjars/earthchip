@@ -5,6 +5,7 @@ import apiAuth from "../../../api/auth";
 import EarthieList from "./earthies/EarthieList";
 import EarthieDetail from "./earthies/EarthieDetail";
 import RegisterDevice from "../navbar/RegisterDevice";
+import AccountPage from "./account/AccountPage";
 
 const { Content, Sider } = Layout;
 export default class Dashboard extends Component {
@@ -44,16 +45,6 @@ export default class Dashboard extends Component {
     return (
       <div className="chips-container">
         <EarthieDetail earthie={this.state.selectedEarthie} />
-      </div>
-    );
-  }
-
-  renderAccount() {
-    return (
-      <div className="chips-container">
-        <EarthieList onEarthieClick={this.handleEarthieClick} />
-        <EarthieList onEarthieClick={this.handleEarthieClick} />
-        <EarthieList onEarthieClick={this.handleEarthieClick} />
       </div>
     );
   }
@@ -125,11 +116,7 @@ export default class Dashboard extends Component {
               className="dash-detail-container"
             >
               <Route exact path="/" render={() => this.renderContent()} />
-              <Route
-                exact
-                path="/account"
-                render={() => this.renderAccount()}
-              />
+              <Route exact path="/account" component={AccountPage} />
               <Route
                 exact
                 path="/notification"
