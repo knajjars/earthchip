@@ -36,11 +36,10 @@ export default {
       .catch(errHandler);
   },
 
-  getHistoricData() {
+  getHistoricData(macAddress) {
     return service
-      .get("/list-earthies/get-historic-data")
+      .get(`/list-earthies/get-historic-data/${macAddress}`)
       .then(res => {
-        // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
         if (res.status === 200) {
           JSON.stringify(res.data);
         }

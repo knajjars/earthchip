@@ -20,11 +20,20 @@ export default class Earthie extends React.Component {
     } else {
       pulseColor = "#c70039";
     }
+
+    if (!this.props.earthie.currentMoisture) {
+      return (
+        <div className="plant-health-pulse">
+          <span className="pulse" style={{ background: "lightgrey" }} />
+          <div className="plant-health-info">Offline</div>
+        </div>
+      );
+    }
     return (
       <div className="plant-health-pulse">
         <span className="pulse" style={{ background: pulseColor }} />
         <div className="plant-health-info">
-          Plant health{" "}
+          Health{" "}
           <span
             className="bold"
             style={{ fontFamily: "MoonBold", fontSize: "1.2rem" }}
@@ -40,16 +49,19 @@ export default class Earthie extends React.Component {
     return (
       <div>
         <div className="room-environment">
-          <Icon type="dashboard" />
           <div className="room-environment-metrics">
             <span>
-              Room temperature:{" "}
+              Moisture:{" "}
+              <span className="bold">
+                {Math.round(this.props.earthie.currentMoisture)}%
+              </span>
+              <br />
+              Temp:{" "}
               <span className="bold">
                 {Math.round(this.props.earthie.currentEnvironmentTemp)}°C
               </span>
-            </span>
-            <span>
-              Room humidity:{" "}
+              {" | "}
+              Humidity:{" "}
               <span className="bold">
                 {Math.round(this.props.earthie.currentEnvironmentHumidity)}%
               </span>
@@ -63,7 +75,8 @@ export default class Earthie extends React.Component {
   renderInfo() {
     return (
       <div className="earthie-card-content">
-        {this.plantHealth()}
+        {/* {this.plantHealth()} */}
+        <span className="moon-bold bold">{this.props.earthie.plantName}</span>
         {this.roomEnvironment()}
       </div>
     );
@@ -85,6 +98,7 @@ export default class Earthie extends React.Component {
   render() {
     return (
       <Card
+        bordered
         loading={this.props.isLoading}
         onClick={e => this.props.onEarthieClick(e, this.props.earthie)}
         hoverable
@@ -99,7 +113,8 @@ export default class Earthie extends React.Component {
         }
       >
         <Meta
-          title={this.props.earthie.plantName}
+          style={{ height: "70px" }}
+          title={this.plantHealth()}
           description={this.renderCard()}
         />
       </Card>

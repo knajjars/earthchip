@@ -18,38 +18,18 @@ router.get("/", isLoggedIn, (req, res, next) => {
     );
 });
 
-router.get("/get-historic-data", isLoggedIn, (req, res, next) => {
-  EarthChip.find({ _user: req.user._id })
-    .lean()
-    .then(earthies => {
-      let macAddresses = earthies.map(earthie => {
-        return earthie.macAddress;
-      });
-
-      Promise.all(macAddresses).then(results => {
-        EarthChipData.find(
-          { macAddress: { $in: results } },
-          {},
-          { sort: { created_at: -1 } }
-        ).then(earthieData => {
-          res.json(
-            earthies.map(earthie => {
-              earthie.data = earthieData.filter(
-                earthieDataElt =>
-                  earthieDataElt.macAddress === earthie.macAddress
-              );
-              return earthie;
-            })
-          );
-        });
-      });
+router.get("/get-historic-data/:macAddress", isLoggedIn, (req, res, next) => {
+  EarthChipData.find({ macAddress: req.params.macAddress })
+    .sort({ created_at: -1 })
+    .limit(5)
+    .then(earthieData => {
+      res.status(200).json(earthieData);
     })
-
-    .catch(err =>
+    .catch(err => {
       res
         .status(500)
-        .json({ message: "Unexpected error, please try again later." })
-    );
+        .json({ message: "Unexpected error, please try again later." });
+    });
 });
 
 module.exports = router;
