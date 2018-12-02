@@ -20490,13 +20490,15 @@ body {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    align-items: center; }
+    align-items: center;
+    flex-wrap: wrap; }
   .chips-container .earthie-details .earthie-details-metrics-history {
     padding: 10px;
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    align-items: center; }
+    align-items: center;
+    flex-wrap: wrap; }
 
 .bold {
   font-weight: bolder; }

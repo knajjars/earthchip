@@ -49,7 +49,9 @@ export default class EarthieDetail extends Component {
               <h1 className="moon-bold bold">{this.props.earthie.plantName}</h1>
             </div>
             <div className="earthie-details-flex-column">
-              <h3 className="moon-bold bold">Timeline projection</h3>
+              <h3 className="bold">
+                <Icon type="calendar" theme="filled" /> Timeline projection
+              </h3>
               <Divider />
               <TimeLine earthie={this.props.earthie} />
             </div>
@@ -80,7 +82,7 @@ export default class EarthieDetail extends Component {
               <div>
                 <div>
                   <Icon type="bulb" theme="filled" /> Room temperature:{" "}
-                  <span className="moon-bold bold">{currentTemperature}%</span>
+                  <span className="moon-bold bold">{currentTemperature}°C</span>
                 </div>
               </div>
             </div>
