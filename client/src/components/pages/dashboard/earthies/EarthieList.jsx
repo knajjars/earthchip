@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Earthie from "./Earthie";
 import { Icon } from "antd";
+import { NavLink, Route, Switch, Link } from "react-router-dom";
+
 import api from "../../../../api/earthie";
 export default class EarthieList extends Component {
   constructor(props) {
@@ -30,12 +32,14 @@ export default class EarthieList extends Component {
       return (
         <div className="earthies-list">
           {this.state.earthieData.map(earthie => (
-            <Earthie
-              key={earthie._id}
-              earthie={earthie}
-              onEarthieClick={this.props.onEarthieClick}
-              isLoading={this.state.isLoading}
-            />
+            <Link to={"/earthie/" + earthie.plantName}>
+              <Earthie
+                key={earthie._id}
+                earthie={earthie}
+                onEarthieClick={this.props.onEarthieClick}
+                isLoading={this.state.isLoading}
+              />
+            </Link>
           ))}
         </div>
       );

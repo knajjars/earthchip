@@ -106,7 +106,6 @@ export default class RegisterDevice extends Component {
     let style = { color: "#32c3ff", fontSize: "26px" };
     return (
       <div>
-        <NavBar />
         <div className="form-container">
           <h1 className="title">Register your device.</h1>
           <h3>

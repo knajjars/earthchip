@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TimeLine from "./EarthieTimeline";
 import { Spin, Icon } from "antd";
-
+import { Link } from "react-router-dom";
 export default class EarthieDetail extends Component {
   constructor(props) {
     super(props);
@@ -13,12 +13,10 @@ export default class EarthieDetail extends Component {
     } else {
       return (
         <div className="earthie-details">
-          <Icon
-            onClick={this.props.onBackClick}
-            type="arrow-left"
-            className="back-button-earthie-details"
-          />
-          <TimeLine earthie={this.props.earthie} />
+          <Link to="/">
+            <Icon type="arrow-left" className="back-button-earthie-details" />
+            <TimeLine earthie={this.props.earthie} />
+          </Link>
         </div>
       );
     }

@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import apiAuth from "../api/auth";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
-import RegisterDevice from "./pages/navbar/RegisterDevice";
 import NavBar from "./pages/navbar/NavBar";
 import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -26,10 +25,10 @@ class App extends Component {
           <Switch>
             {!apiAuth.isLoggedIn() && <Route path="/" exact component={Home} />}
 
-            <Route path="/" exact component={Dashboard} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/login" component={Login} />
-            <Route path="/api/register-chip" component={RegisterDevice} />
+            {/* <Route exact path="/api/register-chip" component={RegisterDevice} /> */}
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/login" component={Login} />
+            <Route path="/" component={Dashboard} />
             <Route render={() => <h2>404</h2>} />
           </Switch>
         </div>

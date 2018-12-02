@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Layout, Menu, Icon } from "antd";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch, Link } from "react-router-dom";
 import apiAuth from "../../../api/auth";
 import EarthieList from "./earthies/EarthieList";
 import EarthieDetail from "./earthies/EarthieDetail";
+import RegisterDevice from "../navbar/RegisterDevice";
 
 const { Content, Sider } = Layout;
 export default class Dashboard extends Component {
@@ -32,31 +33,38 @@ export default class Dashboard extends Component {
     });
   };
 
-  handleBackClick = () => {
-    this.setState({
-      selectedEarthie: null
-    });
-  };
-
   renderContent() {
-    if (!this.state.selectedEarthie) {
-      return (
-        <div className="chips-container">
-          <EarthieList onEarthieClick={this.handleEarthieClick} />
-        </div>
-      );
-    } else {
-      return (
-        <div className="chips-container">
-          <EarthieDetail
-            onBackClick={this.handleBackClick}
-            earthie={this.state.selectedEarthie}
-          />
-        </div>
-      );
-    }
+    return (
+      <div className="chips-container">
+        <EarthieList onEarthieClick={this.handleEarthieClick} />
+      </div>
+    );
+  }
+  renderDetail() {
+    return (
+      <div className="chips-container">
+        <EarthieDetail earthie={this.state.selectedEarthie} />
+      </div>
+    );
   }
 
+  renderAccount() {
+    return (
+      <div className="chips-container">
+        <EarthieList onEarthieClick={this.handleEarthieClick} />
+        <EarthieList onEarthieClick={this.handleEarthieClick} />
+        <EarthieList onEarthieClick={this.handleEarthieClick} />
+      </div>
+    );
+  }
+
+  renderAlerts() {
+    return (
+      <div>
+        <h1>gasfjsfhslkfnsukfjsfnksjfb</h1>
+      </div>
+    );
+  }
   render() {
     return (
       <div>
@@ -80,16 +88,28 @@ export default class Dashboard extends Component {
               onClick={this.handleChange}
             >
               <Menu.Item key="/dashboard">
-                <Icon type="appstore" />
-                <span>Dashboard</span>
+                <Link to="/">
+                  <Icon type="appstore" />
+                  <span>Dashboard</span>
+                </Link>
               </Menu.Item>
               <Menu.Item key="/notification">
-                <Icon type="notification" />
-                <span>Alerts</span>
+                <Link to="/notification">
+                  <Icon type="notification" />
+                  <span>Notification</span>
+                </Link>
               </Menu.Item>
-              <Menu.Item key="/settings">
-                <Icon type="setting" />
-                <span>Settings</span>
+              <Menu.Item key="/account">
+                <Link to="/account">
+                  <Icon type="setting" />
+                  <span>Account</span>
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="/api/register-chip">
+                <Link to="/api/register-chip">
+                  <Icon type="register" />
+                  <span>Register</span>
+                </Link>
               </Menu.Item>
               <Menu.Item key="/logout">
                 <NavLink onClick={this.handleLogoutClick} to="/">
@@ -104,7 +124,26 @@ export default class Dashboard extends Component {
               style={{ margin: "0 16px" }}
               className="dash-detail-container"
             >
-              {this.renderContent()}
+              <Route exact path="/" render={() => this.renderContent()} />
+              <Route
+                exact
+                path="/account"
+                render={() => this.renderAccount()}
+              />
+              <Route
+                exact
+                path="/notification"
+                render={() => this.renderAlerts()}
+              />
+              <Route
+                exact
+                path="/api/register-chip"
+                component={RegisterDevice}
+              />
+              <Route
+                path="/earthie/:plantName"
+                render={() => this.renderDetail()}
+              />
             </Content>
           </Layout>
         </Layout>
