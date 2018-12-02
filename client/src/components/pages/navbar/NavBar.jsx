@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import apiAuth from "../../../api/auth";
-import SideNav from "../register-device/SideNav";
+import SideNav from "./SideNav";
 
 export default class NavBar extends Component {
   constructor(props) {

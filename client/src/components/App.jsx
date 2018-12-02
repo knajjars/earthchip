@@ -6,7 +6,6 @@ import Signup from "./pages/auth/Signup";
 import NavBar from "./pages/navbar/NavBar";
 import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
-import RegisterDevice from "./pages/navbar/RegisterDevice";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -64,15 +63,15 @@ class App extends Component {
             />
             <Route path="/login" component={Login} />
             {!apiAuth.isLoggedIn() && <Route path="/" exact component={Home} />}
-            {/* {!apiAuth.isLoggedIn() && (
+            {!apiAuth.isLoggedIn() && (
               <Route
                 path="/api/register-chip/"
                 render={props => (
-                  <Signup {...props} recieveSearch={this.handleRecieve} />
+                  <Login {...props} recieveSearch={this.handleRecieve} />
                 )}
               />
-            )} */}
-            <PrivateRoute path={this.state.search} component={RegisterDevice} />
+            )}
+            {/* <PrivateRoute path={this.state.search} component={RegisterDevice} /> */}
 
             <Route path="/" component={Dashboard} />
             <Route render={() => <h2>404</h2>} />
