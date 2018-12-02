@@ -1,6 +1,4 @@
 import React from "react";
-import ChangePassword from "./ChangePassword";
-import ChangeEmail from "./ChangeEmail";
 import { Link, Route, Switch } from "react-router-dom";
 export default function AccountPage() {
   return (
@@ -16,8 +14,6 @@ export default function AccountPage() {
             Change Password
           </button>
         </Link>
-        {/* <Route path="/account/eml" component={ChangeEmail} />
-        <Route path="/account/pwd" component={ChangePassword} /> */}
       </div>
     </div>
   );

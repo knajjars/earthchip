@@ -7,6 +7,8 @@ import EarthieDetail from "./earthies/EarthieDetail";
 import RegisterDevice from "../navbar/RegisterDevice";
 import AccountPage from "./account/AccountPage";
 
+import ChangePassword from "./account/ChangePassword";
+import ChangeEmail from "./account/ChangeEmail";
 const { Content, Sider } = Layout;
 export default class Dashboard extends Component {
   state = {
@@ -116,7 +118,12 @@ export default class Dashboard extends Component {
               className="dash-detail-container"
             >
               <Route exact path="/" render={() => this.renderContent()} />
-              <Route path="/account" component={AccountPage} />
+              <div className=".account-page">
+                <Route path="/account" component={AccountPage} />
+                <Route path="/account/eml" component={ChangeEmail} />
+                <Route path="/account/pwd" component={ChangePassword} />
+              </div>
+
               <Route
                 exact
                 path="/notification"
