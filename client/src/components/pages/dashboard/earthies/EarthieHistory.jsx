@@ -36,17 +36,17 @@ export default class EarthieHistory extends Component {
         sorter: (a, b) => new Date(a.date) - new Date(b.date)
       },
       {
-        title: "Moisture",
+        title: "Moisture (%)",
         dataIndex: "moisture",
         sorter: (a, b) => a.moisture - b.moisture
       },
       {
-        title: "Temperature",
+        title: "Temperature (°C)",
         dataIndex: "temperature",
         sorter: (a, b) => a.temperature - b.temperature
       },
       {
-        title: "Humidity",
+        title: "Humidity (%)",
         dataIndex: "humidity",
         sorter: (a, b) => a.humidity - b.humidity
       }

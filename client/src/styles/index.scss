@@ -232,6 +232,7 @@ body {
       justify-content: space-evenly;
       width: 100%;
       align-items: center;
+      flex-wrap: wrap;
     }
     .earthie-details-metrics-history {
       padding: 10px;
@@ -239,6 +240,7 @@ body {
       justify-content: space-evenly;
       width: 100%;
       align-items: center;
+      flex-wrap: wrap;
     }
   }
 }
