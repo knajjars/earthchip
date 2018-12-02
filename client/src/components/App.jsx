@@ -6,32 +6,47 @@ import Signup from "./pages/auth/Signup";
 import NavBar from "./pages/navbar/NavBar";
 import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
+import RegisterDevice from "./pages/register-device/RegisterDevice";
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
-  render() {
-    return (
-      <div className="App">
-        {!apiAuth.isLoggedIn() && (
+  renderApp() {
+    if (!apiAuth.isLoggedIn()) {
+      return (
+        <div>
           <div className="nav">
             <NavBar />
           </div>
-        )}
-
-        <div className="body">
-          <Switch>
-            {!apiAuth.isLoggedIn() && <Route path="/" exact component={Home} />}
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/login" component={Login} />
-            <Route path="/" component={Dashboard} />
-            <Route render={() => <h2>404</h2>} />
-          </Switch>
+          <div className="body">
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/login" component={Login} />
+              <Route path="/api/register-chip" component={Login} />
+              <Route render={() => <h2>404</h2>} />
+            </Switch>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div>
+          <div className="body">
+            <Switch>
+              <Route path="/" component={Dashboard} />
+              <Route path="/api/register-chip" component={RegisterDevice} />
+              <Route render={() => <h2>404</h2>} />
+            </Switch>
+          </div>
+        </div>
+      );
+    }
+  }
+  render() {
+    return <div className="App">{this.renderApp()}</div>;
   }
 }
 

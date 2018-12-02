@@ -4,7 +4,7 @@ import { NavLink, Route, Switch, Link } from "react-router-dom";
 import apiAuth from "../../../api/auth";
 import EarthieList from "./earthies/EarthieList";
 import EarthieDetail from "./earthies/EarthieDetail";
-import RegisterDevice from "../navbar/RegisterDevice";
+import RegisterDevice from "../register-device/RegisterDevice";
 import AccountPage from "./account/AccountPage";
 
 const { Content, Sider } = Layout;

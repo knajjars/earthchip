@@ -3,7 +3,6 @@ import { Upload, Button, Icon, Spin } from "antd";
 import { Select } from "antd";
 import NotificationMessage from "../../utils/NotificationMessage";
 import api from "../../../api/registerDevice";
-import NavBar from "./NavBar";
 
 const Option = Select.Option;
 const antIcon = (
@@ -106,9 +105,9 @@ export default class RegisterDevice extends Component {
     let style = { color: "#32c3ff", fontSize: "26px" };
     return (
       <div>
-        <div className="form-container">
+        <div className="form-container" style={{ minHeight: "100vh" }}>
           <h1 className="title">Register your device.</h1>
-          <h3>
+          <h3 className="subtitle">
             Please tell us more about your new{" "}
             <span className="bold">EarthChip</span> device.
           </h3>
@@ -177,7 +176,7 @@ export default class RegisterDevice extends Component {
                 {uploading ? (
                   <div>
                     <Spin indicator={antIcon} />
-                    Register
+                    Registering
                   </div>
                 ) : (
                   "Register"

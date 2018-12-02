@@ -20511,9 +20511,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 111px);
+  height: calc(100vh - 90px);
   text-align: center;
   background-color: #4d946e; }
+  .form-container .title {
+    color: #f0f2f5; }
+  .form-container .subtitle {
+    color: #f0f2f5; }
   .form-container h2 {
     color: #f0f2f5; }
   .form-container .form-component {
