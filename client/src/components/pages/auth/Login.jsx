@@ -10,12 +10,17 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
+      search: this.props.history.location,
       themes: {
         email: "outlined",
         password: "outlined"
       }
     };
   }
+  componentDidMount = () => {
+    console.log(this.state.search);
+    console.log(this.props);
+  };
 
   handleChange = e => {
     this.setState({
@@ -38,7 +43,7 @@ class Login extends Component {
             description: "Logged succesfully."
           });
           console.log(pathname === "/login");
-          pathname === "/login"
+          pathname === "/login" && search !== null
             ? this.props.history.push("/")
             : this.props.history.push(`api/register-chip/${search}`); // Redirect to the home page
         }
@@ -112,7 +117,6 @@ class Login extends Component {
             Don't have an account yet? Sign up <Link to="/signup">here</Link>
           </p>
         </form>
-        <Route exact path={pathname + search} component={Login} />
       </div>
     );
   }

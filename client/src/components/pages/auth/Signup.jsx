@@ -10,6 +10,9 @@ export default class Signup extends Component {
       email: "",
       name: "",
       password: "",
+      search:
+        this.props.history.location.pathname +
+        this.props.history.location.search,
       themes: {
         email: "outlined",
         password: "outlined",
@@ -17,6 +20,12 @@ export default class Signup extends Component {
       }
     };
   }
+
+  componentDidMount = () => {
+    console.log(this.state.search);
+    this.props.recieveSearch(this.state.search);
+  };
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -126,7 +135,10 @@ export default class Signup extends Component {
           </div>
           <div>
             <p>
-              Already have an account? Log in <Link to="/login">here</Link>
+              Already have an account? Log in{" "}
+              <Link altPath={this.state.search} to="/login">
+                here
+              </Link>
             </p>
           </div>
         </form>

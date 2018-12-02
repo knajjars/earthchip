@@ -8,34 +8,44 @@ import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
 import RegisterDevice from "./pages/navbar/RegisterDevice";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  // Add your own authentication on the below line.
-  const isLoggedIn = apiAuth.isLoggedIn();
-
-  return (
-    <Route
-      {...rest}
-      render={props =>
-        isLoggedIn ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{ pathname: "/login", state: { from: props.location } }}
-          />
-        )
-      }
-    />
-  );
-};
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      apiAuth.isLoggedIn === true ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: props.path,
+            state: { from: props.location }
+          }}
+        />
+      )
+    }
+  />
+);
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      search: ""
+    };
   }
 
+  handleRecieve = search => {
+    console.log("HELLO", search);
+    this.setState({
+      search
+    });
+  };
+  // componentDidMount = search => {
+  //   console.log(search);
+  // };
+  // console.log("STATE", this.state.search);
+
   render() {
-    console.log("appprops", this.props);
     return (
       <div className="App">
         {!apiAuth.isLoggedIn() && (
@@ -46,12 +56,23 @@ class App extends Component {
 
         <div className="body">
           <Switch>
-            <Route path="/signup" component={Signup} />
+            <Route
+              path="/signup"
+              render={props => (
+                <Signup {...props} recieveSearch={this.handleRecieve} />
+              )}
+            />
             <Route path="/login" component={Login} />
             {!apiAuth.isLoggedIn() && <Route path="/" exact component={Home} />}
-            {!apiAuth.isLoggedIn() && (
-              <Route path="/api/register-chip/" component={Signup} />
-            )}
+            {/* {!apiAuth.isLoggedIn() && (
+              <Route
+                path="/api/register-chip/"
+                render={props => (
+                  <Signup {...props} recieveSearch={this.handleRecieve} />
+                )}
+              />
+            )} */}
+            <PrivateRoute path={this.state.search} component={RegisterDevice} />
 
             <Route path="/" component={Dashboard} />
             <Route render={() => <h2>404</h2>} />
