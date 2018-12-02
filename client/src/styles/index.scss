@@ -331,6 +331,15 @@ body {
   }
 }
 
+.account-page {
+  display: flex;
+  flex-direction: row;
+
+  div {
+    width: 50%;
+  }
+}
+
 .ant-layout-header {
   @media only screen and (max-width: 730px) {
     display: flex;

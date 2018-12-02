@@ -50,6 +50,35 @@ export default {
       .catch(errHandler);
   },
 
+  changePassword(oldPassword, newPassword) {
+    return service
+      .post("auth/change-password", {
+        oldPassword,
+        newPassword
+      })
+      .then(res => {
+        if (res.status === 200) {
+          console.log(res.data);
+        }
+        return res;
+      })
+      .catch(errHandler);
+  },
+  changeEmail(oldEmail, newEmail) {
+    return service
+      .post("auth/change-email", {
+        oldEmail,
+        newEmail
+      })
+      .then(res => {
+        if (res.status === 200) {
+          console.log(res.data);
+        }
+        return res;
+      })
+      .catch(errHandler);
+  },
+
   logout() {
     window.localStorage.clear();
 

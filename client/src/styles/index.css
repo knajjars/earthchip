@@ -20570,6 +20570,12 @@ body {
       justify-content: center;
       align-items: center; }
 
+.account-page {
+  display: flex;
+  flex-direction: row; }
+  .account-page div {
+    width: 50%; }
+
 @media only screen and (max-width: 730px) {
   .ant-layout-header {
     display: flex;
