@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Icon } from "antd";
 import api from "../../../../api/auth";
 import NotificationMessage from "../../../utils/NotificationMessage";
+import { Link } from "react-router-dom";
 
 export default class ChangePassword extends Component {
   constructor(props) {
@@ -98,6 +99,9 @@ export default class ChangePassword extends Component {
               Change password
             </button>
           </div>
+          <Link to="/account">
+            <Icon type="down-circle" style={{ fontSize: "30px" }} />
+          </Link>
         </form>
       </div>
     );

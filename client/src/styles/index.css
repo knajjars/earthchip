@@ -20347,6 +20347,15 @@ body {
 * {
   font-family: MoonRegular; }
 
+.hidden {
+  display: none; }
+
+.sider-margin-correction {
+  margin: 0 0 0 80px; }
+
+.margin-zero {
+  margin: 0; }
+
 .sidenav {
   background-color: #f0f2f5;
   height: 100%;
@@ -20439,7 +20448,23 @@ body {
   align-items: center;
   min-height: 100vh; }
   .chips-container .earthies-list .earthie-item {
-    margin: 30px; }
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; }
+    .chips-container .earthies-list .earthie-item .ant-card-cover {
+      height: 400px; }
+      .chips-container .earthies-list .earthie-item .ant-card-cover img {
+        width: 350px;
+        height: 400px;
+        object-fit: cover; }
+        @media only screen and (max-width: 380px) {
+          .chips-container .earthies-list .earthie-item .ant-card-cover img {
+            width: 14rem; } }
+    @media only screen and (max-width: 380px) {
+      .chips-container .earthies-list .earthie-item {
+        height: auto;
+        margin: 2rem 0.4rem; } }
 
 .chips-container .no-device-message {
   min-height: 100vh;
@@ -20477,7 +20502,7 @@ body {
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
     align-items: center; }
     .chips-container .earthie-details .earthie-details-buttons .settings-button {
       color: #4d946e !important;
@@ -20588,10 +20613,85 @@ body {
       align-items: center; }
 
 .account-page {
+  margin: 0;
   display: flex;
-  flex-direction: row; }
-  .account-page div {
-    width: 50%; }
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: baseline;
+  background-color: #f0f2f5;
+  margin: 30px; }
+  @media only screen and (max-width: 380px) {
+    .account-page {
+      align-items: center;
+      justify-content: center;
+      flex-direction: column-reverse; } }
+  .account-page .account-buttons {
+    display: flex;
+    justify-content: center; }
+  .account-page .form-container {
+    background-color: transparent; }
+    @media only screen and (max-width: 380px) {
+      .account-page .form-container {
+        height: 100vh; } }
+    .account-page .form-container .form-buttons {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      height: 100%; }
+      .account-page .form-container .form-buttons .button-form {
+        padding: 10px 20px;
+        margin: 10px 0;
+        border-radius: 10px;
+        font-size: 1.5rem;
+        width: 17rem;
+        font-family: MoonBold;
+        background-color: #7b4b36;
+        color: #f0f2f5;
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+        @media only screen and (max-width: 380px) {
+          .account-page .form-container .form-buttons .button-form {
+            width: 14rem;
+            font-size: 1.2rem; } }
+        .account-page .form-container .form-buttons .button-form:hover {
+          cursor: pointer;
+          background-color: #7a5c4e; }
+    .account-page .form-container .form-component {
+      width: 70%; }
+      @media only screen and (min-width: 380px) {
+        .account-page .form-container .form-component a {
+          display: none; } }
+      .account-page .form-container .form-component .form-field {
+        min-width: 400px;
+        width: 70%; }
+        .account-page .form-container .form-component .form-field .button-form {
+          padding: 10px 20px;
+          margin: 10px 0;
+          border-radius: 10px;
+          font-size: 1.5rem;
+          width: 17rem;
+          font-family: MoonBold;
+          background-color: #7b4b36;
+          color: #f0f2f5;
+          border: none; }
+          @media only screen and (max-width: 380px) {
+            .account-page .form-container .form-component .form-field .button-form {
+              width: 14rem;
+              font-size: 1.2rem; } }
+          .account-page .form-container .form-component .form-field .button-form:hover {
+            cursor: pointer;
+            background-color: #7a5c4e; }
+        @media only screen and (max-width: 380px) {
+          .account-page .form-container .form-component .form-field {
+            min-width: 0px;
+            width: 14rem; } }
+  .account-page div .image {
+    margin: 3rem 0; }
+    .account-page div .image img {
+      width: 3rem; }
 
 @media only screen and (max-width: 730px) {
   .ant-layout-header {
@@ -20622,6 +20722,9 @@ body {
       font-size: 3rem;
       font-weight: bolder;
       color: #f0f2f5; }
+      @media only screen and (max-width: 370px) {
+        .home-page .box h1 {
+          font-size: 2.2rem; } }
     .home-page .box .actions .button-form {
       padding: 10px 20px;
       border-radius: 10px;

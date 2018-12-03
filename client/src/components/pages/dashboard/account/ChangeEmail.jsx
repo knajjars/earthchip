@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Icon } from "antd";
 import api from "../../../../api/auth";
 import NotificationMessage from "../../../utils/NotificationMessage";
-
+import { Link } from "react-router-dom";
 export default class ChangeEmail extends Component {
   constructor(props) {
     super(props);
@@ -57,16 +57,11 @@ export default class ChangeEmail extends Component {
   };
 
   render() {
-    let style = { fontSize: "22px" };
     return (
       <div className="form-container">
         <form className="form-component" onSubmit={this.handleSubmit}>
           <div className="form-field">
-            <Icon
-              type="lock"
-              theme={this.state.themes.password}
-              style={style}
-            />
+            <Icon type="mail" />
             <input
               value={api.isLoggedIn.email}
               onChange={this.handleChange}
@@ -78,7 +73,7 @@ export default class ChangeEmail extends Component {
             />
           </div>
           <div className="form-field">
-            <Icon type="lock" theme={this.state.themes.email} style={style} />
+            <Icon type="mail" />
             <input
               value={this.state.newEmail}
               onChange={this.handleChange}
@@ -94,6 +89,9 @@ export default class ChangeEmail extends Component {
               Change Email
             </button>
           </div>
+          <Link to="/account">
+            <Icon type="down-circle" style={{ fontSize: "30px" }} />
+          </Link>
         </form>
       </div>
     );
