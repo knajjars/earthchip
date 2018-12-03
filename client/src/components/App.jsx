@@ -34,15 +34,10 @@ class App extends Component {
   }
 
   handleRecieve = search => {
-    console.log("HELLO", search);
     this.setState({
       search
     });
   };
-  // componentDidMount = search => {
-  //   console.log(search);
-  // };
-  // console.log("STATE", this.state.search);
 
   render() {
     return (
