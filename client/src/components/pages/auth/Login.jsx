@@ -117,8 +117,14 @@ class Login extends Component {
               Log in
             </button>
           </div>
-          <p>
-            Don't have an account yet? Sign up <Link to="/signup">here</Link>
+          <p style={{ color: "#a6c5b4", fontFamily: "MoonBold" }}>
+            Don't have an account yet? Sign up{" "}
+            <Link
+              to="/signup"
+              style={{ color: "#f0f2f5", fontFamily: "MoonBold" }}
+            >
+              here
+            </Link>
           </p>
         </form>
       </div>

@@ -134,9 +134,13 @@ export default class Signup extends Component {
             </button>
           </div>
           <div>
-            <p>
+            <p style={{ color: "#a6c5b4", fontFamily: "MoonBold" }}>
               Already have an account? Log in{" "}
-              <Link altPath={this.state.search} to="/login">
+              <Link
+                style={{ color: "#f0f2f5", fontFamily: "MoonBold" }}
+                altPath={this.state.search}
+                to="/login"
+              >
                 here
               </Link>
             </p>
