@@ -40,7 +40,7 @@ class Login extends Component {
           });
           this.state.macAddress
             ? this.props.history.push(
-                `/api/register-chip?macAddress=${this.state.macAddress}`
+                `/register-chip?macAddress=${this.state.macAddress}`
               )
             : this.props.history.push("/"); // Redirect to the home page
         }

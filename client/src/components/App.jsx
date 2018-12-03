@@ -29,11 +29,11 @@ class App extends Component {
             {!apiAuth.isLoggedIn() && <Route path="/" exact component={Home} />}
             {!apiAuth.isLoggedIn() && (
               <Route
-                path="/api/register-chip/"
+                path="/register-chip/"
                 render={props => <Login {...props} />}
               />
             )}
-            <Route path="/api/register-chip/" component={RegisterDevice} />
+            <Route path="/register-chip/" component={RegisterDevice} />
             <Route path="/" component={Dashboard} />
             <Route render={() => <h2>404</h2>} />
           </Switch>
