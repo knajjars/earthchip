@@ -72,55 +72,61 @@ export default class EarthieDetail extends Component {
               />
             </Link>
           </div>
-          <div className="earthie-details-photo-timeline">
-            <div className="earthie-details-flex-column">
-              <img
-                src={this.state.earthie.imageURL}
-                alt={this.state.earthie.plantname}
-                style={{ width: 300, height: 400, objectFit: "cover" }}
-              />
-              <h1 className="moon-bold bold">{this.state.earthie.plantName}</h1>
-            </div>
-            <div className="earthie-details-flex-column">
-              <h3 className="bold">
-                <Icon type="calendar" theme="filled" /> Timeline projection
-              </h3>
-              <Divider />
-              <TimeLine earthie={this.state.earthie} />
-            </div>
-          </div>
-          <div className="earthie-details-metrics-history">
-            <div className="earthie-details-metrics">
-              <div>
-                <h3
-                  className="bold"
-                  style={{ fontSize: "1.1rem", textAlign: "center" }}
-                >
-                  <Icon theme="filled" type="dashboard" /> Metrics
-                </h3>
+          <div className="earthie-details-data">
+            <div className="earthie-details-photo-timeline">
+              <div className="earthie-details-flex-column">
+                <img
+                  src={this.state.earthie.imageURL}
+                  alt={this.state.earthie.plantname}
+                  style={{ width: 300, height: 400, objectFit: "cover" }}
+                />
+                <h1 className="moon-bold bold">
+                  {this.state.earthie.plantName}
+                </h1>
               </div>
-              <Divider />
-              <div>
-                <Icon type="heart" theme="filled" /> Plant current health:{" "}
-                <span className="moon-bold bold">{plantHealth}pts.</span>
-              </div>
-              <div>
-                <Icon type="filter" theme="filled" /> Current moisture:{" "}
-                <span className="moon-bold bold">{currentMoisture}%</span>
-              </div>
-              <div>
-                <Icon type="cloud" theme="filled" /> Room humidity:{" "}
-                <span className="moon-bold bold">{currentHumidity}%</span>
-              </div>
-              <div>
+              <div className="earthie-details-metrics">
                 <div>
-                  <Icon type="bulb" theme="filled" /> Room temperature:{" "}
-                  <span className="moon-bold bold">{currentTemperature}°C</span>
+                  <h3
+                    className="bold"
+                    style={{ fontSize: "1.1rem", textAlign: "center" }}
+                  >
+                    <Icon theme="filled" type="dashboard" /> Metrics
+                  </h3>
+                </div>
+                <Divider />
+                <div>
+                  <Icon type="heart" theme="filled" /> Plant current health:{" "}
+                  <span className="moon-bold bold">{plantHealth}pts.</span>
+                </div>
+                <div>
+                  <Icon type="filter" theme="filled" /> Current moisture:{" "}
+                  <span className="moon-bold bold">{currentMoisture}%</span>
+                </div>
+                <div>
+                  <Icon type="cloud" theme="filled" /> Room humidity:{" "}
+                  <span className="moon-bold bold">{currentHumidity}%</span>
+                </div>
+                <div>
+                  <div>
+                    <Icon type="bulb" theme="filled" /> Room temperature:{" "}
+                    <span className="moon-bold bold">
+                      {currentTemperature}°C
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-            <div>
-              <EarthieHistory earthie={this.state.earthie} />
+            <div className="earthie-details-metrics-history">
+              <div className="earthie-details-flex-column">
+                <h3 className="bold">
+                  <Icon type="calendar" theme="filled" /> Timeline projection
+                </h3>
+                <Divider />
+                <TimeLine earthie={this.state.earthie} />
+              </div>
+              <div>
+                <EarthieHistory earthie={this.state.earthie} />
+              </div>
             </div>
           </div>
         </div>
