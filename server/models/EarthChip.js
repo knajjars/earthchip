@@ -12,6 +12,7 @@ const earthChip = new Schema(
       default: "medium"
     },
     imageURL: String,
+    imageKey: String,
     lastWatered: { type: Date },
     suggestedWateringDate: Date,
     criticalWateringDate: Date,

@@ -3,18 +3,45 @@ import TimeLine from "./EarthieTimeline";
 import { Spin, Icon, Divider } from "antd";
 import { Link } from "react-router-dom";
 import EarthieHistory from "./EarthieHistory";
+import api from "../../../../api/earthie";
+
 export default class EarthieDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      earthie: this.props.earthie,
+      macAddress: this.props.macAddress.pathname.includes("/earthie/")
+        ? this.props.macAddress.pathname.replace("/earthie/", "")
+        : null
+    };
+  }
+  componentDidMount() {
+    if (!this.state.earthie) {
+      api.getOneEarthie(this.state.macAddress).then(res => {
+        this.setState({
+          earthie: res.data
+        }).catch(err => console.log(err));
+      });
+    }
+  }
+
   renderEarthie() {
-    if (!this.props.earthie) {
-      return <Spin />;
+    if (!this.state.earthie || !this.state.earthie.plantHealth) {
+      return (
+        <div className="offline-device-details">
+          <h1>Device might be offline :(</h1>
+          <p>Please check that the Earthie is connected to the Wifi.</p>
+          <Spin size="large" />
+        </div>
+      );
     } else {
-      let plantHealth = Math.round(this.props.earthie.plantHealth);
-      let currentMoisture = Math.round(this.props.earthie.currentMoisture);
+      let plantHealth = Math.round(this.state.earthie.plantHealth);
+      let currentMoisture = Math.round(this.state.earthie.currentMoisture);
       let currentTemperature = Math.round(
-        this.props.earthie.currentEnvironmentTemp
+        this.state.earthie.currentEnvironmentTemp
       );
       let currentHumidity = Math.round(
-        this.props.earthie.currentEnvironmentHumidity
+        this.state.earthie.currentEnvironmentHumidity
       );
 
       return (
@@ -24,7 +51,7 @@ export default class EarthieDetail extends Component {
               <Icon type="arrow-left" className="button-earthie-details" />
             </Link>
             <Link
-              to={`/earthie/${this.props.earthie.macAddress}/settings`}
+              to={`/earthie/${this.state.earthie.macAddress}/settings`}
               className="settings-button"
             >
               Settings
@@ -38,18 +65,18 @@ export default class EarthieDetail extends Component {
           <div className="earthie-details-photo-timeline">
             <div className="earthie-details-flex-column">
               <img
-                src={this.props.earthie.imageURL}
-                alt={this.props.earthie.plantname}
+                src={this.state.earthie.imageURL}
+                alt={this.state.earthie.plantname}
                 style={{ width: 300, height: 400, objectFit: "cover" }}
               />
-              <h1 className="moon-bold bold">{this.props.earthie.plantName}</h1>
+              <h1 className="moon-bold bold">{this.state.earthie.plantName}</h1>
             </div>
             <div className="earthie-details-flex-column">
               <h3 className="bold">
                 <Icon type="calendar" theme="filled" /> Timeline projection
               </h3>
               <Divider />
-              <TimeLine earthie={this.props.earthie} />
+              <TimeLine earthie={this.state.earthie} />
             </div>
           </div>
           <div className="earthie-details-metrics-history">
@@ -83,7 +110,7 @@ export default class EarthieDetail extends Component {
               </div>
             </div>
             <div>
-              <EarthieHistory earthie={this.props.earthie} />
+              <EarthieHistory earthie={this.state.earthie} />
             </div>
           </div>
         </div>

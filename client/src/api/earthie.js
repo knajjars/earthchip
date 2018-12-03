@@ -46,5 +46,17 @@ export default {
         return res;
       })
       .catch(errHandler);
+  },
+
+  editEarthie(macAddress, data) {
+    return service
+      .patch(`/edit-earthie/${macAddress}`, data)
+      .then(res => {
+        if (res.status === 200) {
+          JSON.stringify(res.data);
+        }
+        return res;
+      })
+      .catch(errHandler);
   }
 };

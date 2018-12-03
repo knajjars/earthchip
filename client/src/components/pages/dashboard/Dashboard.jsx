@@ -4,6 +4,7 @@ import { NavLink, Route, Link } from "react-router-dom";
 import apiAuth from "../../../api/auth";
 import EarthieList from "./earthies/EarthieList";
 import EarthieDetail from "./earthies/EarthieDetail";
+import EarthieSettings from "./earthies/EarthieSettings";
 import RegisterDevice from "../register-device/RegisterDevice";
 import AccountPage from "./account/AccountPage";
 
@@ -42,7 +43,21 @@ export default class Dashboard extends Component {
   renderDetail() {
     return (
       <div className="chips-container">
-        <EarthieDetail earthie={this.state.selectedEarthie} />
+        <EarthieDetail
+          earthie={this.state.selectedEarthie}
+          macAddress={this.props.location}
+        />
+      </div>
+    );
+  }
+
+  renderEarthieSettings() {
+    return (
+      <div className="chips-container">
+        <EarthieSettings
+          earthie={this.state.selectedEarthie}
+          macAddress={this.props.location}
+        />
       </div>
     );
   }
@@ -125,8 +140,13 @@ export default class Dashboard extends Component {
               />
               <Route path="/api/register-chip" component={RegisterDevice} />
               <Route
+                exact
                 path="/earthie/:macAddress"
                 render={() => this.renderDetail()}
+              />
+              <Route
+                path="/earthie/:macAddress/settings"
+                component={EarthieSettings}
               />
             </Content>
           </Layout>

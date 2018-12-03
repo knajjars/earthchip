@@ -45,10 +45,6 @@ export default class ChangeEmail extends Component {
       });
   };
 
-  componentDidMount = () => {
-    console.log(this.props);
-  };
-
   handleFocus = e => {
     this.setState({
       themes: {

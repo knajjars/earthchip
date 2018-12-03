@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Upload, Button, Icon, Spin } from "antd";
-import { Select } from "antd";
+import { Upload, Button, Icon, Spin, Select } from "antd";
 import NotificationMessage from "../../utils/NotificationMessage";
 import api from "../../../api/registerDevice";
 
