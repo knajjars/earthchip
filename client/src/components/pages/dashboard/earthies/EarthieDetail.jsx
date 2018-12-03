@@ -17,11 +17,14 @@ export default class EarthieDetail extends Component {
   }
   componentDidMount() {
     if (!this.state.earthie) {
-      api.getOneEarthie(this.state.macAddress).then(res => {
-        this.setState({
-          earthie: res.data
-        }).catch(err => console.log(err));
-      });
+      api
+        .getOneEarthie(this.state.macAddress)
+        .then(res => {
+          this.setState({
+            earthie: res.data
+          });
+        })
+        .catch(err => console.log(err));
     }
   }
 

@@ -177,7 +177,11 @@ export default class EarthieSettings extends Component {
               </div>
 
               <div className="form-field">
-                <button onClick={this.handleEdit} className="button-form">
+                <button
+                  style={{ margin: 5 }}
+                  onClick={this.handleEdit}
+                  className="button-form"
+                >
                   {uploading ? (
                     <div>
                       <Spin indicator={antIcon} />
@@ -187,6 +191,9 @@ export default class EarthieSettings extends Component {
                     "Update"
                   )}
                 </button>
+                <Button type="danger" size="large">
+                  Danger zone
+                </Button>
               </div>
             </div>
           </div>
