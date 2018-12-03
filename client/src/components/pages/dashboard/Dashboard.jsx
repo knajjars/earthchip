@@ -69,7 +69,6 @@ export default class Dashboard extends Component {
   }
   render() {
     let { pathname } = this.props.location;
-    console.log();
     let removeSider =
       pathname.includes("earthie") && window.innerWidth < 400 ? "hidden" : "";
     let removeSiderMargin =

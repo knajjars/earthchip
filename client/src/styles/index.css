@@ -20607,6 +20607,21 @@ body {
       @media screen and (max-width: 690px) {
         .form-container .form-component .form-field {
           min-width: 95vw; } }
+    .form-container .form-component .buttons-delete-earthie-settings {
+      color: #f0f2f5; }
+      .form-container .form-component .buttons-delete-earthie-settings .btns {
+        margin: 3px; }
+    .form-container .form-component .buttons-settings-chip {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .form-container .form-component .buttons-settings-chip .delete-btn {
+        margin: 0;
+        color: lightgrey;
+        padding: 5px; }
+        .form-container .form-component .buttons-settings-chip .delete-btn:hover {
+          color: white;
+          cursor: pointer; }
     .form-container .form-component .form-field-col6 {
       display: flex;
       justify-content: center;

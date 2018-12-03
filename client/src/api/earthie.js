@@ -58,5 +58,17 @@ export default {
         return res;
       })
       .catch(errHandler);
+  },
+
+  deleteEarthie(macAddress) {
+    return service
+      .delete(`/delete/${macAddress}`)
+      .then(res => {
+        if (res.status === 200) {
+          JSON.stringify(res.data);
+        }
+        return res;
+      })
+      .catch(errHandler);
   }
 };

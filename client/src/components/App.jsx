@@ -6,20 +6,13 @@ import Signup from "./pages/auth/Signup";
 import NavBar from "./pages/navbar/NavBar";
 import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
+import RegisterDevice from "./pages/register-device/RegisterDevice";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      search: ""
-    };
+    this.state = {};
   }
-
-  handleRecieve = search => {
-    this.setState({
-      search
-    });
-  };
 
   render() {
     return (
@@ -32,22 +25,16 @@ class App extends Component {
 
         <div className="body">
           <Switch>
-            <Route
-              path="/signup"
-              render={props => (
-                <Signup {...props} recieveSearch={this.handleRecieve} />
-              )}
-            />
+            <Route path="/signup" render={props => <Signup {...props} />} />
             <Route path="/login" component={Login} />
             {!apiAuth.isLoggedIn() && <Route path="/" exact component={Home} />}
             {!apiAuth.isLoggedIn() && (
               <Route
                 path="/api/register-chip/"
-                render={props => (
-                  <Login {...props} recieveSearch={this.handleRecieve} />
-                )}
+                render={props => <Login {...props} />}
               />
             )}
+            <Route path="/api/register-chip/" component={RegisterDevice} />
             <Route path="/" component={Dashboard} />
             <Route render={() => <h2>404</h2>} />
           </Switch>

@@ -37,8 +37,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Set the public folder to "~/client/build/"
-// Example: http://localhost:5000/favicon.ico => Display "~/client/build/favicon.ico"
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 // Enable authentication using session + passport
@@ -59,6 +57,7 @@ app.use("/api/data-earthchip", require("./routes/earthies/data-earthie"));
 app.use("/api/list-earthies", require("./routes/earthies/list-earthies"));
 app.use("/api/get-earthie", require("./routes/earthies/get-earthie"));
 app.use("/api/edit-earthie", require("./routes/earthies/edit-earthie"));
+app.use("/api/delete", require("./routes/earthies/delete-earthie"));
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use("/api/*", (req, res, next) => {

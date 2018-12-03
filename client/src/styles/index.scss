@@ -378,6 +378,27 @@ body {
         min-width: 95vw;
       }
     }
+    .buttons-delete-earthie-settings {
+      color: $bg;
+      .btns {
+        margin: 3px;
+      }
+    }
+
+    .buttons-settings-chip {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .delete-btn {
+        margin: 0;
+        color: lightgrey;
+        padding: 5px;
+        &:hover {
+          color: white;
+          cursor: pointer;
+        }
+      }
+    }
     .form-field-col6 {
       display: flex;
       justify-content: center;
