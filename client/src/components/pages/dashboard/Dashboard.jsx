@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Layout, Menu, Icon } from "antd";
+import { Layout, Menu, Icon, Switch } from "antd";
 import { NavLink, Route, Link } from "react-router-dom";
 import apiAuth from "../../../api/auth";
 import EarthieList from "./earthies/EarthieList";
 import EarthieDetail from "./earthies/EarthieDetail";
-import RegisterDevice from "../register-device/RegisterDevice";
 import AccountPage from "./account/AccountPage";
 
 import ChangePassword from "./account/ChangePassword";
@@ -55,10 +54,19 @@ export default class Dashboard extends Component {
     );
   }
   render() {
+    let { pathname } = this.props.location;
+    console.log();
+    let removeSider =
+      pathname.includes("earthie") && window.innerWidth < 400 ? "hidden" : "";
+    let removeSiderMargin =
+      pathname.includes("earthie") && window.innerWidth < 400
+        ? "margin-zero"
+        : "";
     return (
       <div>
         <Layout style={{ minHeight: "100vh" }}>
           <Sider
+            className={removeSider}
             collapsed
             style={{
               overflow: "auto",
@@ -92,12 +100,7 @@ export default class Dashboard extends Component {
                   <span>Account</span>
                 </Link>
               </Menu.Item>
-              <Menu.Item key="/api/register-chip">
-                <Link to="/api/register-chip">
-                  <Icon type="form" />
-                  <span>Register</span>
-                </Link>
-              </Menu.Item>
+
               <Menu.Item key="/logout">
                 <NavLink onClick={this.handleLogoutClick} to="/">
                   <Icon type="file" />
@@ -107,12 +110,9 @@ export default class Dashboard extends Component {
             </Menu>
           </Sider>
           <Layout>
-            <Content
-              style={{ margin: "0 0 0 80px" }}
-              className="dash-detail-container"
-            >
+            <Content className={"sider-margin-correction " + removeSiderMargin}>
               <Route exact path="/" render={() => this.renderContent()} />
-              <div className=".account-page">
+              <div className="account-page">
                 <Route path="/account" component={AccountPage} />
                 <Route path="/account/eml" component={ChangeEmail} />
                 <Route path="/account/pwd" component={ChangePassword} />
@@ -123,7 +123,6 @@ export default class Dashboard extends Component {
                 path="/notification"
                 render={() => this.renderAlerts()}
               />
-              <Route path="/api/register-chip" component={RegisterDevice} />
               <Route
                 path="/earthie/:macAddress"
                 render={() => this.renderDetail()}

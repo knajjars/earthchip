@@ -47,6 +47,17 @@ body {
   font-family: MoonRegular;
 }
 
+.hidden {
+  display: none;
+}
+
+.sider-margin-correction {
+  margin: 0 0 0 80px;
+}
+.margin-zero {
+  margin: 0;
+}
+
 .sidenav {
   background-color: $bg;
   height: 100%;
@@ -162,6 +173,7 @@ body {
 
 //earthie styling
 .chips-container {
+  // width: 1rem;
   .earthies-list {
     display: flex;
     flex-wrap: wrap;
@@ -169,7 +181,28 @@ body {
     align-items: center;
     min-height: 100vh;
     .earthie-item {
-      margin: 30px;
+      margin: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      .ant-card-cover {
+        height: 400px;
+        // width: 400px;
+        img {
+          width: 350px;
+          height: 400px;
+          object-fit: cover;
+          @media only screen and (max-width: 380px) {
+            width: 14rem;
+          }
+        }
+      }
+
+      // object-fit: cover;
+      @media only screen and (max-width: 380px) {
+        height: auto;
+        margin: 2rem 0.4rem;
+      }
     }
   }
   .no-device-message {
@@ -202,7 +235,7 @@ body {
       padding: 10px;
       display: flex;
       justify-content: space-between;
-      width: 100%;
+      width: 90%;
       align-items: center;
       .settings-button {
         color: $first !important;
@@ -312,6 +345,7 @@ body {
         background-color: $second;
         color: $bg;
         border: none;
+
         &:hover {
           cursor: pointer;
           background-color: $alternative;
@@ -342,9 +376,106 @@ body {
 .account-page {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  align-items: baseline;
+  @media only screen and (max-width: 380px) {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+  .account-buttons {
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+  }
+
+  background-color: $bg;
+  margin: 30px;
+  .form-container {
+    background-color: transparent;
+    @media only screen and (max-width: 380px) {
+      height: 100vh;
+    }
+    .form-buttons {
+      display: flex;
+
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+
+      .button-form {
+        padding: 10px 20px;
+        margin: 10px 0;
+        border-radius: 10px;
+        font-size: 1.5rem;
+        width: 17rem;
+        font-family: MoonBold;
+        background-color: $second;
+        color: $bg;
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media only screen and (max-width: 380px) {
+          width: 14rem;
+          font-size: 1.2rem;
+        }
+        &:hover {
+          cursor: pointer;
+          background-color: $alternative;
+        }
+      }
+    }
+
+    .form-component {
+      width: 70%;
+      a {
+        @media only screen and (min-width: 380px) {
+          display: none;
+        }
+      }
+      .form-field {
+        min-width: 400px;
+        width: 70%;
+        .button-form {
+          padding: 10px 20px;
+          margin: 10px 0;
+          border-radius: 10px;
+          font-size: 1.5rem;
+          width: 17rem;
+          font-family: MoonBold;
+          background-color: $second;
+          color: $bg;
+          border: none;
+          @media only screen and (max-width: 380px) {
+            width: 14rem;
+            font-size: 1.2rem;
+          }
+          &:hover {
+            cursor: pointer;
+            background-color: $alternative;
+          }
+        }
+        @media only screen and (max-width: 380px) {
+          min-width: 0px;
+          width: 14rem;
+        }
+      }
+    }
+  }
 
   div {
-    width: 50%;
+    // width: 50%;
+
+    .image {
+      margin: 3rem 0;
+      img {
+        width: 3rem;
+        @media only screen and (max-width: 380px) {
+        }
+      }
+    }
   }
 }
 
@@ -383,6 +514,9 @@ body {
       font-size: 3rem;
       font-weight: bolder;
       color: $bg;
+      @media only screen and (max-width: 370px) {
+        font-size: 2.2rem;
+      }
     }
 
     .actions {

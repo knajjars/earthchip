@@ -21,7 +21,7 @@ export default class EarthieDetail extends Component {
         <div className="earthie-details">
           <div className="earthie-details-buttons">
             <Link to="/">
-              <Icon type="arrow-left" className="button-earthie-details" />
+              <Icon type="left-circle" className="button-earthie-details" />
             </Link>
             <Link
               to={`/earthie/${this.props.earthie.macAddress}/settings`}

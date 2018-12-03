@@ -103,12 +103,12 @@ export default class Earthie extends React.Component {
         onClick={e => this.props.onEarthieClick(e, this.props.earthie)}
         hoverable
         className="earthie-item"
-        style={{ width: 300 }}
+        // style={{ width: 300 }}
         cover={
           <img
             alt={this.props.earthie.plantName}
             src={this.props.earthie.imageURL}
-            style={{ width: "100%", height: 350, objectFit: "cover" }}
+            // style={{ width: "100%", height: 350, objectFit: "cover" }}
           />
         }
       >
