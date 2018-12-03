@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Icon } from "antd";
 import api from "../../../api/auth";
 import NotificationMessage from "../../utils/NotificationMessage";
-import { Link, Route } from "react-router-dom";
-import SignUp from "./Signup";
+import { Link } from "react-router-dom";
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -74,7 +74,7 @@ class Login extends Component {
 
   render() {
     let style = { fontSize: "22px" };
-    let { pathname, search } = this.props.history.location;
+
     return (
       <div className="form-container">
         <div>

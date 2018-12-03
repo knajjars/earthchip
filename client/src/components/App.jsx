@@ -1,29 +1,11 @@
 import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import apiAuth from "../api/auth";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import NavBar from "./pages/navbar/NavBar";
 import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
-
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      apiAuth.isLoggedIn === true ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{
-            pathname: props.path,
-            state: { from: props.location }
-          }}
-        />
-      )
-    }
-  />
-);
 
 class App extends Component {
   constructor(props) {

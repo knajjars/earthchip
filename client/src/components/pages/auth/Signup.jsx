@@ -78,7 +78,7 @@ export default class Signup extends Component {
 
   render() {
     let style = { fontSize: "22px" };
-    let { pathname, search } = this.props.history.location;
+
     return (
       <div className="form-container">
         <div>
