@@ -13,7 +13,6 @@ export default class EarthieSettings extends Component {
     super(props);
     this.state = {
       uploading: false,
-      changed: false,
       macAddress: this.props.location.pathname
         .replace("/earthie/", "")
         .replace("/settings", ""),
@@ -48,7 +47,8 @@ export default class EarthieSettings extends Component {
     formData.append("wateringType", wateringType);
 
     this.setState({
-      uploading: true
+      uploading: true,
+      deleteOpen: false
     });
 
     api
@@ -56,8 +56,7 @@ export default class EarthieSettings extends Component {
       .then(res => {
         if (res.status === 200) {
           this.setState({
-            uploading: false,
-            changed: true
+            uploading: false
           });
           NotificationMessage({
             type: "success",
@@ -89,6 +88,37 @@ export default class EarthieSettings extends Component {
     this.setState({
       wateringType: val
     });
+  };
+
+  handleOpenDelete = () => {
+    this.setState({
+      deleteOpen: !this.state.deleteOpen
+    });
+  };
+
+  handleDelete = () => {
+    api
+      .deleteEarthie(this.state.macAddress)
+      .then(res => {
+        if (res.status === 200) {
+          NotificationMessage({
+            type: "success",
+            message: `Don't leave us :(`,
+            description: res.data.message
+          });
+          this.props.history.push("/");
+        }
+      })
+      .catch(err => {
+        this.setState({
+          uploading: false
+        });
+        NotificationMessage({
+          type: "error",
+          message: "Something went wrong.",
+          description: err
+        });
+      });
   };
 
   renderEdit = () => {
@@ -176,8 +206,12 @@ export default class EarthieSettings extends Component {
                 </div>
               </div>
 
-              <div className="form-field">
-                <button onClick={this.handleEdit} className="button-form">
+              <div className="form-field buttons-settings-chip">
+                <button
+                  style={{ margin: 5 }}
+                  onClick={this.handleEdit}
+                  className="button-form"
+                >
                   {uploading ? (
                     <div>
                       <Spin indicator={antIcon} />
@@ -187,7 +221,30 @@ export default class EarthieSettings extends Component {
                     "Update"
                   )}
                 </button>
+                <p className="delete-btn" onClick={this.handleOpenDelete}>
+                  {" "}
+                  Delete
+                </p>
               </div>
+              {this.state.deleteOpen && (
+                <div className="buttons-delete-earthie-settings">
+                  <p>Are you sure you want to delete?</p>
+                  <Button
+                    className="btns"
+                    type="danger"
+                    onClick={this.handleDelete}
+                  >
+                    Yes, delete
+                  </Button>
+                  <Button
+                    className="btns"
+                    ghost
+                    onClick={this.handleOpenDelete}
+                  >
+                    No
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>

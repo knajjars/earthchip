@@ -20,7 +20,6 @@ export default class EarthieDetail extends Component {
       api
         .getOneEarthie(this.state.macAddress)
         .then(res => {
-          console.log(res);
           this.setState({
             earthie: res.data
           });

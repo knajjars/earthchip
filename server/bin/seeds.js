@@ -15,42 +15,35 @@ function randomDate(start, end) {
 
 let earthies = [
   {
-    macAddress: "06-00-00-00-00-01",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-01",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-01",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-01",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-01",
-    environmentTemp: Math.random(),
-    environmentHumidity: Math.random(),
-    soilMoisture: Math.random(),
-    time: randomDate(new Date(2018, 11, 29), new Date())
-  },
-  {
-    macAddress: "06-00-00-00-00-01",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
@@ -92,77 +85,126 @@ let earthies = [
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-12",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-12",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-12",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-12",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-12",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-12",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-15",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-15",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-15",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-15",
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
     time: randomDate(new Date(2018, 11, 29), new Date())
   },
   {
-    macAddress: "06-00-00-00-00-15",
+    macAddress: "06-00-00-00-00-05",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-05",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-05",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-05",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-05",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-05",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-05",
+    environmentTemp: Math.random(),
+    environmentHumidity: Math.random(),
+    soilMoisture: Math.random(),
+    time: randomDate(new Date(2018, 11, 29), new Date())
+  },
+  {
+    macAddress: "06-00-00-00-00-05",
     environmentTemp: Math.random(),
     environmentHumidity: Math.random(),
     soilMoisture: Math.random(),
