@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Upload, Button, Icon, Spin, Select } from "antd";
 import NotificationMessage from "../../utils/NotificationMessage";
 import api from "../../../api/registerDevice";
-
+import { Link } from "react-router-dom";
 const Option = Select.Option;
 const antIcon = (
   <Icon type="loading" style={{ fontSize: 18, paddingLeft: "3px" }} spin />
@@ -105,6 +105,18 @@ export default class RegisterDevice extends Component {
     return (
       <div>
         <div className="form-container" style={{ minHeight: "100vh" }}>
+          <Link to="/">
+            <Icon
+              type="home"
+              theme="filled"
+              style={{
+                fontSize: "30px",
+                top: "10px",
+                left: "10px",
+                position: "absolute"
+              }}
+            />
+          </Link>
           <h1 className="title">Register your device.</h1>
           <h3 className="subtitle">
             Please tell us more about your new{" "}

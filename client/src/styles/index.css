@@ -20458,7 +20458,10 @@ body {
         width: 350px;
         height: 400px;
         object-fit: cover; }
-        @media only screen and (max-width: 380px) {
+        @media only screen and (max-width: 440px) {
+          .chips-container .earthies-list .earthie-item .ant-card-cover img {
+            width: 17rem; } }
+        @media only screen and (max-width: 330px) {
           .chips-container .earthies-list .earthie-item .ant-card-cover img {
             width: 14rem; } }
     @media only screen and (max-width: 380px) {

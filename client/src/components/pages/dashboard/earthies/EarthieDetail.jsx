@@ -36,6 +36,13 @@ export default class EarthieDetail extends Component {
           <h1>Device might be offline :(</h1>
           <p>Please check that the Earthie is connected to the Wifi.</p>
           <Spin size="large" />
+          <Link to="/">
+            <Icon
+              type="left-circle"
+              className="button-earthie-details"
+              style={{ fontSize: "50px", margin: "20px 0 " }}
+            />
+          </Link>
         </div>
       );
     } else {
