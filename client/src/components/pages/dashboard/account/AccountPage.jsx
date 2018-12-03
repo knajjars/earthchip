@@ -2,7 +2,7 @@ import React from "react";
 
 import { Icon } from "antd";
 import apiAuth from "../../../../api/auth";
-import { NavLink, Route, Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import ChangePassword from "./ChangePassword";
 import ChangeEmail from "./ChangeEmail";
 export default function AccountPage() {

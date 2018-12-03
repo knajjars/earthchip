@@ -6,7 +6,6 @@ import Signup from "./pages/auth/Signup";
 import NavBar from "./pages/navbar/NavBar";
 import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
-import RegisterDevice from "./pages/register-device/RegisterDevice";
 
 class App extends Component {
   constructor(props) {

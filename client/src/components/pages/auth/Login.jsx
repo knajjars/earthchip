@@ -28,8 +28,6 @@ class Login extends Component {
   };
 
   handleSubmit = e => {
-    let { pathname, search } = this.props.history.location;
-
     e.preventDefault();
     api
       .login(this.state.email, this.state.password)

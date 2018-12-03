@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Layout, Menu, Icon, Switch } from "antd";
+import { Layout, Menu, Icon } from "antd";
 import { NavLink, Route, Link } from "react-router-dom";
 import apiAuth from "../../../api/auth";
 import EarthieList from "./earthies/EarthieList";
 import EarthieDetail from "./earthies/EarthieDetail";
 import EarthieSettings from "./earthies/EarthieSettings";
-import RegisterDevice from "../register-device/RegisterDevice";
+
 import AccountPage from "./account/AccountPage";
 
 const { Content, Sider } = Layout;
