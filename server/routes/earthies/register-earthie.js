@@ -16,6 +16,8 @@ router.post("/", isLoggedIn, upload, (req, res, next) => {
   const imageURL = req.file
     ? req.file.location
     : "https://earthchip.sfo2.digitaloceanspaces.com/defaultimage.png";
+
+  const imageKey = req.file ? req.file.key : null;
   if (plantName === "") {
     res.status(500).json({ message: "Please define a name Earthie device." });
     return;
@@ -40,6 +42,7 @@ router.post("/", isLoggedIn, upload, (req, res, next) => {
         macAddress,
         plantName,
         imageURL,
+        imageKey,
         wateringType
       }).then(chip => {
         res.json({

@@ -20482,6 +20482,17 @@ body {
     .chips-container .no-device-message h3 {
       width: 250px; } }
 
+.chips-container .offline-device-details {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
+  .chips-container .offline-device-details h1 {
+    font-family: MoonBold; }
+
 .chips-container .earthie-details {
   display: flex;
   flex-direction: column;
@@ -20602,6 +20613,7 @@ body {
       align-items: center; }
 
 .account-page {
+  margin: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

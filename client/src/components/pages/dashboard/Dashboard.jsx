@@ -4,10 +4,10 @@ import { NavLink, Route, Link } from "react-router-dom";
 import apiAuth from "../../../api/auth";
 import EarthieList from "./earthies/EarthieList";
 import EarthieDetail from "./earthies/EarthieDetail";
+import EarthieSettings from "./earthies/EarthieSettings";
+import RegisterDevice from "../register-device/RegisterDevice";
 import AccountPage from "./account/AccountPage";
 
-import ChangePassword from "./account/ChangePassword";
-import ChangeEmail from "./account/ChangeEmail";
 const { Content, Sider } = Layout;
 export default class Dashboard extends Component {
   state = {
@@ -41,7 +41,21 @@ export default class Dashboard extends Component {
   renderDetail() {
     return (
       <div className="chips-container">
-        <EarthieDetail earthie={this.state.selectedEarthie} />
+        <EarthieDetail
+          earthie={this.state.selectedEarthie}
+          macAddress={this.props.location}
+        />
+      </div>
+    );
+  }
+
+  renderEarthieSettings() {
+    return (
+      <div className="chips-container">
+        <EarthieSettings
+          earthie={this.state.selectedEarthie}
+          macAddress={this.props.location}
+        />
       </div>
     );
   }
@@ -112,11 +126,8 @@ export default class Dashboard extends Component {
           <Layout>
             <Content className={"sider-margin-correction " + removeSiderMargin}>
               <Route exact path="/" render={() => this.renderContent()} />
-              <div className="account-page">
-                <Route path="/account" component={AccountPage} />
-                <Route path="/account/eml" component={ChangeEmail} />
-                <Route path="/account/pwd" component={ChangePassword} />
-              </div>
+
+              <Route path="/account" component={AccountPage} />
 
               <Route
                 exact
@@ -124,8 +135,13 @@ export default class Dashboard extends Component {
                 render={() => this.renderAlerts()}
               />
               <Route
+                exact
                 path="/earthie/:macAddress"
                 render={() => this.renderDetail()}
+              />
+              <Route
+                path="/earthie/:macAddress/settings"
+                component={EarthieSettings}
               />
             </Content>
           </Layout>

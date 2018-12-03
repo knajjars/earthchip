@@ -20,10 +20,6 @@ class Login extends Component {
         : null
     };
   }
-  componentDidMount = () => {
-    console.log(this.state.search);
-    console.log(this.props);
-  };
 
   handleChange = e => {
     this.setState({
@@ -33,7 +29,6 @@ class Login extends Component {
 
   handleSubmit = e => {
     let { pathname, search } = this.props.history.location;
-    console.log(pathname + search, this.props);
 
     e.preventDefault();
     api

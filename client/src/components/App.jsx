@@ -49,10 +49,6 @@ class App extends Component {
                 )}
               />
             )}
-            <Route path="/api/register-chip" component={RegisterDevice} />
-
-            {/* <PrivateRoute path={this.state.search} component={RegisterDevice} /> */}
-
             <Route path="/" component={Dashboard} />
             <Route render={() => <h2>404</h2>} />
           </Switch>
