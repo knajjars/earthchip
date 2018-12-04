@@ -12,11 +12,12 @@ export default class Clock extends Component {
       four: false,
       class: ""
     };
+    this.intervalID = null;
     this.clicked = this.clicked.bind(this);
   }
 
   componentDidMount() {
-    setInterval(() => {
+    this.intervalID = setInterval(() => {
       if (this.state.one === true) {
         this.setState({
           time: moment().format("LTS")
@@ -70,6 +71,10 @@ export default class Clock extends Component {
         });
       }, 200);
     }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
   }
   render() {
     return (
