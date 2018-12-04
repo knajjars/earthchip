@@ -20463,6 +20463,9 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px; }
+    @media only screen and (max-width: 730px) {
+      .dashboard-main .salute {
+        flex-direction: column; } }
     .dashboard-main .salute h2 {
       padding-right: 15px; }
 
@@ -20473,9 +20476,6 @@ body {
   align-items: center;
   min-height: 100vh;
   scroll-snap-type: mandatory; }
-  @media only screen and (max-width: 1300px) {
-    .chips-container .earthies-list {
-      margin-top: 50px; } }
   .chips-container .earthies-list .earthie-item {
     margin: 2rem;
     display: flex;
