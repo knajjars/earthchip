@@ -18,11 +18,18 @@ export default class SideNav extends React.Component {
   };
 
   render() {
+    let title = (
+      <div className="side-nav-title">
+        <img alt="Logo" src="/images/micro_temp.png" height="40px" />
+        <h4>EarthChip</h4>
+      </div>
+    );
     return (
       <div>
         <Icon type="bars" className="menu-icon" onClick={this.showDrawer} />
+
         <Drawer
-          title="EarthChip"
+          title={title}
           placement={this.state.placement}
           closable={false}
           onClose={this.onClose}

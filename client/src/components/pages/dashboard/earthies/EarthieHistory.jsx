@@ -1,6 +1,55 @@
 import React, { Component } from "react";
 import api from "../../../../api/earthie";
 import { Divider, Icon, Table } from "antd";
+const data = [
+  {
+    id: 1,
+    col1: "abc",
+    col2: "def",
+    col3: "ghi"
+  },
+  {
+    id: 2,
+    col1: "abc",
+    col2: "def",
+    col3: "ghi"
+  },
+  {
+    id: 3,
+    col1: "abc",
+    col2: "def",
+    col3: "ghi"
+  }
+];
+
+const columns = [
+  {
+    title: "col1",
+    dataIndex: "col1",
+    key: "col1",
+    width: 100
+  },
+  {
+    title: "col2",
+    dataIndex: "col2",
+    key: "col2",
+    width: 100
+  },
+  {
+    title: "col3",
+    dataIndex: "col3",
+    key: "col3",
+    width: 100
+  },
+  {
+    title: "action",
+    key: "action",
+    width: 100,
+    fixed: "right",
+    render: () => <a>click</a>,
+    className: "action"
+  }
+];
 
 export default class EarthieHistory extends Component {
   constructor(props) {
@@ -33,21 +82,26 @@ export default class EarthieHistory extends Component {
       {
         title: "Date",
         dataIndex: "date",
+        width: "auto",
+        fixed: "left",
         sorter: (a, b) => new Date(a.date) - new Date(b.date)
       },
       {
         title: "Moisture (%)",
         dataIndex: "moisture",
+        width: 150,
         sorter: (a, b) => a.moisture - b.moisture
       },
       {
         title: "Temperature (°C)",
         dataIndex: "temperature",
+        width: 150,
         sorter: (a, b) => a.temperature - b.temperature
       },
       {
         title: "Humidity (%)",
         dataIndex: "humidity",
+        width: 150,
         sorter: (a, b) => a.humidity - b.humidity
       }
     ];
@@ -57,11 +111,23 @@ export default class EarthieHistory extends Component {
           <Icon type="calendar" theme="filled" /> Recent History
         </h3>
         <Divider />
-        <Table
+        {/* <Table
           pagination={false}
           columns={columns}
           dataSource={this.state.historicData}
-        />
+          style={{ width: 400 }}
+          scroll={{ x: 400, y: true }}
+        /> */}
+
+        <div style={{ width: 320 }}>
+          <Table
+            rowKey={r => r.id}
+            pagination={false}
+            columns={columns}
+            dataSource={this.state.historicData}
+            scroll={{ x: "150%" }}
+          />
+        </div>
       </div>
     );
   }

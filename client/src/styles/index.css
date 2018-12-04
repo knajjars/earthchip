@@ -20362,6 +20362,13 @@ body {
   width: 75%;
   position: fixed; }
 
+.side-nav-title {
+  display: flex;
+  align-items: center; }
+  .side-nav-title h4 {
+    margin: 0;
+    padding: 0 5px; }
+
 .nav-bar-container {
   display: flex;
   flex-direction: row;
@@ -20461,7 +20468,7 @@ body {
         @media only screen and (max-width: 440px) {
           .chips-container .earthies-list .earthie-item .ant-card-cover img {
             width: 17rem; } }
-        @media only screen and (max-width: 330px) {
+        @media only screen and (max-width: 360px) {
           .chips-container .earthies-list .earthie-item .ant-card-cover img {
             width: 14rem; } }
     @media only screen and (max-width: 380px) {
@@ -20658,7 +20665,7 @@ body {
   align-items: baseline;
   background-color: #f0f2f5;
   margin: 30px; }
-  @media only screen and (max-width: 380px) {
+  @media only screen and (max-width: 770px) {
     .account-page {
       align-items: center;
       justify-content: center;
@@ -20668,7 +20675,7 @@ body {
     justify-content: center; }
   .account-page .form-container {
     background-color: transparent; }
-    @media only screen and (max-width: 380px) {
+    @media only screen and (max-width: 770px) {
       .account-page .form-container {
         height: 100vh; } }
     .account-page .form-container .form-buttons {
@@ -20690,7 +20697,7 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center; }
-        @media only screen and (max-width: 380px) {
+        @media only screen and (max-width: 770px) {
           .account-page .form-container .form-buttons .button-form {
             width: 14rem;
             font-size: 1.2rem; } }
@@ -20699,7 +20706,7 @@ body {
           background-color: #7a5c4e; }
     .account-page .form-container .form-component {
       width: 70%; }
-      @media only screen and (min-width: 380px) {
+      @media only screen and (min-width: 770px) {
         .account-page .form-container .form-component a {
           display: none; } }
       .account-page .form-container .form-component .form-field {
@@ -20715,14 +20722,14 @@ body {
           background-color: #7b4b36;
           color: #f0f2f5;
           border: none; }
-          @media only screen and (max-width: 380px) {
+          @media only screen and (max-width: 770px) {
             .account-page .form-container .form-component .form-field .button-form {
               width: 14rem;
               font-size: 1.2rem; } }
           .account-page .form-container .form-component .form-field .button-form:hover {
             cursor: pointer;
             background-color: #7a5c4e; }
-        @media only screen and (max-width: 380px) {
+        @media only screen and (max-width: 770px) {
           .account-page .form-container .form-component .form-field {
             min-width: 0px;
             width: 14rem; } }
@@ -20730,6 +20737,9 @@ body {
     margin: 3rem 0; }
     .account-page div .image img {
       width: 3rem; }
+
+.ant-table td {
+  white-space: nowrap; }
 
 @media only screen and (max-width: 730px) {
   .ant-layout-header {
@@ -20760,9 +20770,12 @@ body {
       font-size: 3rem;
       font-weight: bolder;
       color: #f0f2f5; }
-      @media only screen and (max-width: 370px) {
+      @media only screen and (max-width: 400px) {
         .home-page .box h1 {
           font-size: 2.2rem; } }
+      @media only screen and (max-width: 340px) {
+        .home-page .box h1 {
+          font-size: 1.8rem; } }
     .home-page .box .actions .button-form {
       padding: 10px 20px;
       border-radius: 10px;
@@ -20774,9 +20787,17 @@ body {
       .home-page .box .actions .button-form:hover {
         cursor: pointer;
         background-color: #7a5c4e; }
+      @media only screen and (max-width: 340px) {
+        .home-page .box .actions .button-form {
+          padding: 7px 20px;
+          font-size: 1.3em; } }
     .home-page .box .description p {
       font-size: 1.3rem;
       color: #f0f2f5; }
+      @media only screen and (max-width: 340px) {
+        .home-page .box .description p {
+          font-size: 1.1rem;
+          padding: 0; } }
     @media only screen and (max-width: 730px) {
       .home-page .box {
         padding: 0 20px; } }
