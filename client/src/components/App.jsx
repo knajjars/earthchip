@@ -27,9 +27,8 @@ class App extends Component {
 
         <div className="body">
           <Switch>
-            <LoggedRoute path="/login" component={Login} />
-            <LoggedRoute path="/signup" component={Signup} />
-
+            <LoggedRoute exact path="/login" component={Login} />
+            <LoggedRoute exact path="/signup" component={Signup} />
             {!apiAuth.isLoggedIn() && <Route path="/" exact component={Home} />}
             {!apiAuth.isLoggedIn() && (
               <Route
@@ -37,9 +36,9 @@ class App extends Component {
                 render={props => <Login {...props} />}
               />
             )}
+            <Route path="/register-chip/" component={RegisterDevice} />
             <PrivateRoute path="/" component={Dashboard} />
             <PrivateRoute path="/account" component={Dashboard} />
-            <Route path="/register-chip/" component={RegisterDevice} />
             {/* <Route path="/" component={Dashboard} /> */}
             <Route render={() => <h2>404</h2>} />
           </Switch>
