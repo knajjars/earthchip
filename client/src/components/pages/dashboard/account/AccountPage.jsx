@@ -23,6 +23,11 @@ export default function AccountPage() {
               Change Password <Icon type="lock" />
             </button>
           </Link>
+          <Link to="/account/pwd">
+            <button type="submit" className="button-form">
+              Buy New Earthie <Icon type="appstore" />
+            </button>
+          </Link>
           <Link to="/">
             <button
               type="submit"
