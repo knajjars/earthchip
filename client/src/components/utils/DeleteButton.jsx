@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import api from "../../api/earthie";
-import { Button } from "antd";
+import { Button, Icon } from "antd";
 import NotificationMessage from "./NotificationMessage";
 import { Redirect } from "react-router-dom";
 export default class DeleteButton extends Component {
