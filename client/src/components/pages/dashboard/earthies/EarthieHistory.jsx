@@ -10,6 +10,7 @@ export default class EarthieHistory extends Component {
       historicData: []
     };
   }
+
   componentDidMount() {
     api
       .getHistoricData(this.props.earthie.macAddress)
@@ -69,7 +70,7 @@ export default class EarthieHistory extends Component {
             pagination={false}
             columns={columns}
             dataSource={this.state.historicData}
-            scroll={{ x: "150%" }}
+            // scroll={{ x: "150%" }}
           />
         </div>
       </div>

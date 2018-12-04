@@ -178,8 +178,27 @@ body {
     font-size: 2.5rem;
   }
 }
-
+.capitalize {
+  text-transform: capitalize;
+}
 //earthie styling
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .salute {
+    font-family: MoonBold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    h2 {
+      padding-right: 15px;
+    }
+  }
+}
 .chips-container {
   // width: 1rem;
   .earthies-list {
@@ -560,22 +579,29 @@ body {
   white-space: nowrap;
 }
 
-.perm-logo {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+.footer {
+  background: $icon;
+  width: 100%;
+  height: 60px;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  @media only screen and (max-width: 1300px) {
-    bottom: auto;
-    top: 10px;
-  }
-
-  img {
-    height: 68px;
+  .perm-logo {
+    color: white;
+    margin: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    img {
+      height: 40px;
+    }
+    p {
+      padding: 3px;
+      margin: 0;
+    }
   }
 }
+
 .earthie-history-table {
   width: 100%;
 }

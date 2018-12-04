@@ -5,6 +5,7 @@ import apiAuth from "../../../api/auth";
 import EarthieList from "./earthies/EarthieList";
 import EarthieDetail from "./earthies/EarthieDetail";
 import EarthieSettings from "./earthies/EarthieSettings";
+import Clock from "./clock/Clock";
 
 import AccountPage from "./account/AccountPage";
 
@@ -12,8 +13,24 @@ const { Content, Sider } = Layout;
 export default class Dashboard extends Component {
   state = {
     active: this.props.match.path,
-    selectedEarthie: null
+    selectedEarthie: null,
+    salute: null
   };
+
+  componentDidMount() {
+    let now = new Date();
+    let salute;
+    if (now.getHours() > 18) {
+      salute = "evening";
+    } else if (now.getHours() > 12) {
+      salute = "day";
+    } else {
+      salute = "morning";
+    }
+    this.setState({
+      salute: salute
+    });
+  }
 
   handleLogoutClick(e) {
     apiAuth.logout();
@@ -33,7 +50,16 @@ export default class Dashboard extends Component {
 
   renderContent() {
     return (
-      <div className="chips-container">
+      <div className="dashboard-main chips-container">
+        <div className="salute">
+          <h2>
+            Good {this.state.salute},{" "}
+            <span className="capitalize">
+              {JSON.parse(localStorage.user).name} it's
+            </span>
+          </h2>{" "}
+          <Clock />
+        </div>
         <EarthieList onEarthieClick={this.handleEarthieClick} />
       </div>
     );
@@ -142,10 +168,12 @@ export default class Dashboard extends Component {
                 path="/earthie/:macAddress/settings"
                 component={EarthieSettings}
               />
-
-              <div className="perm-logo">
-                <h4>Powered by EarthChip</h4>
-                <img src="/images/micro_temp.png" alt="Logo" />
+              <br />
+              <div className="footer">
+                <div className="perm-logo">
+                  <p>Powered by EarthChip</p>
+                  <img src="/images/micro_temp_inverted.png" alt="Logo" />
+                </div>
               </div>
             </Content>
           </Layout>

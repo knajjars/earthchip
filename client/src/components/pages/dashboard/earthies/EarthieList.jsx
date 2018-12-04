@@ -4,6 +4,7 @@ import { Icon } from "antd";
 import { Link } from "react-router-dom";
 
 import api from "../../../../api/earthie";
+
 export default class EarthieList extends Component {
   constructor(props) {
     super(props);

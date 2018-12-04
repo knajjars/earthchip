@@ -20448,6 +20448,24 @@ body {
     .brand-title {
       font-size: 2.5rem; } }
 
+.capitalize {
+  text-transform: capitalize; }
+
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .dashboard-main .salute {
+    font-family: MoonBold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px; }
+    .dashboard-main .salute h2 {
+      padding-right: 15px; }
+
 .chips-container .earthies-list {
   display: flex;
   flex-wrap: wrap;
@@ -20745,19 +20763,24 @@ body {
 .ant-table td {
   white-space: nowrap; }
 
-.perm-logo {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+.footer {
+  background: #a6c5b4;
+  width: 100%;
+  height: 60px;
   display: flex;
-  align-items: center;
-  justify-content: center; }
-  @media only screen and (max-width: 1300px) {
-    .perm-logo {
-      bottom: auto;
-      top: 10px; } }
-  .perm-logo img {
-    height: 68px; }
+  justify-content: flex-end;
+  align-items: center; }
+  .footer .perm-logo {
+    color: white;
+    margin: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; }
+    .footer .perm-logo img {
+      height: 40px; }
+    .footer .perm-logo p {
+      padding: 3px;
+      margin: 0; }
 
 .earthie-history-table {
   width: 100%; }
