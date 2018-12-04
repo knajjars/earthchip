@@ -7,6 +7,8 @@ import NavBar from "./pages/navbar/NavBar";
 import Home from "./pages/home/Home";
 import Dashboard from "./pages/dashboard/Dashboard";
 import RegisterDevice from "./pages/register-device/RegisterDevice";
+import PrivateRoute from "./utils/ProtecttedRoute";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -33,8 +35,10 @@ class App extends Component {
                 render={props => <Login {...props} />}
               />
             )}
+            <PrivateRoute path="/" component={Dashboard} />
+            <PrivateRoute path="/account" component={Dashboard} />
             <Route path="/register-chip/" component={RegisterDevice} />
-            <Route path="/" component={Dashboard} />
+            {/* <Route path="/" component={Dashboard} /> */}
             <Route render={() => <h2>404</h2>} />
           </Switch>
         </div>

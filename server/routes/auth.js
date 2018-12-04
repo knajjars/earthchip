@@ -23,17 +23,17 @@ router.post("/signup", (req, res, next) => {
     }
 
     //! To add later on
-    // let transporter = nodemailer.createTransport({
-    //   service: "Gmail",
-    //   auth: {
-    //     user: process.env.NODEMAIL_EMAIL,
-    //     pass: process.env.NODEMAIL_PASS
-    //   }
-    // });
-    // String.prototype.replaceAll = function(search, replacement) {
-    //   var target = this;
-    //   return target.replace(new RegExp(search, "g"), replacement);
-    // };
+    let transporter = nodemailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: process.env.NODEMAIL_EMAIL,
+        pass: process.env.NODEMAIL_PASS
+      }
+    });
+    String.prototype.replaceAll = function(search, replacement) {
+      var target = this;
+      return target.replace(new RegExp(search, "g"), replacement);
+    };
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);

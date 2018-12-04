@@ -12,7 +12,6 @@ export default class EarthieList extends Component {
       earthies: [],
       earthieData: []
     };
-    intervalId: null;
   }
 
   componentDidMount() {
