@@ -5,7 +5,7 @@ import apiAuth from "../../../../api/auth";
 import { Route, Link } from "react-router-dom";
 import ChangePassword from "./ChangePassword";
 import ChangeEmail from "./ChangeEmail";
-import BuyNewEarthie from "./BuyNewEarthie";
+
 export default function AccountPage() {
   function handleLogoutClick(e) {
     apiAuth.logout();
@@ -24,7 +24,7 @@ export default function AccountPage() {
               Change Password <Icon type="lock" />
             </button>
           </Link>
-          <StripeCheckout>
+          <StripeCheckout email="hello">
             <button type="submit" className="button-form">
               Buy New Earthie <Icon type="credit-card" />
             </button>
