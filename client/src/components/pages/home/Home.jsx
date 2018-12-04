@@ -14,7 +14,7 @@ export default function Home() {
           />{" "}
           Earthies
         </h3>
-        <h1>Cloud plant analytics</h1>
+        <h1>Cloud hosted plant analytics</h1>
         <div className="description">
           <p>
             More than just keeping track of your plants, we offer a secure
