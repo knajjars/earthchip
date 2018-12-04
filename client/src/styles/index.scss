@@ -352,7 +352,7 @@ body {
 .edit-earthie {
   .form-container {
     @media screen and (max-width: 900px) {
-      height: auto;
+      min-height: 100vh;
     }
   }
 }

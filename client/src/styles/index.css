@@ -20586,7 +20586,7 @@ body {
 
 @media screen and (max-width: 900px) {
   .edit-earthie .form-container {
-    height: auto; } }
+    min-height: 100vh; } }
 
 .bold {
   font-weight: bolder; }
