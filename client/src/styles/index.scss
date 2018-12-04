@@ -210,7 +210,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
     // @media only screen and (max-width: 1300px) {
     //   margin-top: 50px;
     // }
@@ -245,7 +245,7 @@ body {
     }
   }
   .no-device-message {
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -369,11 +369,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 90px);
+  min-height: calc(100vh - 60px);
   text-align: center;
   background-color: $first;
   .title {
     color: $bg;
+    @media screen and (max-width: 690px) {
+      font-size: 1.2rem;
+    }
   }
   .subtitle {
     color: $bg;

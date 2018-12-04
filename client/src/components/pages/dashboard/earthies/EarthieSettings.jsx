@@ -153,7 +153,7 @@ export default class EarthieSettings extends Component {
     } else {
       return (
         <div className="edit-earthie">
-          <div className="form-container" style={{ minHeight: "100vh" }}>
+          <div className="form-container">
             <div
               className="earthie-details-buttons"
               style={{

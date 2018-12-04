@@ -20474,7 +20474,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
   scroll-snap-type: mandatory; }
   .chips-container .earthies-list .earthie-item {
     margin: 2rem;
@@ -20499,7 +20499,7 @@ body {
         margin: 2rem 0.4rem; } }
 
 .chips-container .no-device-message {
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20599,11 +20599,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 90px);
+  min-height: calc(100vh - 60px);
   text-align: center;
   background-color: #4d946e; }
   .form-container .title {
     color: #f0f2f5; }
+    @media screen and (max-width: 690px) {
+      .form-container .title {
+        font-size: 1.2rem; } }
   .form-container .subtitle {
     color: #f0f2f5; }
   .form-container h2 {
