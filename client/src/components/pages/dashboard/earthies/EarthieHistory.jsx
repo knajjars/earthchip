@@ -7,13 +7,11 @@ export default class EarthieHistory extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      historicData: [],
-      isMobile: false
+      historicData: []
     };
   }
 
   componentDidMount() {
-    console.log(window.innerWidth);
     api
       .getHistoricData(this.props.earthie.macAddress)
       .then(res => {
@@ -30,15 +28,6 @@ export default class EarthieHistory extends Component {
         this.setState({ historicData: data, isLoading: false });
       })
       .catch(err => console.log(err));
-  }
-
-  updateDimensions() {
-    console.log("object");
-    if (window.innerWidth <= 730) {
-      this.setState({ isMobile: true });
-    } else {
-      this.setState({ isMobile: false });
-    }
   }
   render() {
     const columns = [
@@ -81,7 +70,6 @@ export default class EarthieHistory extends Component {
             pagination={false}
             columns={columns}
             dataSource={this.state.historicData}
-            scroll={this.state.isMobile ? { x: "150%" } : { x: false }}
           />
         </div>
       </div>

@@ -13,11 +13,22 @@ export default class EarthieDetail extends Component {
       earthie: this.props.earthie,
       macAddress: this.props.macAddress.pathname.includes("/earthie/")
         ? this.props.macAddress.pathname.replace("/earthie/", "")
-        : null
+        : null,
+      isMobile: false
     };
   }
 
+  updateDimensions() {
+    if (window.innerWidth <= 730) {
+      this.setState({ isMobile: true });
+    } else {
+      this.setState({ isMobile: false });
+    }
+  }
+
   componentDidMount() {
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions.bind(this));
     if (!this.state.earthie) {
       api
         .getOneEarthie(this.state.macAddress)
@@ -44,7 +55,7 @@ export default class EarthieDetail extends Component {
               style={{ fontSize: "50px", margin: "20px 0 " }}
             />
           </Link>
-          <DeleteButton macAddress={this.state.macAddress} />
+          <DeleteButton isDark={true} macAddress={this.state.macAddress} />
         </div>
       );
     } else {
@@ -127,9 +138,11 @@ export default class EarthieDetail extends Component {
                 <Divider />
                 <TimeLine earthie={this.state.earthie} />
               </div>
-              <div>
-                <EarthieHistory earthie={this.state.earthie} />
-              </div>
+              {!this.state.isMobile && (
+                <div>
+                  <EarthieHistory earthie={this.state.earthie} />
+                </div>
+              )}
             </div>
           </div>
         </div>
