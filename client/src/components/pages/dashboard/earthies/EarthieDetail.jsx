@@ -4,6 +4,7 @@ import { Spin, Icon, Divider } from "antd";
 import { Link } from "react-router-dom";
 import EarthieHistory from "./EarthieHistory";
 import api from "../../../../api/earthie";
+import DeleteButton from "../../../utils/DeleteButton";
 
 export default class EarthieDetail extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export default class EarthieDetail extends Component {
     };
   }
   componentDidMount() {
+    console.log(this.props);
     if (!this.state.earthie) {
       api
         .getOneEarthie(this.state.macAddress)
@@ -42,6 +44,7 @@ export default class EarthieDetail extends Component {
               style={{ fontSize: "50px", margin: "20px 0 " }}
             />
           </Link>
+          <DeleteButton macAddress={this.state.macAddress} />
         </div>
       );
     } else {

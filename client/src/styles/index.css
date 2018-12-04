@@ -20453,7 +20453,11 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; }
+  min-height: 100vh;
+  scroll-snap-type: mandatory; }
+  @media only screen and (max-width: 1300px) {
+    .chips-container .earthies-list {
+      margin-top: 50px; } }
   .chips-container .earthies-list .earthie-item {
     margin: 2rem;
     display: flex;
@@ -20740,6 +20744,23 @@ body {
 
 .ant-table td {
   white-space: nowrap; }
+
+.perm-logo {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  @media only screen and (max-width: 1300px) {
+    .perm-logo {
+      bottom: auto;
+      top: 10px; } }
+  .perm-logo img {
+    height: 68px; }
+
+.earthie-history-table {
+  width: 100%; }
 
 @media only screen and (max-width: 730px) {
   .ant-layout-header {

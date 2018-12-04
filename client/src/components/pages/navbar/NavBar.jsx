@@ -41,7 +41,7 @@ export default class NavBar extends Component {
               <img
                 alt="Logo"
                 src="/images/micro_temp_inverted.png"
-                height="40px"
+                height="55px"
               />
               <span>EarthChip</span>
             </NavLink>
