@@ -9,7 +9,8 @@ export default class NavBar extends Component {
 
     this.state = {
       isOpen: false,
-      isMobile: false
+      isMobile: false,
+      isHover: false
     };
   }
 
@@ -25,6 +26,19 @@ export default class NavBar extends Component {
     }
   }
 
+  handleMouseEnter = () => {
+    this.setState({
+      isHover: !this.state.isHover
+    });
+  };
+
+  handleMouseLeave = () => {
+    console.log("left");
+    this.setState({
+      isHover: false
+    });
+  };
+
   componentDidMount() {
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions.bind(this));
@@ -37,11 +51,19 @@ export default class NavBar extends Component {
       <div>
         <div className="nav-bar-container">
           <div className="logo-el">
-            <NavLink to="/">
+            <NavLink
+              to="/"
+              onMouseEnter={this.handleMouseEnter}
+              onMouseLeave={this.handleMouseLeave}
+            >
               <img
                 alt="Logo"
-                src="/images/micro_temp_inverted.png"
-                height="40px"
+                src={
+                  this.state.isHover
+                    ? "/images/micro_temp_hover.png"
+                    : "/images/micro_temp_inverted.png"
+                }
+                height="55px"
               />
               <span>EarthChip</span>
             </NavLink>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Upload, Button, Icon, Spin, Select } from "antd";
 import api from "../../../../api/earthie";
 import NotificationMessage from "../../../utils/NotificationMessage";
+import DeleteButton from "../../../utils/DeleteButton";
 
 const Option = Select.Option;
 const antIcon = (
@@ -24,6 +25,7 @@ export default class EarthieSettings extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     if (!this.state.earthie) {
       api
         .getOneEarthie(this.state.macAddress)
@@ -237,12 +239,13 @@ export default class EarthieSettings extends Component {
                     "Update"
                   )}
                 </button>
-                <p className="delete-btn" onClick={this.handleOpenDelete}>
+                {/* <p className="delete-btn" onClick={this.handleOpenDelete}>
                   {" "}
                   Delete
-                </p>
+                </p> */}
+                <DeleteButton macAddress={this.state.macAddress} />
               </div>
-              {this.state.deleteOpen && (
+              {/* {this.state.deleteOpen && (
                 <div className="buttons-delete-earthie-settings">
                   <p>Are you sure you want to delete?</p>
                   <Button
@@ -260,7 +263,7 @@ export default class EarthieSettings extends Component {
                     No
                   </Button>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>

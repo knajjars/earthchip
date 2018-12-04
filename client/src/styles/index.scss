@@ -188,6 +188,11 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    @media only screen and (max-width: 1300px) {
+      margin-top: 50px;
+    }
+
+    scroll-snap-type: mandatory;
     .earthie-item {
       margin: 2rem;
       display: flex;
@@ -553,6 +558,26 @@ body {
 }
 .ant-table td {
   white-space: nowrap;
+}
+
+.perm-logo {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media only screen and (max-width: 1300px) {
+    bottom: auto;
+    top: 10px;
+  }
+
+  img {
+    height: 68px;
+  }
+}
+.earthie-history-table {
+  width: 100%;
 }
 .ant-layout-header {
   @media only screen and (max-width: 730px) {

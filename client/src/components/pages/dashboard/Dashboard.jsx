@@ -142,6 +142,11 @@ export default class Dashboard extends Component {
                 path="/earthie/:macAddress/settings"
                 component={EarthieSettings}
               />
+
+              <div className="perm-logo">
+                <h4>Powered by EarthChip</h4>
+                <img src="/images/micro_temp.png" alt="Logo" />
+              </div>
             </Content>
           </Layout>
         </Layout>
