@@ -9,7 +9,7 @@ const logger = require("morgan");
 const path = require("path");
 const nocache = require("nocache");
 const session = require("express-session");
-// const MongoStore = require("connect-mongo")(session);
+const MongoStore = require("connect-mongo")(session);
 
 require("./configs/database");
 
@@ -44,8 +44,8 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET || "irongenerator",
     resave: true,
-    saveUninitialized: true
-    // store: new MongoStore({ mongooseConnection: mongoose.connection })
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
 require("./passport")(app);
