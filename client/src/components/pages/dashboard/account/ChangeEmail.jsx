@@ -57,11 +57,12 @@ export default class ChangeEmail extends Component {
   };
 
   render() {
+    let style = { fontSize: "22px" };
     return (
       <div className="form-container">
         <form className="form-component" onSubmit={this.handleSubmit}>
           <div className="form-field">
-            <Icon type="mail" />
+            <Icon type="mail" style={style} />
             <input
               value={api.isLoggedIn.email}
               onChange={this.handleChange}
@@ -73,7 +74,7 @@ export default class ChangeEmail extends Component {
             />
           </div>
           <div className="form-field">
-            <Icon type="mail" />
+            <Icon type="mail" style={style} />
             <input
               value={this.state.newEmail}
               onChange={this.handleChange}

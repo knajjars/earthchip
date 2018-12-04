@@ -38,7 +38,7 @@ export default class Earthie extends React.Component {
             className="bold"
             style={{ fontFamily: "MoonBold", fontSize: "1.2rem" }}
           >
-            {Math.floor(this.props.earthie.plantHealth)} pts.
+            {Math.round(this.props.earthie.plantHealth)} pts.
           </span>
         </div>
       </div>
