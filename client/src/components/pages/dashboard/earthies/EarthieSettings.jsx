@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Upload, Button, Icon, Spin, Select } from "antd";
 import api from "../../../../api/earthie";
 import NotificationMessage from "../../../utils/NotificationMessage";
@@ -153,6 +154,21 @@ export default class EarthieSettings extends Component {
       return (
         <div className="edit-earthie">
           <div className="form-container" style={{ minHeight: "100vh" }}>
+            <div
+              className="earthie-details-buttons"
+              style={{
+                alignSelf: "flex-start",
+                padding: "10px"
+              }}
+            >
+              <Link to={`/earthie/${this.state.macAddress}`}>
+                <Icon
+                  style={{ fontSize: "34px" }}
+                  type="left-circle"
+                  className="button-earthie-details"
+                />
+              </Link>
+            </div>
             <h1 className="title">Edit your device.</h1>
             <div className="form-component">
               <div

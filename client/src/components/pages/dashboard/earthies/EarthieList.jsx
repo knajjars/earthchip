@@ -11,6 +11,7 @@ export default class EarthieList extends Component {
       earthies: [],
       earthieData: []
     };
+    intervalId: null;
   }
 
   componentDidMount() {
@@ -25,6 +26,25 @@ export default class EarthieList extends Component {
       .catch(err => {
         console.log(err);
       });
+    this.intervalId = setInterval(() => {
+      api
+        .getEarthies()
+        .then(res => {
+          this.setState({
+            earthieData: res.data,
+            isLoading: false
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }, 10000);
+  }
+
+  componentWillUnmount() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
 
   renderEarthies() {
