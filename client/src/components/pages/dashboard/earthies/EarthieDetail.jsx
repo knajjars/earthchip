@@ -55,7 +55,7 @@ export default class EarthieDetail extends Component {
               style={{ fontSize: "50px", margin: "20px 0 " }}
             />
           </Link>
-          <DeleteButton macAddress={this.state.macAddress} />
+          <DeleteButton isDark={true} macAddress={this.state.macAddress} />
         </div>
       );
     } else {

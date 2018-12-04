@@ -25,7 +25,6 @@ export default class EarthieSettings extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     if (!this.state.earthie) {
       api
         .getOneEarthie(this.state.macAddress)
@@ -239,31 +238,8 @@ export default class EarthieSettings extends Component {
                     "Update"
                   )}
                 </button>
-                {/* <p className="delete-btn" onClick={this.handleOpenDelete}>
-                  {" "}
-                  Delete
-                </p> */}
                 <DeleteButton macAddress={this.state.macAddress} />
               </div>
-              {/* {this.state.deleteOpen && (
-                <div className="buttons-delete-earthie-settings">
-                  <p>Are you sure you want to delete?</p>
-                  <Button
-                    className="btns"
-                    type="danger"
-                    onClick={this.handleDelete}
-                  >
-                    Yes, delete
-                  </Button>
-                  <Button
-                    className="btns"
-                    ghost
-                    onClick={this.handleOpenDelete}
-                  >
-                    No
-                  </Button>
-                </div>
-              )} */}
             </div>
           </div>
         </div>

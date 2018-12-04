@@ -9,13 +9,15 @@ export default class DeleteButton extends Component {
 
     this.state = {
       deleteOpen: false,
-      deleteInit: false
+      deleteInit: false,
+      themeTrashBin: "outlined"
     };
   }
 
   handleOpenDelete = () => {
     this.setState({
-      deleteOpen: !this.state.deleteOpen
+      deleteOpen: !this.state.deleteOpen,
+      themeTrashBin: "outlined"
     });
   };
 
@@ -46,13 +48,36 @@ export default class DeleteButton extends Component {
       });
   };
 
+  handleMouseEnter = e => {
+    this.setState({
+      themeTrashBin: "filled"
+    });
+  };
+
+  handleMouseLeave = e => {
+    this.setState({
+      themeTrashBin: "outlined"
+    });
+  };
+
   render() {
+    let style = this.props.isDark ? { color: "black" } : {};
     return (
-      <div>
-        <p className="delete-btn" onClick={this.handleOpenDelete}>
-          {" "}
-          Delete
-        </p>
+      <div style={{ margin: "0 15px" }}>
+        {!this.state.deleteOpen && (
+          // <p className="delete-btn" onClick={this.handleOpenDelete}>
+          //   Delete
+          // </p>
+          <div onClick={this.handleOpenDelete} style={{ cursor: "pointer" }}>
+            <Icon
+              type="delete"
+              style={{ fontSize: "28px", color: "#a6c5b4" }}
+              theme={this.state.themeTrashBin}
+              onMouseEnter={() => this.handleMouseEnter()}
+              onMouseLeave={() => this.handleMouseLeave()}
+            />
+          </div>
+        )}
 
         {this.state.deleteOpen && (
           <div className="buttons-delete-earthie-settings">
@@ -61,9 +86,14 @@ export default class DeleteButton extends Component {
               Yes, delete
             </Button>
 
-            <Button className="btns" ghost onClick={this.handleOpenDelete}>
+            <p
+              className="btns no-btn"
+              style={style}
+              ghost
+              onClick={this.handleOpenDelete}
+            >
               No
-            </Button>
+            </p>
           </div>
         )}
         {this.state.deleteInit && <Redirect to="/" />}
