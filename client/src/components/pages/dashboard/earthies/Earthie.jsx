@@ -75,7 +75,6 @@ export default class Earthie extends React.Component {
   renderInfo() {
     return (
       <div className="earthie-card-content">
-        {/* {this.plantHealth()} */}
         <span className="moon-bold bold">{this.props.earthie.plantName}</span>
         {this.roomEnvironment()}
       </div>
