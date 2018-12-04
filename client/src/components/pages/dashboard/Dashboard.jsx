@@ -127,12 +127,7 @@ export default class Dashboard extends Component {
                   <span>Dashboard</span>
                 </Link>
               </Menu.Item>
-              <Menu.Item key="/notification">
-                <Link to="/notification">
-                  <Icon type="notification" />
-                  <span>Notification</span>
-                </Link>
-              </Menu.Item>
+
               <Menu.Item key="/account">
                 <Link to="/account">
                   <Icon type="setting" />
@@ -142,7 +137,7 @@ export default class Dashboard extends Component {
 
               <Menu.Item key="/logout">
                 <NavLink onClick={this.handleLogoutClick} to="/">
-                  <Icon type="file" />
+                  <Icon type="logout" />
                   <span>Log Out</span>
                 </NavLink>
               </Menu.Item>
@@ -154,11 +149,6 @@ export default class Dashboard extends Component {
 
               <Route path="/account" component={AccountPage} />
 
-              <Route
-                exact
-                path="/notification"
-                render={() => this.renderAlerts()}
-              />
               <Route
                 exact
                 path="/earthie/:macAddress"
