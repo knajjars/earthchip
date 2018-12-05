@@ -53,6 +53,9 @@ body {
 
 .sider-margin-correction {
   margin: 0 0 0 80px;
+  @media only screen and (max-width: 880px) {
+    margin: 0;
+  }
 }
 .margin-zero {
   margin: 0;
@@ -242,6 +245,9 @@ body {
     @media only screen and (max-width: 880px) {
       min-height: 100vh;
       max-height: none;
+      width: 100vw;
+      justify-content: center;
+      align-items: center;
     }
     .earthie-item {
       margin: 2rem;
@@ -282,7 +288,7 @@ body {
       width: 600px;
     }
     @media screen and (max-width: 880px) {
-      max-width: calc(100vw - 80px);
+      max-width: 100vw;
       padding: 30px;
       h3 {
         width: 350px;
@@ -292,7 +298,7 @@ body {
     @media screen and (max-width: 500px) {
       h3 {
         width: 250px;
-        max-width: calc(100vw - 80px);
+        max-width: 100vw;
       }
     }
   }
@@ -826,9 +832,17 @@ i {
     flex-direction: column;
     .salute {
       flex-direction: column-reverse;
-      max-width: calc(100vw - 80px);
+      height: calc(100vh - 64px);
+      max-width: 100vw;
+      h2 {
+        width: 200px;
+      }
+      h1 {
+        width: 250px;
+      }
       i {
         display: block;
+        margin-bottom: 50px;
         &:hover {
           cursor: pointer;
           color: $bg;
