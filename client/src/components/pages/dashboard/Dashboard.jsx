@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Menu, Icon, Anchor } from "antd";
+import { Layout, Menu, Icon } from "antd";
 import { NavLink, Route, Link } from "react-router-dom";
 import apiAuth from "../../../api/auth";
 import EarthieList from "./earthies/EarthieList";
@@ -8,8 +8,8 @@ import EarthieSettings from "./earthies/EarthieSettings";
 import Clock from "./clock/Clock";
 import apiJoke from "../../../api/randomJokes";
 import AccountPage from "./account/AccountPage";
+import { animateScroll as scroll } from "react-scroll";
 
-const LinkAnchor = Anchor.Link;
 const { Content, Sider } = Layout;
 export default class Dashboard extends Component {
   state = {
@@ -57,27 +57,27 @@ export default class Dashboard extends Component {
     });
   };
 
-  // handleScroll = () => {
-  //   window.scrollBy(0, window.innerHeight);
-  // };
+  handleScroll = () => {
+    const windowHeight = window.innerHeight;
+    scroll.scrollTo(windowHeight, {
+      duration: 300,
+      delay: 0
+    });
+  };
 
   renderContent() {
-    let iconScroll = (
-      <Icon
-        type="down-circle"
-        style={{
-          color: "white",
-          fontSize: 30,
-          padding: 10
-        }}
-      />
-    );
     return (
       <div className="dashboard-main chips-container">
         <div className="salute">
-          <Anchor affix={false}>
-            <LinkAnchor href="#scroll-here" title="Check out" />
-          </Anchor>
+          <Icon
+            type="down-circle"
+            style={{
+              color: "white",
+              fontSize: 30,
+              padding: 10
+            }}
+            onClick={this.handleScroll}
+          />
           <div className="salute-greeting">
             <h2>
               Good {this.state.salute},{" "}
