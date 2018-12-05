@@ -190,7 +190,7 @@ body {
 //earthie styling
 .dashboard-main {
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   align-items: stretch;
   .salute {
     font-family: MoonBold;
@@ -237,8 +237,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     max-height: 100vh;
-
-    scroll-snap-type: mandatory;
+    // flex-grow: 1;
     .earthie-item {
       margin: 2rem;
       display: flex;

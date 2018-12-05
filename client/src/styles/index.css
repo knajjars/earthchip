@@ -20458,7 +20458,6 @@ body {
 
 .dashboard-main {
   display: flex;
-  justify-content: center;
   align-items: stretch; }
   .dashboard-main .salute {
     font-family: MoonBold;
@@ -20498,8 +20497,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  max-height: 100vh;
-  scroll-snap-type: mandatory; }
+  max-height: 100vh; }
   .chips-container .earthies-list .earthie-item {
     margin: 2rem;
     display: flex;
