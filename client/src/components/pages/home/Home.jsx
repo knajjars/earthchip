@@ -17,9 +17,9 @@ export default function Home() {
         <h1>Cloud hosted plant analytics</h1>
         <div className="description">
           <p>
-            More than just keeping track of your plants, we offer a secure
-            platform with features for systematic monitoring and real-time
-            alerts on plant health. <br />
+            Earthies generate real-time data on soil moisture as well as room
+            temperature and humidity, so you can stay informed on the health of
+            your plants <br />
             <span className="bold">This is EarthChip.</span>
           </p>
         </div>
