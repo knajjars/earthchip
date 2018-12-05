@@ -75,6 +75,11 @@ export default class EarthieList extends Component {
     }
   }
   render() {
-    return this.renderEarthies();
+    return (
+      <div>
+        <div id="scroll-here" />
+        {this.renderEarthies()}
+      </div>
+    );
   }
 }

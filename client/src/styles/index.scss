@@ -134,6 +134,7 @@ body {
       }
     }
   }
+
   @media only screen and (max-width: 730px) {
     padding: 30px 25px;
 
@@ -186,6 +187,9 @@ body {
   text-align: center;
   font-size: 1rem;
   width: 300px;
+  @media only screen and (max-width: 350px) {
+    width: 230px;
+  }
 }
 //earthie styling
 .dashboard-main {
@@ -204,6 +208,9 @@ body {
     background: $icon;
     height: 100vh;
     color: #001529;
+    i {
+      display: none;
+    }
     .salute-greeting {
       margin: auto;
       display: flex;
@@ -217,9 +224,6 @@ body {
     }
     h2 {
       font-size: 1.5rem;
-      @media only screen and (max-width: 730px) {
-        font-size: 1rem;
-      }
     }
     h2,
     h1 {
@@ -231,13 +235,12 @@ body {
 }
 .chips-container {
   .earthies-list {
-    overflow: auto;
+    overflow: scroll;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
     max-height: 100vh;
-    // flex-grow: 1;
     .earthie-item {
       margin: 2rem;
       display: flex;
@@ -278,7 +281,8 @@ body {
     }
     @media screen and (max-width: 900px) {
       h3 {
-        width: 400px;
+        width: 350px;
+        font-size: 0.9rem;
       }
     }
     @media screen and (max-width: 500px) {
@@ -809,4 +813,32 @@ i {
   background-color: $bg;
   padding: 3px 7px;
   border-radius: 5px;
+}
+
+//! Mobile styling
+@media only screen and (max-width: 880px) {
+  .dashboard-main {
+    flex-direction: column;
+    .salute {
+      flex-direction: column-reverse;
+      max-width: calc(100vw - 80px);
+      i {
+        display: block;
+        &:hover {
+          cursor: pointer;
+          color: $bg;
+        }
+      }
+      .salute-greeting {
+        margin: auto 0;
+      }
+      .footer {
+        .perm-logo {
+          p {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
 }
