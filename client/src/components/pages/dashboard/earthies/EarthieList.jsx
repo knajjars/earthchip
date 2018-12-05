@@ -51,6 +51,7 @@ export default class EarthieList extends Component {
     if (this.state.earthieData.length > 0) {
       return (
         <div className="earthies-list">
+          <div id="scroll-here" />
           {this.state.earthieData.map(earthie => (
             <Link key={earthie._id} to={"/earthie/" + earthie.macAddress}>
               <Earthie
@@ -65,21 +66,17 @@ export default class EarthieList extends Component {
     } else {
       return (
         <div className="no-device-message">
+          <div id="scroll-here" />
           <h3>
             You dont have any Earthies registered to your account, start
             tracking your plants simply by scanning the QR code in the box.
           </h3>
-          <Icon type="rocket" theme="twoTone" style={{ fontSize: 300 }} />,
+          <Icon type="rocket" theme="twoTone" style={{ fontSize: 300 }} />
         </div>
       );
     }
   }
   render() {
-    return (
-      <div>
-        <div id="scroll-here" />
-        {this.renderEarthies()}
-      </div>
-    );
+    return this.renderEarthies();
   }
 }

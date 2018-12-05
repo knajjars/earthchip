@@ -194,8 +194,7 @@ body {
 //earthie styling
 .dashboard-main {
   display: flex;
-  // justify-content: center;
-  align-items: stretch;
+  width: 100vw;
   .salute {
     font-family: MoonBold;
     font-size: 2rem;
@@ -240,6 +239,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
+    flex-grow: 1;
     max-height: 100vh;
     .earthie-item {
       margin: 2rem;
@@ -271,6 +271,7 @@ body {
   }
   .no-device-message {
     min-height: 100vh;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -279,7 +280,9 @@ body {
       text-align: center;
       width: 600px;
     }
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 880px) {
+      max-width: calc(100vw - 80px);
+      padding: 30px;
       h3 {
         width: 350px;
         font-size: 0.9rem;
@@ -288,6 +291,7 @@ body {
     @media screen and (max-width: 500px) {
       h3 {
         width: 250px;
+        max-width: calc(100vw - 80px);
       }
     }
   }

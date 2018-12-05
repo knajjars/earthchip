@@ -20461,7 +20461,7 @@ body {
 
 .dashboard-main {
   display: flex;
-  align-items: stretch; }
+  width: 100vw; }
   .dashboard-main .salute {
     font-family: MoonBold;
     font-size: 2rem;
@@ -20499,6 +20499,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
+  flex-grow: 1;
   max-height: 100vh; }
   .chips-container .earthies-list .earthie-item {
     margin: 2rem;
@@ -20524,6 +20525,7 @@ body {
 
 .chips-container .no-device-message {
   min-height: 100vh;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20531,13 +20533,17 @@ body {
   .chips-container .no-device-message h3 {
     text-align: center;
     width: 600px; }
-  @media screen and (max-width: 900px) {
-    .chips-container .no-device-message h3 {
-      width: 350px;
-      font-size: 0.9rem; } }
+  @media screen and (max-width: 880px) {
+    .chips-container .no-device-message {
+      max-width: calc(100vw - 80px);
+      padding: 30px; }
+      .chips-container .no-device-message h3 {
+        width: 350px;
+        font-size: 0.9rem; } }
   @media screen and (max-width: 500px) {
     .chips-container .no-device-message h3 {
-      width: 250px; } }
+      width: 250px;
+      max-width: calc(100vw - 80px); } }
 
 .chips-container .offline-device-details {
   width: 100%;
