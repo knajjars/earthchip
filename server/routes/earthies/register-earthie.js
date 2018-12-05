@@ -12,7 +12,16 @@ router.get("/", isLoggedIn, (req, res, next) => {
 });
 
 router.post("/", isLoggedIn, upload, (req, res, next) => {
-  const { macAddress, plantName, wateringType } = req.body;
+  const { macAddress, plantName, wateringType, lastWatered } = req.body;
+
+  if (macAddress === "") {
+    res.status(500).json({
+      message:
+        "Not a valid Mac Address, make sure to scan the QR code correctly."
+    });
+    return;
+  }
+
   const imageURL = req.file
     ? req.file.location
     : "https://earthchip.sfo2.digitaloceanspaces.com/defaultimage.png";
@@ -30,6 +39,14 @@ router.post("/", isLoggedIn, upload, (req, res, next) => {
     return;
   }
 
+  if (lastWatered === "") {
+    res.status(500).json({
+      message:
+        "Try to remember the last time you watered your plant, we know it's hard."
+    });
+    return;
+  }
+
   EarthChip.findOne({ macAddress }).then(chip => {
     if (chip !== null) {
       res
@@ -43,7 +60,8 @@ router.post("/", isLoggedIn, upload, (req, res, next) => {
         plantName,
         imageURL,
         imageKey,
-        wateringType
+        wateringType,
+        lastWatered
       }).then(chip => {
         res.json({
           message: `Succesfully registered ${chip.plantName}'s earthie!`

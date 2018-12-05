@@ -85,6 +85,8 @@ export default class Earthie extends React.Component {
     if (!this.props.earthie.currentMoisture) {
       return (
         <div>
+          <span className="moon-bold bold">{this.props.earthie.plantName}</span>
+          <br />
           No information reported. <br />
           <small>Device might be offline.</small>
         </div>
@@ -102,12 +104,10 @@ export default class Earthie extends React.Component {
         onClick={e => this.props.onEarthieClick(e, this.props.earthie)}
         hoverable
         className="earthie-item"
-        // style={{ width: 300 }}
         cover={
           <img
             alt={this.props.earthie.plantName}
             src={this.props.earthie.imageURL}
-            // style={{ width: "100%", height: 350, objectFit: "cover" }}
           />
         }
       >

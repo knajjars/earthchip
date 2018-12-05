@@ -65,9 +65,6 @@ export default class DeleteButton extends Component {
     return (
       <div style={{ margin: "0 15px" }}>
         {!this.state.deleteOpen && (
-          // <p className="delete-btn" onClick={this.handleOpenDelete}>
-          //   Delete
-          // </p>
           <div onClick={this.handleOpenDelete} style={{ cursor: "pointer" }}>
             <Icon
               type="delete"
@@ -89,7 +86,7 @@ export default class DeleteButton extends Component {
             <p
               className="btns no-btn"
               style={style}
-              ghost
+              ghost="true"
               onClick={this.handleOpenDelete}
             >
               No

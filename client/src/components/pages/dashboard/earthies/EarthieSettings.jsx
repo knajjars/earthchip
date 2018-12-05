@@ -210,7 +210,7 @@ export default class EarthieSettings extends Component {
                     <div className="form-field-col6">
                       <Icon type="calendar" style={style} />
                       <Select
-                        placeholder="Select watering level."
+                        placeholder="Dependency of water."
                         onChange={this.handleSelect}
                         defaultValue={this.state.wateringType}
                       >

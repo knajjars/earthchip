@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Upload, Button, Icon, Spin, Select } from "antd";
+import { Upload, Button, Icon, Spin, Select, DatePicker } from "antd";
 import NotificationMessage from "../../utils/NotificationMessage";
 import api from "../../../api/registerDevice";
 import { Link } from "react-router-dom";
@@ -14,6 +14,7 @@ export default class RegisterDevice extends Component {
     plantName: "",
     macAddress: this.props.location.search.replace("?macAddress=", ""),
     wateringType: "",
+    lastWatered: "",
     themes: {
       plantName: "outlined",
       calendar: "filled",
@@ -34,12 +35,20 @@ export default class RegisterDevice extends Component {
   };
 
   handleRegister = () => {
-    const { file, macAddress, plantName, wateringType } = this.state;
+    const {
+      file,
+      macAddress,
+      plantName,
+      wateringType,
+      lastWatered
+    } = this.state;
+
     const formData = new FormData();
     formData.append("upload", file);
     formData.append("macAddress", macAddress);
     formData.append("plantName", plantName);
     formData.append("wateringType", wateringType);
+    formData.append("lastWatered", lastWatered);
     this.setState({
       uploading: true
     });
@@ -81,6 +90,12 @@ export default class RegisterDevice extends Component {
   handleSelect = val => {
     this.setState({
       wateringType: val
+    });
+  };
+
+  handleDatePick = (date, dateString) => {
+    this.setState({
+      lastWatered: date._d
     });
   };
 
@@ -165,7 +180,7 @@ export default class RegisterDevice extends Component {
                       style={style}
                     />
                     <Select
-                      placeholder="Select watering level."
+                      placeholder="Dependency of water."
                       onChange={this.handleSelect}
                     >
                       <Option value="low">Low</Option>
@@ -175,6 +190,26 @@ export default class RegisterDevice extends Component {
                   </div>
                 </div>
               </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <Icon
+                type="calendar"
+                theme={this.state.themes.calendar}
+                style={style}
+              />
+              <DatePicker
+                placeholder="Last time you watered"
+                onChange={this.handleDatePick}
+                style={{
+                  margin: 10
+                }}
+              />
             </div>
             <Upload {...props}>
               <Button>
