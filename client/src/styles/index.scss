@@ -240,7 +240,12 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    min-height: 100vh;
+    max-height: 100vh;
+    @media only screen and (max-width: 880px) {
+      // overflow: scroll;
+      min-height: 100vh;
+      max-height: none;
+    }
     .earthie-item {
       margin: 2rem;
       display: flex;
