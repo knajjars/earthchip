@@ -51,7 +51,12 @@ export default class Dashboard extends Component {
     });
   };
 
+  handleWindowClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   handleEarthieClick = (e, earthie) => {
+    window.scroll(0, 0);
     this.setState({
       selectedEarthie: earthie
     });
@@ -135,9 +140,9 @@ export default class Dashboard extends Component {
   render() {
     let { pathname } = this.props.location;
     let removeSider =
-      pathname.includes("earthie") && window.innerWidth < 400 ? "hidden" : "";
+      pathname.includes("earthie") && window.innerWidth < 500 ? "hidden" : "";
     let removeSiderMargin =
-      pathname.includes("earthie") && window.innerWidth < 400
+      pathname.includes("earthie") && window.innerWidth < 500
         ? "margin-zero"
         : "";
     return (
@@ -160,14 +165,14 @@ export default class Dashboard extends Component {
               selectedKeys={[this.state.active]}
               onClick={this.handleChange}
             >
-              <Menu.Item key="/dashboard">
+              <Menu.Item key="/dashboard" onClick={this.handleWindowClick}>
                 <Link to="/">
                   <Icon type="appstore" />
                   <span>Dashboard</span>
                 </Link>
               </Menu.Item>
 
-              <Menu.Item key="/account">
+              <Menu.Item key="/account" onClick={this.handleWindowClick}>
                 <Link to="/account">
                   <Icon type="setting" />
                   <span>Account</span>
@@ -175,7 +180,7 @@ export default class Dashboard extends Component {
               </Menu.Item>
 
               <Menu.Item key="/logout">
-                <NavLink onClick={this.handleLogoutClick} to="/">
+                <NavLink onClick={this.handleLogoutClick} to="/login">
                   <Icon type="logout" />
                   <span>Log Out</span>
                 </NavLink>
