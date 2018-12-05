@@ -239,8 +239,17 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
+<<<<<<< HEAD
     flex-grow: 1;
     max-height: 100vh;
+=======
+    max-height: 100vh;
+    @media only screen and (max-width: 880px) {
+      // overflow: scroll;
+      min-height: 100vh;
+      max-height: none;
+    }
+>>>>>>> 22b9dfa2b7fdcef3860c829f21f2f6e98bef9b48
     .earthie-item {
       margin: 2rem;
       display: flex;
