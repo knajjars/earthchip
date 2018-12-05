@@ -20352,6 +20352,9 @@ body {
 
 .sider-margin-correction {
   margin: 0 0 0 80px; }
+  @media only screen and (max-width: 880px) {
+    .sider-margin-correction {
+      margin: 0; } }
 
 .margin-zero {
   margin: 0; }
@@ -20502,7 +20505,10 @@ body {
   @media only screen and (max-width: 880px) {
     .chips-container .earthies-list {
       min-height: 100vh;
-      max-height: none; } }
+      max-height: none;
+      width: 100vw;
+      justify-content: center;
+      align-items: center; } }
   .chips-container .earthies-list .earthie-item {
     margin: 2rem;
     display: flex;
@@ -20537,7 +20543,7 @@ body {
     width: 600px; }
   @media screen and (max-width: 880px) {
     .chips-container .no-device-message {
-      max-width: calc(100vw - 80px);
+      max-width: 100vw;
       padding: 30px; }
       .chips-container .no-device-message h3 {
         width: 350px;
@@ -20545,7 +20551,7 @@ body {
   @media screen and (max-width: 500px) {
     .chips-container .no-device-message h3 {
       width: 250px;
-      max-width: calc(100vw - 80px); } }
+      max-width: 100vw; } }
 
 .chips-container .offline-device-details {
   width: 100%;
@@ -20966,9 +20972,15 @@ i {
     flex-direction: column; }
     .dashboard-main .salute {
       flex-direction: column-reverse;
-      max-width: calc(100vw - 80px); }
+      height: calc(100vh - 64px);
+      max-width: 100vw; }
+      .dashboard-main .salute h2 {
+        width: 200px; }
+      .dashboard-main .salute h1 {
+        width: 250px; }
       .dashboard-main .salute i {
-        display: block; }
+        display: block;
+        margin-bottom: 50px; }
         .dashboard-main .salute i:hover {
           cursor: pointer;
           color: #f0f2f5; }

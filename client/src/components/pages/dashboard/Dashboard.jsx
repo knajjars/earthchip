@@ -10,16 +10,26 @@ import apiJoke from "../../../api/randomJokes";
 import AccountPage from "./account/AccountPage";
 import { animateScroll as scroll } from "react-scroll";
 
-const { Content, Sider } = Layout;
+const { Content, Sider, Header } = Layout;
 export default class Dashboard extends Component {
   state = {
     active: this.props.match.path,
     selectedEarthie: null,
     salute: null,
-    randomJoke: null
+    randomJoke: null,
+    isMobile: false
   };
+  updateDimensions() {
+    if (window.innerWidth <= 880) {
+      this.setState({ isMobile: true });
+    } else {
+      this.setState({ isMobile: false });
+    }
+  }
 
   componentDidMount() {
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions.bind(this));
     apiJoke.getJoke().then(res => {
       if (res.status === 200) {
         this.setState({
@@ -148,45 +158,76 @@ export default class Dashboard extends Component {
     return (
       <div>
         <Layout style={{ minHeight: "100vh" }}>
-          <Sider
-            className={removeSider}
-            collapsed
-            style={{
-              overflow: "auto",
-              height: "100vh",
-              position: "fixed",
-              left: 0
-            }}
-          >
-            <div className="logo" />
-            <Menu
-              theme="dark"
-              mode="inline"
-              selectedKeys={[this.state.active]}
-              onClick={this.handleChange}
+          {/* //! MOBILE NAV */}
+          {this.state.isMobile && (
+            <Header>
+              <div className="logo" />
+              <Menu
+                theme="dark"
+                mode="horizontal"
+                style={{ lineHeight: "64px" }}
+              >
+                <Menu.Item key="/dashboard" onClick={this.handleWindowClick}>
+                  <Link to="/">
+                    <Icon type="appstore" />
+                  </Link>
+                </Menu.Item>
+
+                <Menu.Item key="/account" onClick={this.handleWindowClick}>
+                  <Link to="/account">
+                    <Icon type="setting" />
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="/logout">
+                  <NavLink onClick={this.handleLogoutClick} to="/login">
+                    <Icon type="logout" />
+                  </NavLink>
+                </Menu.Item>
+              </Menu>
+            </Header>
+          )}
+          {/* //* DESKTOP NAV */}
+          {!this.state.isMobile && (
+            <Sider
+              className={removeSider}
+              collapsed
+              style={{
+                overflow: "auto",
+                height: "100vh",
+                position: "fixed",
+                left: 0
+              }}
             >
-              <Menu.Item key="/dashboard" onClick={this.handleWindowClick}>
-                <Link to="/">
-                  <Icon type="appstore" />
-                  <span>Dashboard</span>
-                </Link>
-              </Menu.Item>
+              <div className="logo" />
+              <Menu
+                theme="dark"
+                mode="inline"
+                selectedKeys={[this.state.active]}
+                onClick={this.handleChange}
+              >
+                <Menu.Item key="/dashboard" onClick={this.handleWindowClick}>
+                  <Link to="/">
+                    <Icon type="appstore" />
+                    <span>Dashboard</span>
+                  </Link>
+                </Menu.Item>
 
-              <Menu.Item key="/account" onClick={this.handleWindowClick}>
-                <Link to="/account">
-                  <Icon type="setting" />
-                  <span>Account</span>
-                </Link>
-              </Menu.Item>
+                <Menu.Item key="/account" onClick={this.handleWindowClick}>
+                  <Link to="/account">
+                    <Icon type="setting" />
+                    <span>Account</span>
+                  </Link>
+                </Menu.Item>
 
-              <Menu.Item key="/logout">
-                <NavLink onClick={this.handleLogoutClick} to="/login">
-                  <Icon type="logout" />
-                  <span>Log Out</span>
-                </NavLink>
-              </Menu.Item>
-            </Menu>
-          </Sider>
+                <Menu.Item key="/logout">
+                  <NavLink onClick={this.handleLogoutClick} to="/login">
+                    <Icon type="logout" />
+                    <span>Log Out</span>
+                  </NavLink>
+                </Menu.Item>
+              </Menu>
+            </Sider>
+          )}
           <Layout>
             <Content className={"sider-margin-correction " + removeSiderMargin}>
               <Route exact path="/" render={() => this.renderContent()} />
