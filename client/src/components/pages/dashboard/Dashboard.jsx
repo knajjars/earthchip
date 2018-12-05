@@ -7,6 +7,11 @@ import EarthieDetail from "./earthies/EarthieDetail";
 import EarthieSettings from "./earthies/EarthieSettings";
 import Clock from "./clock/Clock";
 
+//! testing
+import apiJoke from "../../../api/randomJokes";
+
+//! ---- end
+
 import AccountPage from "./account/AccountPage";
 
 const { Content, Sider } = Layout;
@@ -14,15 +19,23 @@ export default class Dashboard extends Component {
   state = {
     active: this.props.match.path,
     selectedEarthie: null,
-    salute: null
+    salute: null,
+    randomJoke: null
   };
 
   componentDidMount() {
+    apiJoke.getJoke().then(res => {
+      if (res.status === 200) {
+        this.setState({
+          randomJoke: res.data.joke
+        });
+      }
+    });
     let now = new Date();
     let salute;
-    if (now.getHours() > 18) {
+    if (now.getHours() >= 18) {
       salute = "evening";
-    } else if (now.getHours() > 12) {
+    } else if (now.getHours() >= 12) {
       salute = "day";
     } else {
       salute = "morning";
@@ -55,10 +68,21 @@ export default class Dashboard extends Component {
           <h2>
             Good {this.state.salute},{" "}
             <span className="capitalize">
-              {JSON.parse(localStorage.user).name} it's
+              {JSON.parse(localStorage.user).name}.
             </span>
-          </h2>{" "}
+          </h2>
           <Clock />
+          {this.state.randomJoke && (
+            <p className="randomJoke">
+              <q>{this.state.randomJoke}</q> <br /> <cite>~Dad joke</cite>
+            </p>
+          )}
+          <div className="footer">
+            <div className="perm-logo">
+              <p>Powered by EarthChip</p>
+              <img src="/images/micro_temp_inverted.png" alt="Logo" />
+            </div>
+          </div>
         </div>
         <EarthieList onEarthieClick={this.handleEarthieClick} />
       </div>
@@ -158,12 +182,12 @@ export default class Dashboard extends Component {
                 path="/earthie/:macAddress/settings"
                 component={EarthieSettings}
               />
-              <div className="footer">
+              {/* <div className="footer">
                 <div className="perm-logo">
                   <p>Powered by EarthChip</p>
                   <img src="/images/micro_temp_inverted.png" alt="Logo" />
                 </div>
-              </div>
+              </div> */}
             </Content>
           </Layout>
         </Layout>

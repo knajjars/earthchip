@@ -181,39 +181,53 @@ body {
 .capitalize {
   text-transform: capitalize;
 }
+
+.randomJoke {
+  text-align: center;
+  font-size: 1rem;
+  width: 300px;
+}
 //earthie styling
 .dashboard-main {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   .salute {
     font-family: MoonBold;
+    font-size: 2rem;
     text-align: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    @media only screen and (max-width: 730px) {
-      flex-direction: column;
-    }
+    padding: 50px;
+    background: $icon;
 
+    // margin: 40px;
+    @media only screen and (max-width: 730px) {
+      font-size: 1.2rem;
+    }
     h2 {
-      padding-right: 15px;
+      font-size: 1.5rem;
+      @media only screen and (max-width: 730px) {
+        font-size: 1rem;
+      }
+    }
+    h2,
+    h1 {
+      margin: 0;
+      width: 350px;
     }
   }
 }
 .chips-container {
-  // width: 1rem;
   .earthies-list {
+    overflow: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 60px);
-    // @media only screen and (max-width: 1300px) {
-    //   margin-top: 50px;
-    // }
+    align-items: flex-start;
+    max-height: 100vh;
 
     scroll-snap-type: mandatory;
     .earthie-item {
@@ -245,7 +259,7 @@ body {
     }
   }
   .no-device-message {
-    min-height: calc(100vh - 60px);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -268,7 +282,7 @@ body {
 
   .offline-device-details {
     width: 100%;
-    min-height: calc(100vh - 60px);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -369,7 +383,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 60px);
+  min-height: 100vh;
   text-align: center;
   background-color: $first;
   .title {
