@@ -1,10 +1,11 @@
 import React from "react";
-
+import StripeCheckout from "react-stripe-checkout";
 import { Icon } from "antd";
 import apiAuth from "../../../../api/auth";
 import { Route, Link } from "react-router-dom";
 import ChangePassword from "./ChangePassword";
 import ChangeEmail from "./ChangeEmail";
+
 export default function AccountPage() {
   function handleLogoutClick(e) {
     apiAuth.logout();
@@ -23,11 +24,11 @@ export default function AccountPage() {
               Change Password <Icon type="lock" />
             </button>
           </Link>
-          <Link to="/account/pwd">
+          <StripeCheckout email="hello">
             <button type="submit" className="button-form">
-              Buy New Earthie <Icon type="appstore" />
+              Buy New Earthie <Icon type="credit-card" />
             </button>
-          </Link>
+          </StripeCheckout>
           <Link to="/">
             <button
               type="submit"
