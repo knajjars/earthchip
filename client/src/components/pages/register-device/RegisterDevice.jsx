@@ -15,23 +15,11 @@ export default class RegisterDevice extends Component {
     macAddress: this.props.location.search.replace("?macAddress=", ""),
     wateringType: "",
     lastWatered: "",
-    themes: {
-      plantName: "outlined",
-      calendar: "filled",
-      macAddress: "filled"
-    },
+    calendarTheme: "outlined",
+    experimentTheme: "outlined",
+    plantNameTheme: "outlined",
+    macAddressTheme: "outlined",
     uploading: false
-  };
-
-  handleFocus = e => {
-    this.setState({
-      themes: {
-        plantName: "outlined",
-        calendar: "filled",
-        [e.target.name]: "filled",
-        macAddress: "filled"
-      }
-    });
   };
 
   handleRegister = () => {
@@ -82,22 +70,49 @@ export default class RegisterDevice extends Component {
   };
 
   handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    if (e.target.value) {
+      this.setState({
+        [e.target.name]: e.target.value,
+        [`${e.target.name}Theme`]: "filled"
+      });
+    } else {
+      this.setState({
+        [e.target.name]: "",
+        [`${e.target.name}Theme`]: "outlined"
+      });
+    }
   };
 
   handleSelect = val => {
-    this.setState({
-      wateringType: val
-    });
+    if (val) {
+      this.setState({
+        wateringType: val,
+        experimentTheme: "filled"
+      });
+    }
   };
 
   handleDatePick = (date, dateString) => {
-    this.setState({
-      lastWatered: date._d
-    });
+    if (date) {
+      this.setState({
+        lastWatered: date._d,
+        calendarTheme: "filled"
+      });
+    } else {
+      this.setState({
+        lastWatered: "",
+        calendarTheme: "outlined"
+      });
+    }
   };
+
+  componentDidMount() {
+    if (this.state.macAddress) {
+      this.setState({
+        macAddressTheme: "filled"
+      });
+    }
+  }
 
   render() {
     const { uploading, file } = this.state;
@@ -116,7 +131,7 @@ export default class RegisterDevice extends Component {
       file
     };
 
-    let style = { color: "#32c3ff", fontSize: "26px" };
+    let style = { color: "#32c3ff", fontSize: "26px", margin: 5 };
     return (
       <div>
         <div className="form-container" style={{ minHeight: "100vh" }}>
@@ -135,13 +150,13 @@ export default class RegisterDevice extends Component {
           <h1 className="title">Register your device.</h1>
           <h3 className="subtitle">
             Please tell us more about your new{" "}
-            <span className="bold">EarthChip</span> device.
+            <span className="bold">Earthie.</span>
           </h3>
           <div className="form-component">
             <div className="form-field">
               <Icon
                 type="safety-certificate"
-                theme={this.state.themes.macAddress}
+                theme={this.state.macAddressTheme}
                 style={style}
               />
               <input
@@ -158,13 +173,12 @@ export default class RegisterDevice extends Component {
                   <div className="form-field-col6">
                     <Icon
                       type="code"
-                      theme={this.state.themes.plantName}
+                      theme={this.state.plantNameTheme}
                       style={style}
                     />
                     <input
                       value={this.state.plantName}
                       onChange={this.handleChange}
-                      onFocus={this.handleFocus}
                       name="plantName"
                       type="text"
                       placeholder="Plant name"
@@ -175,8 +189,8 @@ export default class RegisterDevice extends Component {
                 <div className="field">
                   <div className="form-field-col6">
                     <Icon
-                      type="calendar"
-                      theme={this.state.themes.calendar}
+                      type="experiment"
+                      theme={this.state.experimentTheme}
                       style={style}
                     />
                     <Select
@@ -195,27 +209,25 @@ export default class RegisterDevice extends Component {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "center"
+                alignItems: "flex-start",
+                maxWidth: "95vw"
               }}
             >
               <Icon
                 type="calendar"
-                theme={this.state.themes.calendar}
+                theme={this.state.calendarTheme}
                 style={style}
               />
               <DatePicker
-                placeholder="Last time you watered"
+                placeholder="Last watered"
                 onChange={this.handleDatePick}
-                style={{
-                  margin: 10
-                }}
               />
+              <Upload {...props} style={{ marginLeft: 10 }}>
+                <Button>
+                  <Icon type="upload" /> Upload Image
+                </Button>
+              </Upload>
             </div>
-            <Upload {...props}>
-              <Button>
-                <Icon type="upload" /> Upload Image
-              </Button>
-            </Upload>
 
             <div className="form-field">
               <button onClick={this.handleRegister} className="button-form">

@@ -79,14 +79,11 @@ router.get("/", (req, res, next) => {
       return;
     } else {
       let lastWatered;
-      // if (!earthie.currentMoisture) {
-      //   lastWatered = new Date();
-      // } else {
+
       lastWatered =
         earthie.currentMoisture < data.soilMoisture
           ? new Date()
           : earthie.lastWatered;
-      // }
 
       //! adding number of ms in a day
       const interval = {
