@@ -65,18 +65,20 @@ export default class Dashboard extends Component {
     return (
       <div className="dashboard-main chips-container">
         <div className="salute">
-          <h2>
-            Good {this.state.salute},{" "}
-            <span className="capitalize">
-              {JSON.parse(localStorage.user).name}.
-            </span>
-          </h2>
-          <Clock />
-          {this.state.randomJoke && (
-            <p className="randomJoke">
-              <q>{this.state.randomJoke}</q> <br /> <cite>~Dad joke</cite>
-            </p>
-          )}
+          <div className="salute-greeting">
+            <h2>
+              Good {this.state.salute},{" "}
+              <span className="capitalize">
+                {JSON.parse(localStorage.user).name}.
+              </span>
+            </h2>
+            <Clock />
+            {this.state.randomJoke && (
+              <p className="randomJoke">
+                <q>{this.state.randomJoke}</q> <br /> <cite>~Dad joke</cite>
+              </p>
+            )}
+          </div>
           <div className="footer">
             <div className="perm-logo">
               <p>Powered by EarthChip</p>
@@ -182,12 +184,6 @@ export default class Dashboard extends Component {
                 path="/earthie/:macAddress/settings"
                 component={EarthieSettings}
               />
-              {/* <div className="footer">
-                <div className="perm-logo">
-                  <p>Powered by EarthChip</p>
-                  <img src="/images/micro_temp_inverted.png" alt="Logo" />
-                </div>
-              </div> */}
             </Content>
           </Layout>
         </Layout>
