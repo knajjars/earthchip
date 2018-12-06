@@ -10,13 +10,13 @@ function getLastWateredPoints(lastWatered, interval) {
   const timeDiff = Math.abs(lastWatered.getTime() - now.getTime());
   const diffDays = timeDiff / (1000 * 3600 * 24);
   let chunk = 10 / interval;
-  let points = 40 - chunk * diffDays;
+  let points = 30 - chunk * diffDays;
   return points;
 }
 
 //* calculate the number of health points based on the curent soil moisture
 function getSoilMoisturePoints(moisture) {
-  let points = 60 - Math.abs(40 - moisture) * 1.5;
+  let points = 70 - (Math.abs(60 - moisture) * 70) / 60;
   if (points < 0) {
     points = 0;
   }
