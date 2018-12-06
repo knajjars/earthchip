@@ -1,4 +1,4 @@
-//MAURICIO MOURRAILLE DEC 2018
+//MAGÜI DEC 2018
 
 #include <Arduino.h>
 
@@ -25,7 +25,8 @@ void setup() {
   pinMode(D4, OUTPUT);
   pinMode(SOILPIN,INPUT);
   DHT dht(DHTPIN, DHTTYPE);
-  //Serial.println(dht.readHumidity());
+  Serial.println(dht.readHumidity());
+  Serial.println(dht.readTemperature());
 
   USE_SERIAL.println();
   USE_SERIAL.println();
@@ -39,7 +40,7 @@ void setup() {
   }
 
   WiFi.mode(WIFI_STA);
-  WiFiMulti.addAP("ssid", "pass"); //ADD WIFI CREDENTIALS
+  WiFiMulti.addAP("Tom's iPhone (3)", "failsafe25-five"); //ADD WIFI CREDENTIALS
 }
 
 void loop() {
