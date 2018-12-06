@@ -21,19 +21,7 @@ router.post("/signup", (req, res, next) => {
       res.status(400).json({ message: "The email is already registered!" });
       return;
     }
-
-    //! To add later on
-    // let transporter = nodemailer.createTransport({
-    //   service: "Gmail",
-    //   auth: {
-    //     user: process.env.NODEMAIL_EMAIL,
-    //     pass: process.env.NODEMAIL_PASS
-    //   }
-    // });
-    // String.prototype.replaceAll = function(search, replacement) {
-    //   var target = this;
-    //   return target.replace(new RegExp(search, "g"), replacement);
-    // };
+    ß;
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);

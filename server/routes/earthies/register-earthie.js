@@ -12,6 +12,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
 });
 
 router.post("/", isLoggedIn, upload, (req, res, next) => {
+  console.log("HEEEERE", req.user);
   const { macAddress, plantName, wateringType, lastWatered } = req.body;
 
   if (macAddress === "") {
