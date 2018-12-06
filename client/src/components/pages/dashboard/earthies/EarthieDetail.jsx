@@ -16,6 +16,7 @@ export default class EarthieDetail extends Component {
         : null,
       isMobile: false
     };
+    this.intervalId = null;
   }
 
   updateDimensions() {
@@ -38,6 +39,25 @@ export default class EarthieDetail extends Component {
           });
         })
         .catch(err => console.log(err));
+    }
+
+    this.intervalId = setInterval(() => {
+      api
+        .getOneEarthie(this.state.macAddress)
+        .then(res => {
+          this.setState({
+            earthie: res.data
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }, 10000);
+  }
+
+  componentWillUnmount() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
     }
   }
 

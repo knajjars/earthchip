@@ -81,7 +81,7 @@ router.get("/", (req, res, next) => {
       let lastWatered;
 
       lastWatered =
-        earthie.currentMoisture < data.soilMoisture
+        earthie.currentMoisture + 3 < data.soilMoisture
           ? new Date()
           : earthie.lastWatered;
 
@@ -136,7 +136,7 @@ router.get("/", (req, res, next) => {
 
       Promise.all([updateEarthie, earthieData])
         .then(data => {
-          res.json(data);
+          res.status(200).json({ message: "Good connection!" });
         })
         .catch(err => next(err));
     }

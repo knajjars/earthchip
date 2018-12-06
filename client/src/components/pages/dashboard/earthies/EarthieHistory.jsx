@@ -9,6 +9,7 @@ export default class EarthieHistory extends Component {
       isLoading: true,
       historicData: []
     };
+    this.intervalId = null;
   }
 
   componentDidMount() {
@@ -28,7 +29,33 @@ export default class EarthieHistory extends Component {
         this.setState({ historicData: data, isLoading: false });
       })
       .catch(err => console.log(err));
+
+    this.intervalId = setInterval(() => {
+      api
+        .getHistoricData(this.props.earthie.macAddress)
+        .then(res => {
+          let data = res.data.map((res, i) => {
+            let date = new Date(res.created_at);
+            return {
+              key: i,
+              date: date.toDateString(),
+              moisture: Math.round(res.soilMoisture),
+              humidity: Math.round(res.environmentHumidity),
+              temperature: Math.round(res.environmentTemp)
+            };
+          });
+          this.setState({ historicData: data, isLoading: false });
+        })
+        .catch(err => console.log(err));
+    }, 10000);
   }
+
+  componentWillUnmount() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
+
   render() {
     const columns = [
       {
