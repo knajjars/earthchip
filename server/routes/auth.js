@@ -21,7 +21,6 @@ router.post("/signup", (req, res, next) => {
       res.status(400).json({ message: "The email is already registered!" });
       return;
     }
-    ß;
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
