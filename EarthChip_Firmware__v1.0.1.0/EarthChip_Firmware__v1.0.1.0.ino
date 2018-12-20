@@ -3,8 +3,8 @@
 #include <Arduino.h>
 
 
-#define DHTPIN D5
-#define DHTTYPE DHT11 
+#define DHTPIN D1
+#define DHTTYPE DHT22
 #define USE_SERIAL Serial
 #define SOILPIN A0
 
@@ -24,6 +24,7 @@ void setup() {
   pinMode(D0, OUTPUT);
   pinMode(D4, OUTPUT);
   pinMode(SOILPIN,INPUT);
+  pinMode(D1,INPUT);
   DHT dht(DHTPIN, DHTTYPE);
   Serial.println(dht.readHumidity());
   Serial.println(dht.readTemperature());
@@ -40,7 +41,8 @@ void setup() {
   }
 
   WiFi.mode(WIFI_STA);
-  WiFiMulti.addAP("Tom's iPhone (3)", "failsafe25-five"); //ADD WIFI CREDENTIALS
+//  WiFiMulti.addAP("Tom's iPhone (3)", "failsafe25-five"); //ADD WIFI CREDENTIALS
+  WiFiMulti.addAP("Vodafone-643D", "U6ApXkbeT4pTvV7j"); //ADD WIFI CREDENTIALS
 }
 
 void loop() {
@@ -54,7 +56,13 @@ void loop() {
     //http.begin("https://192.168.1.12/test.html", "7a 9c f4 db 40 d3 62 5a 6e 21 bc 5c cc 66 c8 3e a1 45 59 38"); //HTTPS
     String url = "http://46.101.242.50/api/data-earthchip?macAddress=" ;
     url.concat(WiFi.macAddress());
-    url.concat("&environmentHumidity=67&environmentTemp=23&soilMoisture=66");
+    url.concat("&environmentHumidity=");
+url.concat(dht.readHumidity());
+url.concat("&environmentTemp=");
+url.concat(dht.readTemperature());
+url.concat("&soilMoisture=");
+url.concat("66");
+
     Serial.println(url);
     
     http.begin(url); //HTTP

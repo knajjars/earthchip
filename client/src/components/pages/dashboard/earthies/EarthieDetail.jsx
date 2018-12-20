@@ -3,10 +3,10 @@ import TimeLine from "./EarthieTimeline";
 import { Spin, Icon, Divider } from "antd";
 import { Link } from "react-router-dom";
 import EarthieHistory from "./EarthieHistory";
-import api from "../../../../api/earthie";
 import DeleteButton from "../../../utils/DeleteButton";
-
-export default class EarthieDetail extends Component {
+import { connect } from "react-redux";
+import { getOneEarthie } from "../../../../actions";
+class EarthieDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,30 +28,17 @@ export default class EarthieDetail extends Component {
   }
 
   componentDidMount() {
+    console.log(this.state.macAddress);
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensions.bind(this));
-    if (!this.state.earthie) {
-      api
-        .getOneEarthie(this.state.macAddress)
-        .then(res => {
-          this.setState({
-            earthie: res.data
-          });
-        })
-        .catch(err => console.log(err));
-    }
+    this.props
+      .getOneEarthie(this.state.macAddress)
+      .catch(err => console.log(err));
 
     this.intervalId = setInterval(() => {
-      api
-        .getOneEarthie(this.state.macAddress)
-        .then(res => {
-          this.setState({
-            earthie: res.data
-          });
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      this.props.getOneEarthie(this.state.macAddress).catch(err => {
+        console.log(err);
+      });
     }, 10000);
   }
 
@@ -62,7 +49,7 @@ export default class EarthieDetail extends Component {
   }
 
   renderEarthie() {
-    if (!this.state.earthie || !this.state.earthie.plantHealth) {
+    if (!this.props.oneEarthie || !this.props.oneEarthie.plantHealth) {
       return (
         <div className="offline-device-details">
           <h1>Device might be offline :(</h1>
@@ -79,13 +66,13 @@ export default class EarthieDetail extends Component {
         </div>
       );
     } else {
-      let plantHealth = Math.round(this.state.earthie.plantHealth);
-      let currentMoisture = Math.round(this.state.earthie.currentMoisture);
+      let plantHealth = Math.round(this.props.oneEarthie.plantHealth);
+      let currentMoisture = Math.round(this.props.oneEarthie.currentMoisture);
       let currentTemperature = Math.round(
-        this.state.earthie.currentEnvironmentTemp
+        this.props.oneEarthie.currentEnvironmentTemp
       );
       let currentHumidity = Math.round(
-        this.state.earthie.currentEnvironmentHumidity
+        this.props.oneEarthie.currentEnvironmentHumidity
       );
 
       return (
@@ -95,7 +82,7 @@ export default class EarthieDetail extends Component {
               <Icon type="left-circle" className="button-earthie-details" />
             </Link>
             <Link
-              to={`/earthie/${this.state.earthie.macAddress}/settings`}
+              to={`/earthie/${this.props.oneEarthie.macAddress}/settings`}
               className="settings-button"
             >
               Settings
@@ -110,12 +97,12 @@ export default class EarthieDetail extends Component {
             <div className="earthie-details-photo-timeline">
               <div className="earthie-details-flex-column">
                 <img
-                  src={this.state.earthie.imageURL}
-                  alt={this.state.earthie.plantname}
+                  src={this.props.oneEarthie.imageURL}
+                  alt={this.props.oneEarthie.plantname}
                   style={{ width: 300, height: 400, objectFit: "cover" }}
                 />
                 <h1 className="moon-bold bold">
-                  {this.state.earthie.plantName}
+                  {this.props.oneEarthie.plantName}
                 </h1>
               </div>
               <div className="earthie-details-metrics">
@@ -156,11 +143,11 @@ export default class EarthieDetail extends Component {
                   <Icon type="calendar" theme="filled" /> Timeline projection
                 </h3>
                 <Divider />
-                <TimeLine earthie={this.state.earthie} />
+                <TimeLine earthie={this.props.oneEarthie} />
               </div>
               {!this.state.isMobile && (
                 <div>
-                  <EarthieHistory earthie={this.state.earthie} />
+                  <EarthieHistory earthie={this.props.oneEarthie} />
                 </div>
               )}
             </div>
@@ -173,3 +160,12 @@ export default class EarthieDetail extends Component {
     return this.renderEarthie();
   }
 }
+
+const mapStateToProps = state => {
+  return { oneEarthie: state.getOneEarthie };
+};
+
+export default connect(
+  mapStateToProps,
+  { getOneEarthie }
+)(EarthieDetail);
