@@ -1,4 +1,4 @@
-//MAGÜI DEC 2018
+//MAGUI DEC 2018
 
 #include <Arduino.h>
 
