@@ -10,7 +10,7 @@ const path = require("path");
 const nocache = require("nocache");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-
+require("passport");
 require("./configs/database");
 
 const app_name = require("./package.json").name;
@@ -48,7 +48,7 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
-require("./passport")(app);
+require("./routes/passport")(app);
 
 app.use("/api", require("./routes/index"));
 app.use("/api/auth", require("./routes/auth"));

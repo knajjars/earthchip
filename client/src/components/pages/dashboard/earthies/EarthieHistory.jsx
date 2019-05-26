@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import api from "../../../../api/earthie";
 import { Divider, Icon, Table } from "antd";
+import { connect } from "react-redux";
+import { getHistoricData } from "../../../../actions";
 
-export default class EarthieHistory extends Component {
+class EarthieHistory extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,10 +15,10 @@ export default class EarthieHistory extends Component {
   }
 
   componentDidMount() {
-    api
+    this.props
       .getHistoricData(this.props.earthie.macAddress)
       .then(res => {
-        let data = res.data.map((res, i) => {
+        let data = this.props.earthieHistory.map((res, i) => {
           let date = new Date(res.created_at);
           return {
             key: i,
@@ -31,10 +33,10 @@ export default class EarthieHistory extends Component {
       .catch(err => console.log(err));
 
     this.intervalId = setInterval(() => {
-      api
+      this.props
         .getHistoricData(this.props.earthie.macAddress)
         .then(res => {
-          let data = res.data.map((res, i) => {
+          let data = this.props.earthieHistory.map((res, i) => {
             let date = new Date(res.created_at);
             return {
               key: i,
@@ -103,3 +105,12 @@ export default class EarthieHistory extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { earthieHistory: state.earthieHistoricData };
+};
+
+export default connect(
+  mapStateToProps,
+  { getHistoricData }
+)(EarthieHistory);

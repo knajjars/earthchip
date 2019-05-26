@@ -4,13 +4,15 @@ import { Upload, Button, Icon, Spin, Select } from "antd";
 import api from "../../../../api/earthie";
 import NotificationMessage from "../../../utils/NotificationMessage";
 import DeleteButton from "../../../utils/DeleteButton";
+import { connect } from "react-redux";
+import { getOneEarthie } from "../../../../actions";
 
 const Option = Select.Option;
 const antIcon = (
   <Icon type="loading" style={{ fontSize: 18, paddingLeft: "3px" }} spin />
 );
 
-export default class EarthieSettings extends Component {
+class EarthieSettings extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,25 +21,25 @@ export default class EarthieSettings extends Component {
         .replace("/earthie/", "")
         .replace("/settings", ""),
       file: "",
-      plantName: this.props.earthie ? this.props.earthie.plantName : null,
-      wateringType: this.props.earthie ? this.props.earthie.wateringType : null
+      plantName: "",
+      wateringType: ""
     };
   }
 
   componentDidMount() {
-    if (!this.state.earthie) {
-      api
-        .getOneEarthie(this.state.macAddress)
-        .then(res => {
-          this.setState({
-            earthie: res.data,
-            file: "",
-            plantName: res.data.plantName,
-            wateringType: res.data.wateringType
-          });
-        })
-        .catch(err => console.log(err));
-    }
+    this.props
+      .getOneEarthie(this.state.macAddress)
+      .then(res => {
+        let { oneEarthie } = this.props;
+        console.log("one", this.props);
+        this.setState({
+          earthie: oneEarthie,
+          file: "",
+          plantName: oneEarthie.plantName,
+          wateringType: oneEarthie.wateringType
+        });
+      })
+      .catch(err => console.log(err));
   }
 
   handleEdit = () => {
@@ -141,7 +143,7 @@ export default class EarthieSettings extends Component {
       },
       file
     };
-    if (!this.state.earthie) {
+    if (!this.props.oneEarthie) {
       return (
         <div className="offline-device-details">
           <h1>Device might be offline :(</h1>
@@ -181,8 +183,8 @@ export default class EarthieSettings extends Component {
                     objectFit: "cover",
                     padding: 10
                   }}
-                  src={this.state.earthie.imageURL}
-                  alt={this.state.earthie.plantName}
+                  src={this.props.oneEarthie.imageURL}
+                  alt={this.props.oneEarthie.plantName}
                 />
                 <Upload {...props}>
                   <Button>
@@ -201,7 +203,7 @@ export default class EarthieSettings extends Component {
                         onChange={this.handleChange}
                         name="plantName"
                         type="text"
-                        placeholder="Plant name"
+                        placeholder={this.props.oneEarthie.plantName}
                         required
                       />
                     </div>
@@ -212,7 +214,7 @@ export default class EarthieSettings extends Component {
                       <Select
                         placeholder="Dependency of water."
                         onChange={this.handleSelect}
-                        defaultValue={this.state.wateringType}
+                        defaultValue={this.props.oneEarthie.wateringType}
                       >
                         <Option value="low">Low</Option>
                         <Option value="medium">Medium</Option>
@@ -251,3 +253,11 @@ export default class EarthieSettings extends Component {
     return <div>{this.renderEdit()}</div>;
   }
 }
+const mapStateToProps = state => {
+  return { oneEarthie: state.getOneEarthie };
+};
+
+export default connect(
+  mapStateToProps,
+  { getOneEarthie }
+)(EarthieSettings);

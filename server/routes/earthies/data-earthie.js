@@ -117,7 +117,7 @@ router.get("/", (req, res, next) => {
         criticalWateringDate = new Date(new Date().getTime() + 86400000);
       }
 
-      //* data to update
+      //! data to update
       const updatedData = {
         currentMoisture: data.soilMoisture,
         currentEnvironmentTemp: data.environmentTemp,

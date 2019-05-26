@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import Earthie from "./Earthie";
 import { Icon } from "antd";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getEarthies } from "../../../../actions";
 
-import api from "../../../../api/earthie";
-
-export default class EarthieList extends Component {
+class EarthieList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,32 +14,13 @@ export default class EarthieList extends Component {
     };
   }
 
-  componentDidMount() {
-    api
-      .getEarthies()
-      .then(res => {
-        this.setState({
-          earthieData: res.data,
-          isLoading: false
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  componentDidMount = () => {
+    this.props.getEarthies().catch(err => console.log(err));
     this.intervalId = setInterval(() => {
-      api
-        .getEarthies()
-        .then(res => {
-          this.setState({
-            earthieData: res.data,
-            isLoading: false
-          });
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      this.props.getEarthies().catch(err => console.log(err));
     }, 10000);
-  }
+    console.log(this.props);
+  };
 
   componentWillUnmount() {
     if (this.intervalId) {
@@ -48,11 +29,11 @@ export default class EarthieList extends Component {
   }
 
   renderEarthies() {
-    if (this.state.earthieData.length > 0) {
+    if (this.props.earthieList.length > 0) {
       return (
         <div className="earthies-list">
           <div id="scroll-here" />
-          {this.state.earthieData.map(earthie => (
+          {this.props.earthieList.map(earthie => (
             <Link key={earthie._id} to={"/earthie/" + earthie.macAddress}>
               <Earthie
                 earthie={earthie}
@@ -80,3 +61,12 @@ export default class EarthieList extends Component {
     return this.renderEarthies();
   }
 }
+
+const mapStateToProps = state => {
+  return { earthieList: state.earthieList };
+};
+
+export default connect(
+  mapStateToProps,
+  { getEarthies }
+)(EarthieList);
