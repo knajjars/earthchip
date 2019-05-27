@@ -4,6 +4,7 @@
 # EarthChip
 
 
+
 A platform for measuring the health of your plants using an IOT device called an Earthie.
 
 ### Landing Page
