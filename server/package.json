@@ -8,7 +8,7 @@
     "debug": "DEBUG=server:* nodemon ./bin/www"
   },
   "dependencies": {
-    "aws-sdk": "^2.363.0",
+    "aws-sdk": "^2.814.0",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "connect-mongo": "^2.0.1",
